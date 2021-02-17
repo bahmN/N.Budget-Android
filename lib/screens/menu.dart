@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/domains/infoList.dart';
 import 'package:nbudget/domains/nowMonth.dart';
+import 'package:nbudget/domains/widthProgressBar.dart';
 
 class MenuPage extends StatefulWidget {
   MenuPage({Key key}) : super(key: key);
@@ -64,28 +65,7 @@ class _MenuPageState extends State<MenuPage> {
                       ),
                     ],
                   ),
-                  Stack(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 4),
-                        width: 365,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: HexColor("#E5213E"),
-                          borderRadius: BorderRadius.all(Radius.circular(3.0)),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 4),
-                        width: 250,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: HexColor("#51A34F"),
-                          borderRadius: BorderRadius.all(Radius.circular(3.0)),
-                        ),
-                      ),
-                    ],
-                  ),
+                  ProgressBar(),
                 ],
               ),
             ),

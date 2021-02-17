@@ -27,8 +27,7 @@ class Info {
     var dayInMonth = dateUtility.daysInMonth(iDay, iDayY);
 
     fMoney = income - mExpenses;
-    moneyDay = fMoney / dayInMonth;
-    moneyDay = double.parse(moneyDay.toStringAsFixed(2));
+    moneyDay = double.parse((fMoney / dayInMonth).toStringAsFixed(2));
   }
 }
 
