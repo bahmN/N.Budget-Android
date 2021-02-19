@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class Authorization extends StatefulWidget {
   Authorization({Key key}) : super(key: key);
@@ -18,35 +17,9 @@ class _AuthorizationState extends State<Authorization> {
   String _email;
   String _password;
   bool showLogin = true;
-  double _marginFormAuth = 322;
-  FocusNode fNode = FocusNode();
-  var _isKeyboardVisible = false;
-
-  @override
-  void dispose() {
-    fNode.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fNode.addListener(() {
-      fNode.hasPrimaryFocus;
-    });
-  }
-
-  @override
-  void didChangeMetrics() {
-    final bottomInset = WidgetsBinding.instance.window.viewInsets.bottom;
-    final newValue = bottomInset > 0.0;
-    if (newValue != _isKeyboardVisible) {
-      setState(() {
-        _isKeyboardVisible = true;
-      });
-    }
-  }
-
+  bool _isKeyboardOpened = false;
+  double _marginTopFormAuth;
+  bool _isChangedTextAuth = false;
   Widget _logo() {
     return Container(
       color: HexColor('#FFE60D'),
@@ -64,11 +37,6 @@ class _AuthorizationState extends State<Authorization> {
     return Container(
       margin: EdgeInsets.fromLTRB(10, 35, 10, 0),
       child: TextField(
-        onTap: () {
-          setState(() {
-            _marginFormAuth = 20;
-          });
-        },
         controller: controller,
         obscureText: obscure,
         style: TextStyle(fontSize: 15, color: HexColor('#A7A7A7')),
@@ -120,11 +88,12 @@ class _AuthorizationState extends State<Authorization> {
     );
   }
 
-  Widget _formAuth(String labelForm, String labelButton, void func()) {
+  Widget _formAuth(
+      String labelForm, String labelButton, void func(), double marginTopForm) {
     return AnimatedContainer(
-      duration: Duration(seconds: 1),
-      curve: Curves.ease,
-      margin: EdgeInsets.fromLTRB(13, _marginFormAuth, 13, 50),
+      duration: Duration(milliseconds: 400),
+      curve: Curves.easeOutQuart,
+      margin: EdgeInsets.fromLTRB(13, marginTopForm, 13, 50),
       decoration: BoxDecoration(
           color: HexColor('#FFFFFF'),
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -137,7 +106,9 @@ class _AuthorizationState extends State<Authorization> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
+          AnimatedContainer(
+            duration: Duration(seconds: 1),
+            curve: Curves.easeOutQuart,
             padding: EdgeInsets.only(left: 10, top: 30),
             child: Text(
               labelForm.toUpperCase(),
@@ -163,6 +134,9 @@ class _AuthorizationState extends State<Authorization> {
   }
 
   Widget build(BuildContext context) {
+    _isKeyboardOpened = MediaQuery.of(context).viewInsets.bottom > 0;
+    _marginTopFormAuth = _isKeyboardOpened ? 35 : 322;
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       backgroundColor: HexColor('#F5F5F6'),
@@ -174,7 +148,8 @@ class _AuthorizationState extends State<Authorization> {
               (showLogin
                   ? Column(
                       children: <Widget>[
-                        _formAuth('Авторизация', 'Войти', _buttonAction),
+                        _formAuth('Авторизация', 'Войти', _buttonAction,
+                            _marginTopFormAuth),
                         Container(
                           margin: EdgeInsets.fromLTRB(13, 70, 13, 0),
                           child: GestureDetector(
@@ -196,8 +171,8 @@ class _AuthorizationState extends State<Authorization> {
                     )
                   : Column(
                       children: <Widget>[
-                        _formAuth(
-                            'Регистрация', 'Зарегистрироваться', _buttonAction),
+                        _formAuth('Регистрация', 'Зарегистрироваться',
+                            _buttonAction, _marginTopFormAuth),
                         Container(
                           margin: EdgeInsets.fromLTRB(13, 70, 13, 0),
                           child: GestureDetector(
