@@ -31,7 +31,7 @@ class _AuthorizationState extends State<Authorization> {
       height: 411,
       padding: EdgeInsets.fromLTRB(64, 35, 64, 109),
       child: Image.network(
-        'https://clck.ru/TLRoN', //TODO: made 'asset'
+        'https://clck.ru/TLRoN',
       ),
     );
   }
@@ -63,7 +63,7 @@ class _AuthorizationState extends State<Authorization> {
 
   Widget _buttonSignIn(String text, void func()) {
     return Container(
-      width: 500,
+      width: 10000,
       margin: EdgeInsets.fromLTRB(10, 60, 10, 30),
       // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
       decoration: BoxDecoration(
@@ -189,7 +189,7 @@ class _AuthorizationState extends State<Authorization> {
           msg: "Вы успешно зарегистрированы",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 14.0);
       _emailController.clear();

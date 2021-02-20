@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/domains/infoList.dart';
 import 'package:nbudget/domains/nowMonth.dart';
 import 'package:nbudget/domains/widthProgressBar.dart';
+import 'package:nbudget/services/auth.dart';
 
 class MenuPage extends StatefulWidget {
   MenuPage({Key key}) : super(key: key);
@@ -17,6 +18,14 @@ class _MenuPageState extends State<MenuPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('N.Budget'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              AuthService().signOut();
+            },
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 13, vertical: 20),
@@ -162,6 +171,124 @@ class _MenuPageState extends State<MenuPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class InfoList extends StatelessWidget {
+  final infoList = <Info>[
+    Info(income: 15225, mExpenses: 5568),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //Income
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(right: 191, bottom: 10),
+              child: Text(
+                'Доход',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              width: 120,
+              alignment: Alignment.centerRight,
+              child: Text(
+                '${infoList[0].income}₽',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            )
+          ],
+        ),
+        //mExpenses
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(right: 51, bottom: 8),
+              child: Text(
+                'Обязтельные расходы',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              width: 120,
+              alignment: Alignment.centerRight,
+              child: Text(
+                '${infoList[0].mExpenses}₽',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            )
+          ],
+        ),
+        //FreeMoney
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(right: 94, bottom: 8),
+              child: Text(
+                'Свободных денег',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              width: 120,
+              alignment: Alignment.centerRight,
+              child: Text(
+                '${infoList[0].fMoney}₽',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            )
+          ],
+        ),
+        //Money in the day
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(right: 104, bottom: 8),
+              child: Text(
+                'Бюджет на день',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              width: 120,
+              alignment: Alignment.centerRight,
+              child: Text(
+                '${infoList[0].moneyDay}₽',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            )
+          ],
+        ),
+      ],
     );
   }
 }
