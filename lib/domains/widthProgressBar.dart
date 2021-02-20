@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+double percentMoney;
+
 double widthPB() {
   //Money
   double _fMoney = 9657; //Всего свободных денег
   double _spentMoney = 5590.68; //Потрачено
   double _fMoneyRemains = _fMoney - _spentMoney; //Остаток
-  double _percentMoney =
+  percentMoney =
       double.parse(((_fMoneyRemains / _fMoney) * 100).toStringAsFixed(2));
-  print(_percentMoney);
 
   //Width
   double _totalWidth = 365;
   double _greenWidth =
-      double.parse(((_totalWidth * _percentMoney) / 100).toStringAsFixed(2));
-  print(_greenWidth);
+      double.parse(((_totalWidth * percentMoney) / 100).toStringAsFixed(2));
   return _greenWidth;
 }
 
@@ -44,7 +44,7 @@ class _ProgressBarState extends State<ProgressBar> {
           width: widthPB(),
           height: 10,
           duration: Duration(seconds: 3),
-          curve: Curves.fastOutSlowIn,
+          curve: Curves.ease,
           decoration: BoxDecoration(
             color: HexColor("#51A34F"),
             borderRadius: BorderRadius.all(Radius.circular(3.0)),

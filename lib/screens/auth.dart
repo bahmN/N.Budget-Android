@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:nbudget/domains/myUser.dart';
+import 'package:nbudget/services/auth.dart';
 
 class Authorization extends StatefulWidget {
   Authorization({Key key}) : super(key: key);
@@ -9,10 +12,8 @@ class Authorization extends StatefulWidget {
 }
 
 class _AuthorizationState extends State<Authorization> {
-  TextEditingController _emailController =
-      TextEditingController(); //TODO:dispose
-  TextEditingController _passwordController =
-      TextEditingController(); //TODO:dispose
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   String _email;
   String _password;
@@ -20,6 +21,9 @@ class _AuthorizationState extends State<Authorization> {
   bool _isKeyboardOpened = false;
   double _marginTopFormAuth;
   bool _isChangedTextAuth = false;
+
+  AuthService _authService = AuthService();
+
   Widget _logo() {
     return Container(
       color: HexColor('#FFE60D'),
@@ -59,8 +63,9 @@ class _AuthorizationState extends State<Authorization> {
 
   Widget _buttonSignIn(String text, void func()) {
     return Container(
+      width: 500,
       margin: EdgeInsets.fromLTRB(10, 60, 10, 30),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+      // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
       decoration: BoxDecoration(
           color: HexColor('#FFE60D'),
           borderRadius: const BorderRadius.all(
@@ -73,15 +78,13 @@ class _AuthorizationState extends State<Authorization> {
               offset: Offset(1, 4),
             ),
           ]),
-      child: Center(
-        child: GestureDetector(
-          onTap: func,
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w300,
-            ),
+      child: FlatButton(
+        onPressed: func,
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w300,
           ),
         ),
       ),
@@ -106,9 +109,7 @@ class _AuthorizationState extends State<Authorization> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          AnimatedContainer(
-            duration: Duration(seconds: 1),
-            curve: Curves.easeOutQuart,
+          Container(
             padding: EdgeInsets.only(left: 10, top: 30),
             child: Text(
               labelForm.toUpperCase(),
@@ -125,17 +126,80 @@ class _AuthorizationState extends State<Authorization> {
     );
   }
 
-  void _buttonAction() {
+  void _signInButtonAction() async {
     _email = _emailController.text;
     _password = _passwordController.text;
 
-    _emailController.clear();
-    _passwordController.clear();
+    if (_email.isEmpty || _password.isEmpty) return;
+
+    MyUser user = await _authService.signInWithEmailAndPassword(
+        _email.trim(), _password.trim());
+    if (user == null) {
+      Fluttertoast.showToast(
+          msg: "Неправильно введен логин или пароль",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    } else {
+      Fluttertoast.showToast(
+          msg: "Все ок",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      _emailController.clear();
+      _passwordController.clear();
+    }
+  }
+
+  void _signUpButtonAction() async {
+    _email = _emailController.text;
+    _password = _passwordController.text;
+    String _emailVal =
+        "[a-zA-Z0-9+.\_\%-+]{1,256}@[a-zA-Z0-9][a-zA-Z0-9-]{0,64}(.[a-zA-Z0-9][a-zA-Z0-9-]{0,25})+";
+    RegExp emailRegExp = new RegExp(_emailVal);
+    String _passwordVal =
+        "(?=.*[0-9])(?=.*[!@#%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#%^&*]{6,}";
+    RegExp passwordRegExp = new RegExp(_passwordVal);
+
+    if (!emailRegExp.hasMatch(_email)) {
+      Fluttertoast.showToast(
+          msg: "Некорректный ввод email",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 14.0);
+    } else if (!passwordRegExp.hasMatch(_password)) {
+      Fluttertoast.showToast(
+          msg:
+              "Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 14.0);
+    } else {
+      MyUser user = await _authService.signUpWithEmainAndPassword(
+          _email.trim(), _password.trim());
+      Fluttertoast.showToast(
+          msg: "Вы успешно зарегистрированы",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 14.0);
+      _emailController.clear();
+      _passwordController.clear();
+    }
   }
 
   Widget build(BuildContext context) {
     _isKeyboardOpened = MediaQuery.of(context).viewInsets.bottom > 0;
-    _marginTopFormAuth = _isKeyboardOpened ? 35 : 322;
+    _marginTopFormAuth = _isKeyboardOpened ? 90 : 322;
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -148,7 +212,7 @@ class _AuthorizationState extends State<Authorization> {
               (showLogin
                   ? Column(
                       children: <Widget>[
-                        _formAuth('Авторизация', 'Войти', _buttonAction,
+                        _formAuth('Авторизация', 'Войти', _signInButtonAction,
                             _marginTopFormAuth),
                         Container(
                           margin: EdgeInsets.fromLTRB(13, 70, 13, 0),
@@ -172,12 +236,12 @@ class _AuthorizationState extends State<Authorization> {
                   : Column(
                       children: <Widget>[
                         _formAuth('Регистрация', 'Зарегистрироваться',
-                            _buttonAction, _marginTopFormAuth),
+                            _signUpButtonAction, _marginTopFormAuth),
                         Container(
                           margin: EdgeInsets.fromLTRB(13, 70, 13, 0),
                           child: GestureDetector(
                             child: Text(
-                              'Уже зарегестрироваг? Авторизуйся!',
+                              'Уже зарегестрирован? Авторизуйся!',
                               style: TextStyle(
                                   color: HexColor('#A7A7A7'),
                                   fontSize: 15,

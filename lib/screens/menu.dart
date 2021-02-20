@@ -56,7 +56,7 @@ class _MenuPageState extends State<MenuPage> {
                         width: 120,
                         alignment: Alignment.centerRight,
                         child: Text(
-                          '100000000₽',
+                          '₽',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w300,
@@ -106,14 +106,20 @@ class _MenuPageState extends State<MenuPage> {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {},
-                    child: Text('Добавить доход'),
+                    child: Text(
+                      'Добавить доход',
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),
               Container(
                 width: 190,
                 height: 36,
-                margin: EdgeInsets.only(bottom: 20),
+                margin: EdgeInsets.only(bottom: 19),
                 decoration: BoxDecoration(
                     color: HexColor('#FFE60D'),
                     borderRadius: const BorderRadius.all(
@@ -128,7 +134,13 @@ class _MenuPageState extends State<MenuPage> {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {},
-                    child: Text('Добавить траты'),
+                    child: Text(
+                      'Добавить траты',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),
