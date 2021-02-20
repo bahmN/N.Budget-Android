@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/domains/myUser.dart';
+import 'package:nbudget/logic/services/auth.dart';
 import 'package:nbudget/screens/landing.dart';
-import 'package:nbudget/services/auth.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

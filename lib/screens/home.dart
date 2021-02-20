@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:nbudget/domains/infoList.dart';
-import 'package:nbudget/domains/nowMonth.dart';
-import 'package:nbudget/domains/widthProgressBar.dart';
-import 'package:nbudget/services/auth.dart';
+import 'package:nbudget/logic/infoList.dart';
+import 'package:nbudget/logic/nowMonth.dart';
+import 'package:nbudget/logic/services/auth.dart';
+import 'package:nbudget/logic/widthProgressBar.dart';
 
 class MenuPage extends StatefulWidget {
   MenuPage({Key key}) : super(key: key);
@@ -287,6 +287,43 @@ class InfoList extends StatelessWidget {
               ),
             )
           ],
+        ),
+      ],
+    );
+  }
+}
+
+class ProgressBar extends StatefulWidget {
+  ProgressBar({Key key}) : super(key: key);
+
+  @override
+  _ProgressBarState createState() => _ProgressBarState();
+}
+
+class _ProgressBarState extends State<ProgressBar> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 4),
+          width: 365,
+          height: 10,
+          decoration: BoxDecoration(
+            color: HexColor("#E5213E"),
+            borderRadius: BorderRadius.all(Radius.circular(3.0)),
+          ),
+        ),
+        AnimatedContainer(
+          margin: EdgeInsets.only(top: 4),
+          width: widthPB(),
+          height: 10,
+          duration: Duration(seconds: 3),
+          curve: Curves.ease,
+          decoration: BoxDecoration(
+            color: HexColor("#51A34F"),
+            borderRadius: BorderRadius.all(Radius.circular(3.0)),
+          ),
         ),
       ],
     );

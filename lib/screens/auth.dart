@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/domains/myUser.dart';
-import 'package:nbudget/services/auth.dart';
+import 'package:nbudget/logic/services/auth.dart';
 
 class Authorization extends StatefulWidget {
   Authorization({Key key}) : super(key: key);
@@ -18,9 +18,9 @@ class _AuthorizationState extends State<Authorization> {
   String _email;
   String _password;
   bool showLogin = true;
-  bool _isKeyboardOpened = false;
+  bool _ifKeyboardOpened = false;
   double _marginTopFormAuth;
-  bool _isChangedTextAuth = false;
+  bool _ifChangedTextAuth = false;
 
   AuthService _authService = AuthService();
 
@@ -198,8 +198,8 @@ class _AuthorizationState extends State<Authorization> {
   }
 
   Widget build(BuildContext context) {
-    _isKeyboardOpened = MediaQuery.of(context).viewInsets.bottom > 0;
-    _marginTopFormAuth = _isKeyboardOpened ? 90 : 322;
+    _ifKeyboardOpened = MediaQuery.of(context).viewInsets.bottom > 0;
+    _marginTopFormAuth = _ifKeyboardOpened ? 90 : 322;
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
