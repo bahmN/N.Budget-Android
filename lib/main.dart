@@ -2,7 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:nbudget/screens/auth.dart';
+import 'package:nbudget/domains/myUser.dart';
+import 'package:nbudget/screens/landing.dart';
+import 'package:nbudget/services/auth.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,11 +18,14 @@ class NBudget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'NBudget',
-      theme: ThemeData(primaryColor: HexColor('#FFE60D')),
-      home: Authorization(),
+    return StreamProvider<MyUser>.value(
+      value: AuthService().currentUser,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'NBudget',
+        theme: ThemeData(primaryColor: HexColor('#FFE60D')),
+        home: LandingPage(),
+      ),
     );
   }
 }
