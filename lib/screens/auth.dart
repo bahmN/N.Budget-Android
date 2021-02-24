@@ -20,7 +20,6 @@ class _AuthorizationState extends State<Authorization> {
   bool showLogin = true;
   bool _ifKeyboardOpened = false;
   double _marginTopFormAuth;
-  bool _ifChangedTextAuth = false;
 
   AuthService _authService = AuthService();
 
@@ -43,7 +42,7 @@ class _AuthorizationState extends State<Authorization> {
       child: TextField(
         controller: controller,
         obscureText: obscure,
-        style: TextStyle(fontSize: 15, color: HexColor('#A7A7A7')),
+        style: TextStyle(fontSize: 15, color: HexColor('#000000')),
         cursorColor: HexColor('#FFE60D'),
         decoration: InputDecoration(
           hintStyle: TextStyle(
@@ -63,28 +62,19 @@ class _AuthorizationState extends State<Authorization> {
 
   Widget _buttonSignIn(String text, void func()) {
     return Container(
-      width: 10000,
+      width: 500,
+      height: 40,
       margin: EdgeInsets.fromLTRB(10, 60, 10, 30),
-      // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
-      decoration: BoxDecoration(
-          color: HexColor('#FFE60D'),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(5.0),
-          ),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 3,
-              color: HexColor("#000000").withOpacity(0.35),
-              offset: Offset(1, 4),
-            ),
-          ]),
-      child: FlatButton(
+      child: RaisedButton(
         onPressed: func,
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w300,
+        color: HexColor('#FFE60D'),
+        child: Container(
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ),
       ),
@@ -142,16 +132,6 @@ class _AuthorizationState extends State<Authorization> {
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0);
-    } else {
-      Fluttertoast.showToast(
-          msg: "Все ок",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.green,
-          textColor: Colors.white,
-          fontSize: 16.0);
-      _emailController.clear();
-      _passwordController.clear();
     }
   }
 
@@ -183,13 +163,13 @@ class _AuthorizationState extends State<Authorization> {
           textColor: Colors.white,
           fontSize: 14.0);
     } else {
-      MyUser user = await _authService.signUpWithEmainAndPassword(
+      MyUser _ = await _authService.signUpWithEmainAndPassword(
           _email.trim(), _password.trim());
       Fluttertoast.showToast(
           msg: "Вы успешно зарегистрированы",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 14.0);
       _emailController.clear();
@@ -228,6 +208,8 @@ class _AuthorizationState extends State<Authorization> {
                               setState(() {
                                 showLogin = false;
                               });
+                              _emailController.clear();
+                              _passwordController.clear();
                             },
                           ),
                         )
@@ -241,7 +223,7 @@ class _AuthorizationState extends State<Authorization> {
                           margin: EdgeInsets.fromLTRB(13, 70, 13, 0),
                           child: GestureDetector(
                             child: Text(
-                              'Уже зарегестрирован? Авторизуйся!',
+                              'Уже зарегестрирован? Авторизируйся!',
                               style: TextStyle(
                                   color: HexColor('#A7A7A7'),
                                   fontSize: 15,
@@ -251,6 +233,8 @@ class _AuthorizationState extends State<Authorization> {
                               setState(() {
                                 showLogin = true;
                               });
+                              _emailController.clear();
+                              _passwordController.clear();
                             },
                           ),
                         )
