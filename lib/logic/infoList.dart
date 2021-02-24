@@ -7,7 +7,7 @@ class Info {
   double fMoney;
   double moneyDay;
 
-  Info({this.income, this.mExpenses, this.fMoney, this.moneyDay}) {
+  Info({this.income, this.mExpenses}) {
     //Day
     DateTime today = DateTime.now();
     DateFormat dayFormatter = DateFormat('M');
