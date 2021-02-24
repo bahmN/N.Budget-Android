@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:nbudget/logic/infoList.dart';
+import 'package:nbudget/components/budgetInfoList.dart';
 import 'package:nbudget/logic/nowMonth.dart';
 import 'package:nbudget/logic/services/auth.dart';
 import 'package:nbudget/logic/widthProgressBar.dart';
+import 'package:nbudget/screens/addIncome.dart';
 
 class MenuPage extends StatefulWidget {
   MenuPage({Key key}) : super(key: key);
@@ -13,12 +14,51 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  Widget progressBar() {
+    return Stack(
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 4),
+          width: 365,
+          height: 10,
+          decoration: BoxDecoration(
+            color: HexColor("#E5213E"),
+            borderRadius: BorderRadius.all(Radius.circular(3.0)),
+          ),
+        ),
+        AnimatedContainer(
+          margin: EdgeInsets.only(top: 4),
+          width: widthPB(),
+          height: 10,
+          duration: Duration(seconds: 3),
+          curve: Curves.ease,
+          decoration: BoxDecoration(
+            color: HexColor("#51A34F"),
+            borderRadius: BorderRadius.all(Radius.circular(3.0)),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('N.Budget'),
         actions: [
+          Center(
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 150),
+              child: Row(
+                children: [
+                  Text(
+                    'Баланс:',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
           IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
@@ -74,7 +114,7 @@ class _MenuPageState extends State<MenuPage> {
                       ),
                     ],
                   ),
-                  ProgressBar(),
+                  progressBar(),
                 ],
               ),
             ),
@@ -93,7 +133,7 @@ class _MenuPageState extends State<MenuPage> {
                         color: HexColor("#000000").withOpacity(0.35),
                         offset: Offset(4, 4))
                   ]),
-              child: InfoList(),
+              child: InfoList(13658.0, 5568.0),
             ),
             //2 button's "add"
             Row(children: [
@@ -102,7 +142,6 @@ class _MenuPageState extends State<MenuPage> {
                 height: 36,
                 margin: EdgeInsets.only(bottom: 20, right: 5),
                 decoration: BoxDecoration(
-                    color: HexColor('#FFE60D'),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(5.0),
                     ),
@@ -112,15 +151,17 @@ class _MenuPageState extends State<MenuPage> {
                           color: HexColor("#000000").withOpacity(0.35),
                           offset: Offset(1, 4))
                     ]),
-                child: Center(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      'Добавить доход',
-                      style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold,
-                      ),
+                child: RaisedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AddIC()));
+                  },
+                  color: HexColor('#FFE60D'),
+                  child: Text(
+                    'Добавить доход',
+                    style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -130,25 +171,21 @@ class _MenuPageState extends State<MenuPage> {
                 height: 36,
                 margin: EdgeInsets.only(bottom: 19),
                 decoration: BoxDecoration(
-                    color: HexColor('#FFE60D'),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(5.0),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 3,
-                          color: HexColor("#000000").withOpacity(0.35),
-                          offset: Offset(1, 4))
-                    ]),
-                child: Center(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      'Добавить траты',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 3,
+                        color: HexColor("#000000").withOpacity(0.35),
+                        offset: Offset(1, 4))
+                  ],
+                ),
+                child: RaisedButton(
+                  onPressed: () {},
+                  color: HexColor('#FFE60D'),
+                  child: Text(
+                    'Добавить расходы',
+                    style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -171,161 +208,6 @@ class _MenuPageState extends State<MenuPage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class InfoList extends StatelessWidget {
-  final infoList = <Info>[
-    Info(income: 15225, mExpenses: 5568),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        //Income
-        Row(
-          children: [
-            Container(
-              padding: EdgeInsets.only(right: 191, bottom: 10),
-              child: Text(
-                'Доход',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              width: 120,
-              alignment: Alignment.centerRight,
-              child: Text(
-                '${infoList[0].income}₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            )
-          ],
-        ),
-        //mExpenses
-        Row(
-          children: [
-            Container(
-              padding: EdgeInsets.only(right: 51, bottom: 8),
-              child: Text(
-                'Обязтельные расходы',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              width: 120,
-              alignment: Alignment.centerRight,
-              child: Text(
-                '${infoList[0].mExpenses}₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            )
-          ],
-        ),
-        //FreeMoney
-        Row(
-          children: [
-            Container(
-              padding: EdgeInsets.only(right: 94, bottom: 8),
-              child: Text(
-                'Свободных денег',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              width: 120,
-              alignment: Alignment.centerRight,
-              child: Text(
-                '${infoList[0].fMoney}₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            )
-          ],
-        ),
-        //Money in the day
-        Row(
-          children: [
-            Container(
-              padding: EdgeInsets.only(right: 104, bottom: 8),
-              child: Text(
-                'Бюджет на день',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              width: 120,
-              alignment: Alignment.centerRight,
-              child: Text(
-                '${infoList[0].moneyDay}₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            )
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class ProgressBar extends StatefulWidget {
-  ProgressBar({Key key}) : super(key: key);
-
-  @override
-  _ProgressBarState createState() => _ProgressBarState();
-}
-
-class _ProgressBarState extends State<ProgressBar> {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 4),
-          width: 365,
-          height: 10,
-          decoration: BoxDecoration(
-            color: HexColor("#E5213E"),
-            borderRadius: BorderRadius.all(Radius.circular(3.0)),
-          ),
-        ),
-        AnimatedContainer(
-          margin: EdgeInsets.only(top: 4),
-          width: widthPB(),
-          height: 10,
-          duration: Duration(seconds: 3),
-          curve: Curves.ease,
-          decoration: BoxDecoration(
-            color: HexColor("#51A34F"),
-            borderRadius: BorderRadius.all(Radius.circular(3.0)),
-          ),
-        ),
-      ],
     );
   }
 }
