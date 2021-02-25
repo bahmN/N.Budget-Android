@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:nbudget/logic/services/database.dart';
 
 class Income extends StatefulWidget {
   Income({Key key}) : super(key: key);
@@ -10,8 +12,14 @@ class Income extends StatefulWidget {
 }
 
 class IncomeState extends State<Income> {
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _commentController = TextEditingController();
+  TextEditingController _sumController = TextEditingController();
+  String _name;
+  String _comment;
+  double _sum;
+  var _idUser;
   var selectedDate = DateTime.now();
-
   void _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
@@ -23,6 +31,14 @@ class IncomeState extends State<Income> {
       setState(() {
         selectedDate = picked;
       });
+  }
+
+  void _writeDataAction() async {
+    _name = _nameController.text;
+    _comment = _commentController.text;
+    _sum = double.parse(_sumController.text);
+    DatabaseService write = DatabaseService();
+    await write.writeData(_name, _comment, _sum, '221');
   }
 
   @override
@@ -44,7 +60,10 @@ class IncomeState extends State<Income> {
                   'Сохранить',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
                 ),
-                onTap: () {},
+                onTap: () {
+                  _writeDataAction();
+                  Navigator.pop(context);
+                },
               ),
             ),
           )
@@ -70,6 +89,7 @@ class IncomeState extends State<Income> {
                         offset: Offset(1, 4))
                   ]),
               child: TextFormField(
+                controller: _sumController,
                 style: TextStyle(
                     fontSize: 40,
                     color: HexColor('#000000'),
@@ -131,6 +151,7 @@ class IncomeState extends State<Income> {
                         offset: Offset(1, 4))
                   ]),
               child: TextFormField(
+                controller: _nameController,
                 style: TextStyle(
                     fontSize: 20,
                     color: HexColor('#000000'),
@@ -165,6 +186,7 @@ class IncomeState extends State<Income> {
                         offset: Offset(1, 4))
                   ]),
               child: TextFormField(
+                controller: _commentController,
                 style: TextStyle(
                     fontSize: 20,
                     color: HexColor('#000000'),
