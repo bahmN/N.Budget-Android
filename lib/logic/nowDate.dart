@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 //For budget list
 String nowMonthList() {
   final DateTime nowMonth = DateTime.now();
-  final DateFormat formatterMonth = DateFormat('MMMM');
+  final DateFormat formatterMonth = DateFormat.MMMM('ru');
   final String formattedMonth = formatterMonth.format(nowMonth);
   return "До конца $formattedMonth осталось";
 }
