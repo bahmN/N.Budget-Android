@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/logic/services/database.dart';
 
-class Income extends StatefulWidget {
-  Income({Key key}) : super(key: key);
+class Costs extends StatefulWidget {
+  Costs({Key key}) : super(key: key);
 
   @override
-  IncomeState createState() => IncomeState();
+  CostsState createState() => CostsState();
 }
 
-class IncomeState extends State<Income> {
+class CostsState extends State<Costs> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _commentController = TextEditingController();
   TextEditingController _sumController = TextEditingController();
@@ -22,6 +22,7 @@ class IncomeState extends State<Income> {
   void _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
+      locale: const Locale("ru"),
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime.now(),
@@ -37,7 +38,7 @@ class IncomeState extends State<Income> {
     _comment = _commentController.text;
     _sum = double.parse(_sumController.text);
     DatabaseService write = DatabaseService();
-    await write.writeIncome(_name, _comment, _sum, '221');
+    await write.writeCosts(_name, _comment, _sum, '221');
   }
 
   @override
@@ -49,11 +50,10 @@ class IncomeState extends State<Income> {
             onPressed: () {
               Navigator.pop(context);
             }),
-        title: Text('Добавить доход'),
+        title: Text('Добавить расходы'),
         actions: [
           Center(
             child: Container(
-              margin: EdgeInsets.only(right: 13),
               child: FlatButton(
                 child: Text(
                   'Сохранить',
@@ -161,7 +161,7 @@ class IncomeState extends State<Income> {
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
-                  hintText: 'Наименование дохода',
+                  hintText: 'Наименование расходов',
                   hintStyle: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w200,
