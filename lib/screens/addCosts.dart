@@ -38,7 +38,7 @@ class CostsState extends State<Costs> {
     _comment = _commentController.text;
     _sum = double.parse(_sumController.text);
     DatabaseService write = DatabaseService();
-    await write.writeCosts(_name, _comment, _sum, '221');
+    await write.writeCosts(_name, _comment, _sum);
   }
 
   @override

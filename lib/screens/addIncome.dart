@@ -37,7 +37,7 @@ class IncomeState extends State<Income> {
     _comment = _commentController.text;
     _sum = double.parse(_sumController.text);
     DatabaseService write = DatabaseService();
-    await write.writeIncome(_name, _comment, _sum, '221');
+    await write.writeIncome(_name, _comment, _sum);
   }
 
   @override
