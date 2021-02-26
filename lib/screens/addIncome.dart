@@ -52,18 +52,15 @@ class IncomeState extends State<Income> {
         title: Text('Добавить доход'),
         actions: [
           Center(
-            child: Container(
-              margin: EdgeInsets.only(right: 13),
-              child: FlatButton(
-                child: Text(
-                  'Сохранить',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
-                ),
-                onPressed: () {
-                  _writeDataAction();
-                  Navigator.pop(context);
-                },
+            child: FlatButton(
+              child: Text(
+                'Сохранить',
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
               ),
+              onPressed: () {
+                _writeDataAction();
+                Navigator.pop(context);
+              },
             ),
           )
         ],
