@@ -1,9 +1,11 @@
-double percentMoney;
+import 'package:nbudget/logic/services/database.dart';
 
-double widthPB() {
+Future<double> widthPB() async {
+  double percentMoney;
+
   //Money
-  double _fMoney = 9657; //Всего свободных денег
-  double _spentMoney = 5590.68; //Потрачено
+  double _fMoney = await readIncome(); //Всего свободных денег
+  double _spentMoney = await readCosts(); //Потрачено
   double _fMoneyRemains = _fMoney - _spentMoney; //Остаток
   percentMoney =
       double.parse(((_fMoneyRemains / _fMoney) * 100).toStringAsFixed(2));
