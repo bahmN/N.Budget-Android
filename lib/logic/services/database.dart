@@ -27,14 +27,14 @@ class DatabaseService {
   }
 }
 
-Future readCosts() async {
+Future<double> readCosts() async {
   try {
     final User _user = auth.currentUser;
     final _idUser = _user.uid;
 
     final _costs = await FirebaseFirestore.instance
         .collection('Costs')
-        .where('_idUser', isEqualTo: _idUser)
+        .where('idUser', isEqualTo: _idUser)
         .get();
     return _costs.docs.fold<double>(0.0,
         (previousValue, element) => previousValue + element.get('sumCosts'));
