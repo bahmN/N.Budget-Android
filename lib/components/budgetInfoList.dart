@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nbudget/logic/infoList.dart';
+import 'package:nbudget/logic/moneyList.dart';
+import 'package:nbudget/logic/services/database.dart';
 
 class InfoList extends StatelessWidget {
-  var infoList;
-  double incomeIL;
-  double mExpensesIL;
-
-  InfoList(incomeIL, mExpensesIL) {
-    infoList = <Info>[
-      Info(income: incomeIL, mExpenses: mExpensesIL),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,13 +23,27 @@ class InfoList extends StatelessWidget {
             Container(
               width: 120,
               alignment: Alignment.centerRight,
-              child: Text(
-                '${infoList[0].income}₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
+              child: FutureBuilder<double>(
+                  future: readIncome(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(
+                        '${snapshot.data.toStringAsFixed(1)}₽',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      );
+                    } else {
+                      return Text(
+                        '0₽',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      );
+                    }
+                  }),
             )
           ],
         ),
@@ -59,7 +64,7 @@ class InfoList extends StatelessWidget {
               width: 120,
               alignment: Alignment.centerRight,
               child: Text(
-                '${infoList[0].mExpenses}₽',
+                '₽',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w300,
@@ -81,17 +86,36 @@ class InfoList extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              width: 120,
-              alignment: Alignment.centerRight,
-              child: Text(
-                '${infoList[0].fMoney}₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            )
+            //TODO: поменять логику вычисления числа. (Свободные деньги = Доход - Обязательные траты) => добавить метку "обязательные траты"
+            FutureBuilder<double>(
+                future: remainderMoney(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Container(
+                      width: 120,
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '${snapshot.data}₽',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return Container(
+                      width: 120,
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '0₽',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    );
+                  }
+                })
           ],
         ),
         //Money in the day
@@ -107,17 +131,36 @@ class InfoList extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              width: 120,
-              alignment: Alignment.centerRight,
-              child: Text(
-                '${infoList[0].moneyDay}₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            )
+            FutureBuilder<String>(
+              future: moneyADay(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Container(
+                    width: 120,
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      '${snapshot.data}₽',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  );
+                } else {
+                  return Container(
+                    width: 120,
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      '0₽',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
           ],
         ),
       ],
