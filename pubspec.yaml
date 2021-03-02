@@ -22,7 +22,8 @@ dependencies:
   cloud_firestore: ^0.16.0+1
   provider: ^4.3.3
   fluttertoast: ^7.1.8
-  
+  calendarro: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
