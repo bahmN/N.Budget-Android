@@ -7,12 +7,10 @@ Future<double> widthPB() async {
   double _fMoney = await readIncome(); //Всего свободных денег
   double _spentMoney = await readCosts(); //Потрачено
   double _fMoneyRemains = _fMoney - _spentMoney; //Остаток
-  percentMoney =
-      double.parse(((_fMoneyRemains / _fMoney) * 100).toStringAsFixed(2));
+  percentMoney = (_fMoneyRemains / _fMoney) * 100;
 
   //Width
   double _totalWidth = 365;
-  double _greenWidth =
-      double.parse(((_totalWidth * percentMoney) / 100).toStringAsFixed(2));
+  double _greenWidth = (_totalWidth * percentMoney) / 100;
   return _greenWidth;
 }
