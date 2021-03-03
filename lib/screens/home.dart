@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/components/budgetInfoList.dart';
+import 'package:nbudget/components/historyList.dart';
 import 'package:nbudget/logic/moneyList.dart';
-import 'package:nbudget/logic/nowDate.dart';
+import 'package:nbudget/logic/date.dart';
 import 'package:nbudget/logic/services/auth.dart';
 import 'package:nbudget/logic/widthProgressBar.dart';
 import 'package:nbudget/screens/addCosts.dart';
@@ -24,28 +25,30 @@ class _MenuPageState extends State<MenuPage> {
       children: [
         Container(
           margin: EdgeInsets.only(top: 4),
-          width: 365,
           height: 10,
           decoration: BoxDecoration(
             color: HexColor("#E5213E"),
             borderRadius: BorderRadius.all(Radius.circular(3.0)),
           ),
         ),
-        FutureBuilder<double>(
-            future: widthPB(),
-            builder: (context, snapshot) {
-              return AnimatedContainer(
-                margin: EdgeInsets.only(top: 4),
-                width: snapshot.data,
-                height: 10,
-                duration: Duration(seconds: 3),
-                curve: Curves.ease,
-                decoration: BoxDecoration(
-                  color: HexColor("#51A34F"),
-                  borderRadius: BorderRadius.all(Radius.circular(3.0)),
-                ),
-              );
-            }),
+        LayoutBuilder(builder: (context, constrains) {
+          return FutureBuilder<double>(
+              future: widthPB(),
+              builder: (context, snapshot) {
+                return AnimatedContainer(
+                  margin: EdgeInsets.only(top: 4),
+                  width: snapshot.data,
+                  height: 10,
+                  duration: Duration(seconds: 3),
+                  curve: Curves.ease,
+                  constraints: constrains,
+                  decoration: BoxDecoration(
+                    color: HexColor("#51A34F"),
+                    borderRadius: BorderRadius.all(Radius.circular(3.0)),
+                  ),
+                );
+              });
+        }),
       ],
     );
   }
@@ -86,29 +89,46 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
           ),
-          Stack(
-            children: [
-              IconButton(
-                icon: Icon(Icons.fullscreen_sharp),
-                onPressed: () {
-                  setState(() {
-                    if (_ifHistoryContainerTap == false) {
-                      _ifHistoryContainerTap = true;
-                      _topMarginHistoryContainer = 0;
-                    } else {
-                      _ifHistoryContainerTap = false;
-                      _topMarginHistoryContainer = 285;
-                    }
-                  });
-                },
-              ),
-            ],
-          )
+          Expanded(
+            child: HistoryList(),
+          ),
+          (_tapFullScreen == false
+              ? IconButton(
+                  icon: Icon(Icons.fullscreen_sharp),
+                  onPressed: () {
+                    setState(() {
+                      if (_ifHistoryContainerTap == false) {
+                        _tapFullScreen = true;
+                        _ifHistoryContainerTap = true;
+                        _topMarginHistoryContainer = 0;
+                      } else {
+                        _ifHistoryContainerTap = false;
+                        _topMarginHistoryContainer = 285;
+                      }
+                    });
+                  },
+                )
+              : IconButton(
+                  icon: Icon(Icons.fullscreen_exit_sharp),
+                  onPressed: () {
+                    setState(() {
+                      _tapFullScreen = false;
+                      if (_ifHistoryContainerTap == false) {
+                        _ifHistoryContainerTap = true;
+                        _topMarginHistoryContainer = 0;
+                      } else {
+                        _ifHistoryContainerTap = false;
+                        _topMarginHistoryContainer = 285;
+                      }
+                    });
+                  },
+                )),
         ],
       ),
     );
   }
 
+  bool _tapFullScreen = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,8 +175,13 @@ class _MenuPageState extends State<MenuPage> {
                         offset: Offset(4, 4))
                   ]),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         child: Text(
@@ -167,22 +192,28 @@ class _MenuPageState extends State<MenuPage> {
                           ),
                         ),
                       ),
-                      FutureBuilder<double>(
+                      Expanded(
+                        child: FutureBuilder<double>(
                           future: remainderMoney(),
                           builder: (context, snapshot) {
-                            return Container(
-                              margin: EdgeInsets.only(left: 5),
-                              width: 120,
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                '${snapshot.data.toStringAsFixed(2)}₽',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
+                            if (snapshot.hasData) {
+                              return Container(
+                                margin: EdgeInsets.only(left: 5),
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  '${snapshot.data.toStringAsFixed(1)}₽',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w300,
+                                  ),
                                 ),
-                              ),
-                            );
-                          }),
+                              );
+                            } else {
+                              return Container();
+                            }
+                          },
+                        ),
+                      ),
                     ],
                   ),
                   _progressBar(),
@@ -225,7 +256,8 @@ class _MenuPageState extends State<MenuPage> {
                 child: RaisedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Income()));
+                            MaterialPageRoute(builder: (context) => Income()))
+                        .then((value) => setState(() {}));
                   },
                   color: HexColor('#FFE60D'),
                   child: Text(
@@ -251,10 +283,9 @@ class _MenuPageState extends State<MenuPage> {
                 ),
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Costs()),
-                    );
+                    Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Costs()))
+                        .then((value) => setState(() {}));
                   },
                   color: HexColor('#FFE60D'),
                   child: Text(

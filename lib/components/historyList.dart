@@ -3,7 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/logic/services/database.dart';
 
-class HistoryList extends StatelessWidget {
+class HistoryList extends StatefulWidget {
+  @override
+  _HistoryListState createState() => _HistoryListState();
+}
+
+class _HistoryListState extends State<HistoryList> {
   Widget _listItem(BuildContext context, DocumentSnapshot document) {
     return Container(
       padding: EdgeInsets.only(top: 5),
@@ -76,11 +81,28 @@ class HistoryList extends StatelessWidget {
             itemCount: snapshot.data.docs.length,
             itemBuilder: (context, index) {
               if (!snapshot.hasData) {
-                return CircularProgressIndicator(
-                  backgroundColor: HexColor('#FFE60D'),
-                );
+                return CircularProgressIndicator();
               } else {
-                return _listItem(context, snapshot.data.docs[index]);
+                return Dismissible(
+                  key: ObjectKey(snapshot.data.docs[index]),
+                  direction: DismissDirection.endToStart,
+                  background: Container(
+                    alignment: Alignment.centerRight,
+                    color: HexColor('#E5213E'),
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 15),
+                      child: Icon(
+                        Icons.delete,
+                        color: HexColor('#FFFFFF'),
+                      ),
+                    ),
+                  ),
+                  onDismissed: (direction) {
+                    snapshot.data.docs[index].reference
+                        .delete(); //TODO: сделать обновление чисел при удалении данных
+                  },
+                  child: _listItem(context, snapshot.data.docs[index]),
+                );
               }
             },
           );
