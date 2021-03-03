@@ -44,6 +44,7 @@ class CostsState extends State<Costs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -204,7 +205,16 @@ class CostsState extends State<Costs> {
                       color: HexColor('#A7A7A7')),
                 ),
               ),
-            )
+            ),
+            Row(
+              children: [
+                FilterChip(
+                  backgroundColor: HexColor('#FFE60D'),
+                  label: Text('Обязательные траты'),
+                  onSelected: (value) {}, //TODO: допилить radioButton
+                ),
+              ],
+            ),
           ],
         ),
       ),
