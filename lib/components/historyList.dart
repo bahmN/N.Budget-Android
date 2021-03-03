@@ -1,0 +1,91 @@
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:nbudget/logic/services/database.dart';
+
+class HistoryList extends StatelessWidget {
+  Widget _listItem(BuildContext context, DocumentSnapshot document) {
+    return Container(
+      padding: EdgeInsets.only(top: 5),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 200,
+                      child: Text(
+                        document['nameCosts'].toString(),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        '*Категория расходов*',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  width: 125,
+                  margin: EdgeInsets.only(left: 39),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    '-' + document['sumCosts'].toString() + '₽',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+              height: 2,
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              color: HexColor('#DBDBDC'))
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: readHistoryStream(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return ListView.builder(
+            itemCount: snapshot.data.docs.length,
+            itemBuilder: (context, index) {
+              if (!snapshot.hasData) {
+                return CircularProgressIndicator(
+                  backgroundColor: HexColor('#FFE60D'),
+                );
+              } else {
+                return _listItem(context, snapshot.data.docs[index]);
+              }
+            },
+          );
+        }
+      },
+    );
+  }
+}

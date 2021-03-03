@@ -39,7 +39,7 @@ Future<double> readCosts() async {
     return _costs.docs.fold<double>(0.0,
         (previousValue, element) => previousValue + element.get('sumCosts'));
   } catch (e) {
-    print(e);
+    return 0.0;
   }
 }
 
@@ -55,6 +55,15 @@ Future<double> readIncome() async {
     return _income.docs.fold<double>(0.0,
         (previousValue, element) => previousValue + element.get('sumIncome'));
   } catch (e) {
-    print(e);
+    return 0.0;
   }
+}
+
+Stream<QuerySnapshot> readHistoryStream() {
+  final User _user = auth.currentUser;
+  final _idUser = _user.uid;
+  return FirebaseFirestore.instance
+      .collection('Costs')
+      .where('idUser', isEqualTo: _idUser)
+      .snapshots();
 }
