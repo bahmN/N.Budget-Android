@@ -15,14 +15,16 @@ class DatabaseService {
     });
   }
 
-  Future writeCosts(String nameIncome, String comment, double sum) async {
+  Future writeCosts(
+      String nameIncome, String comment, double sum, String category) async {
     final User _user = auth.currentUser;
     final _idUser = _user.uid;
     await FirebaseFirestore.instance.collection('Costs').add({
       'idUser': '$_idUser',
       'nameCosts': '$nameIncome',
       'sumCosts': sum,
-      'commentCosts': '$comment'
+      'commentCosts': '$comment',
+      'category': '$category'
     });
   }
 }
