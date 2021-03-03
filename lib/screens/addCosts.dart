@@ -4,6 +4,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/logic/services/database.dart';
 
 class Costs extends StatefulWidget {
+  bool isSelected = false;
+
   Costs({Key key}) : super(key: key);
 
   @override
@@ -17,7 +19,8 @@ class CostsState extends State<Costs> {
   String _name;
   String _comment;
   double _sum;
-  //var _idUser;
+  String _category;
+
   var selectedDate = DateTime.now();
   void _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
@@ -38,7 +41,7 @@ class CostsState extends State<Costs> {
     _comment = _commentController.text;
     _sum = double.parse(_sumController.text);
     DatabaseService write = DatabaseService();
-    await write.writeCosts(_name, _comment, _sum);
+    await write.writeCosts(_name, _comment, _sum, _category);
   }
 
   @override
@@ -209,9 +212,24 @@ class CostsState extends State<Costs> {
             Row(
               children: [
                 FilterChip(
-                  backgroundColor: HexColor('#FFE60D'),
-                  label: Text('Обязательные траты'),
-                  onSelected: (value) {}, //TODO: допилить radioButton
+                  backgroundColor: HexColor('#A7A7A7'),
+                  selectedColor: HexColor('#FFE60D'),
+                  label: Text(
+                    'Обязательные траты',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  selected: widget.isSelected,
+                  onSelected: (bool selected) {
+                    setState(() {
+                      widget.isSelected = !widget.isSelected;
+                    });
+                    widget.isSelected
+                        ? _category = 'Обязательные траты'
+                        : _category = "";
+                  },
                 ),
               ],
             ),
