@@ -74,14 +74,20 @@ class _HistoryListState extends State<HistoryList> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(HexColor('#FFE60D')),
+            ),
           );
         } else {
           return ListView.builder(
+            physics: BouncingScrollPhysics(),
             itemCount: snapshot.data.docs.length,
             itemBuilder: (context, index) {
               if (!snapshot.hasData) {
-                return CircularProgressIndicator();
+                return CircularProgressIndicator(
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(HexColor('#FFE60D')),
+                );
               } else {
                 return Dismissible(
                   key: ObjectKey(snapshot.data.docs[index]),
