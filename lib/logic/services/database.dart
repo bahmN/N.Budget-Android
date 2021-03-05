@@ -18,7 +18,7 @@ class DatabaseService {
   }
 
   Future writeCosts(String nameIncome, String comment, double sum,
-      String category /*, DateTime date*/) async {
+      String category, DateTime date) async {
     final User _user = auth.currentUser;
     final _idUser = _user.uid;
     await FirebaseFirestore.instance.collection('Costs').add({
@@ -27,7 +27,7 @@ class DatabaseService {
       'sumCosts': sum,
       'commentCosts': comment,
       'category': category,
-      //'dateCosts': date
+      'dateCosts': date
     });
   }
 }
@@ -75,6 +75,22 @@ Future<double> readRequiredCosts() async {
         .where('category', isEqualTo: 'Обязательные траты')
         .get();
     return _reqCosts.docs.fold<double>(0.0,
+        (previousValue, element) => previousValue + element.get('sumCosts'));
+  } catch (e) {
+    return 0.0;
+  }
+}
+
+Future<double> readNotRequiredCosts() async {
+  try {
+    final User _user = auth.currentUser;
+    final _idUser = _user.uid;
+    final _costs = await FirebaseFirestore.instance
+        .collection('Costs')
+        .where('idUser', isEqualTo: _idUser)
+        .where('category', isEqualTo: '')
+        .get();
+    return _costs.docs.fold<double>(0.0,
         (previousValue, element) => previousValue + element.get('sumCosts'));
   } catch (e) {
     return 0.0;

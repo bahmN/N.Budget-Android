@@ -17,19 +17,22 @@ class IncomeState extends State<Income> {
   String _name;
   String _comment;
   double _sum;
-  //var _idUser;
-  var selectedDate = DateTime.now();
-  void _selectDate(BuildContext context) async {
+  var _selectedDate = DateTime.now();
+
+  Future<DateTime> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime.now(),
     );
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
+    if (picked != null)
+      setState(
+        () {
+          _selectedDate = picked;
+        },
+      );
+    return picked;
   }
 
   void _writeDataAction() async {
@@ -37,7 +40,7 @@ class IncomeState extends State<Income> {
     _comment = _commentController.text;
     _sum = double.parse(_sumController.text);
     DatabaseService write = DatabaseService();
-    await write.writeIncome(_name, _comment, _sum);
+    await write.writeIncome(_name, _comment, _sum, _selectedDate);
   }
 
   @override
@@ -122,7 +125,7 @@ class IncomeState extends State<Income> {
                     margin: EdgeInsets.only(left: 10),
                     child: GestureDetector(
                       child: Text(
-                        "${selectedDate.toLocal()}".split(' ')[0],
+                        "${_selectedDate.toLocal()}".split(' ')[0],
                         style: TextStyle(fontSize: 17),
                       ),
                       onTap: () {

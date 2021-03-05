@@ -34,7 +34,7 @@ class _HistoryListState extends State<HistoryList> {
                     ),
                     Container(
                       child: Text(
-                        '*Категория расходов*',
+                        document['category'].toString(),
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w300,

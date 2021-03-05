@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nbudget/logic/services/database.dart';
 
+// ignore: must_be_immutable
 class Costs extends StatefulWidget {
   bool isSelected = false;
-
   Costs({Key key}) : super(key: key);
 
   @override
@@ -16,32 +16,35 @@ class CostsState extends State<Costs> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _commentController = TextEditingController();
   TextEditingController _sumController = TextEditingController();
+  bool _isSelectedCategory = false;
   String _name;
   String _comment;
   double _sum;
-  String _category;
+  String _category = 'Обязательные траты';
+  var _selectedDate = DateTime.now();
 
-  var selectedDate = DateTime.now();
-  void _selectDate(BuildContext context) async {
+  Future<DateTime> _selectDateAction(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
       locale: const Locale("ru"),
       initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
+      firstDate: DateTime(2015),
       lastDate: DateTime.now(),
     );
-    if (picked != null && picked != selectedDate)
+    if (picked != null && picked != _selectedDate)
       setState(() {
-        selectedDate = picked;
+        _selectedDate = picked;
       });
+    return picked;
   }
 
   void _writeDataAction() async {
     _name = _nameController.text;
     _comment = _commentController.text;
     _sum = double.parse(_sumController.text);
+    _category = _isSelectedCategory == false ? '' : _category;
     DatabaseService write = DatabaseService();
-    await write.writeCosts(_name, _comment, _sum, _category);
+    await write.writeCosts(_name, _comment, _sum, _category, _selectedDate);
   }
 
   @override
@@ -128,11 +131,11 @@ class CostsState extends State<Costs> {
                     margin: EdgeInsets.only(left: 10),
                     child: GestureDetector(
                       child: Text(
-                        "${selectedDate.toLocal()}".split(' ')[0],
+                        "${_selectedDate.toLocal()}".split(' ')[0],
                         style: TextStyle(fontSize: 17),
                       ),
                       onTap: () {
-                        _selectDate(context);
+                        _selectDateAction(context);
                       },
                     ),
                   )
@@ -227,8 +230,8 @@ class CostsState extends State<Costs> {
                       widget.isSelected = !widget.isSelected;
                     });
                     widget.isSelected
-                        ? _category = 'Обязательные траты'
-                        : _category = "";
+                        ? _isSelectedCategory = true
+                        : _isSelectedCategory = false;
                   },
                 ),
               ],

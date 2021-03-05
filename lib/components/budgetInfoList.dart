@@ -28,7 +28,7 @@ class InfoList extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return Text(
-                        '${snapshot.data.toStringAsFixed(1)}₽',
+                        '${snapshot.data}₽',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w300,
@@ -67,7 +67,7 @@ class InfoList extends StatelessWidget {
                   future: readRequiredCosts(),
                   builder: (context, snapshot) {
                     return Text(
-                      '${snapshot.data.toStringAsFixed(1)}₽',
+                      '${snapshot.data}₽',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w300,
@@ -134,7 +134,7 @@ class InfoList extends StatelessWidget {
                 ),
               ),
             ),
-            FutureBuilder<String>(
+            FutureBuilder<double>(
               future: moneyADay(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -142,7 +142,7 @@ class InfoList extends StatelessWidget {
                     width: 120,
                     alignment: Alignment.centerRight,
                     child: Text(
-                      '${snapshot.data}₽',
+                      '${snapshot.data.toStringAsFixed(1)}₽',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w300,
