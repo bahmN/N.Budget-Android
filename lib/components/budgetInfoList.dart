@@ -63,13 +63,17 @@ class InfoList extends StatelessWidget {
             Container(
               width: 120,
               alignment: Alignment.centerRight,
-              child: Text(
-                '₽',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
+              child: FutureBuilder<double>(
+                  future: readRequiredCosts(),
+                  builder: (context, snapshot) {
+                    return Text(
+                      '${snapshot.data.toStringAsFixed(1)}₽',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    );
+                  }),
             )
           ],
         ),
@@ -86,9 +90,8 @@ class InfoList extends StatelessWidget {
                 ),
               ),
             ),
-            //TODO: поменять логику вычисления числа. (Свободные деньги = Доход - Обязательные траты) => добавить метку "обязательные траты"
             FutureBuilder<double>(
-                future: remainderMoney(),
+                future: freeMoney(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Container(
