@@ -23,6 +23,7 @@ dependencies:
   provider: ^4.3.3
   fluttertoast: ^7.1.8
   calendarro: ^1.2.0
+  rxdart: ^0.25.0
 
 dev_dependencies:
   flutter_test:

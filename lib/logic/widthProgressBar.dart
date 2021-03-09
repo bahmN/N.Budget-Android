@@ -1,14 +1,13 @@
 import 'package:nbudget/logic/moneyList.dart';
 import 'package:nbudget/logic/services/database.dart';
+import 'package:rxdart/streams.dart';
 
 Stream<double> widthPB() {
-  return freeMoney().asyncMap((event) async {
+  return CombineLatestStream([freeMoney(), readNotRequiredCosts()], (args) {
     double percentMoney;
-
-    //Money
-    double _spentMoney = await readNotRequiredCosts(); //Потрачено
-    double _fMoneyRemains = event - _spentMoney; //Остаток
-    percentMoney = (_fMoneyRemains / event) * 100;
+    double _spentMoney = args[1]; //Потрачено
+    double _fMoneyRemains = args[0] - _spentMoney; //Остаток
+    percentMoney = (_fMoneyRemains / args[0]) * 100;
 
     //Width
     double _totalWidth = 365;

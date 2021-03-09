@@ -1,9 +1,11 @@
 import 'package:nbudget/logic/date.dart';
 import 'package:nbudget/logic/services/database.dart';
+import 'package:rxdart/rxdart.dart';
 
 Stream<double> remainderMoney() {
-  return freeMoney()
-      .asyncMap((event) async => event - await readNotRequiredCosts());
+  return CombineLatestStream([freeMoney(), readNotRequiredCosts()], (args) {
+    return args[0] - args[1];
+  });
 }
 
 Stream<double> moneyADay() {
@@ -11,5 +13,7 @@ Stream<double> moneyADay() {
 }
 
 Stream<double> freeMoney() {
-  return readIncome().map((event) => event - readRequiredCosts());
+  return CombineLatestStream([readIncome(), readRequiredCosts()], (args) {
+    return args[0] - args[1];
+  });
 }

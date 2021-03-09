@@ -86,20 +86,21 @@ Stream<double> readRequiredCosts() {
   return _streamC.stream;
 }
 
-Future<double> readNotRequiredCosts() async {
-  try {
-    final User _user = auth.currentUser;
-    final _idUser = _user.uid;
-    final _costs = await FirebaseFirestore.instance
-        .collection('Costs')
-        .where('idUser', isEqualTo: _idUser)
-        .where('category', isEqualTo: '')
-        .get();
-    return _costs.docs.fold<double>(0.0,
-        (previousValue, element) => previousValue + element.get('sumCosts'));
-  } catch (e) {
-    return 0.0;
-  }
+Stream<double> readNotRequiredCosts() {
+  // ignore: close_sinks
+  StreamController<double> _streamC = new StreamController.broadcast();
+  final User _user = auth.currentUser;
+  final _idUser = _user.uid;
+  FirebaseFirestore.instance
+      .collection('Costs')
+      .where('idUser', isEqualTo: _idUser)
+      .where('category', isEqualTo: '')
+      .snapshots()
+      .listen((_notReqCosts) {
+    _streamC.add(_notReqCosts.docs.fold<double>(0.0,
+        (previousValue, element) => previousValue + element.get('sumCosts')));
+  });
+  return _streamC.stream;
 }
 
 Stream<QuerySnapshot> readHistoryStream() {
