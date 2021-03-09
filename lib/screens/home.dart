@@ -32,8 +32,8 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ),
         LayoutBuilder(builder: (context, constrains) {
-          return FutureBuilder<double>(
-              future: widthPB(),
+          return StreamBuilder<double>(
+              stream: widthPB(),
               builder: (context, snapshot) {
                 return AnimatedContainer(
                   margin: EdgeInsets.only(top: 4),
@@ -193,8 +193,8 @@ class _MenuPageState extends State<MenuPage> {
                         ),
                       ),
                       Expanded(
-                        child: FutureBuilder<double>(
-                          future: remainderMoney(),
+                        child: StreamBuilder<double>(
+                          stream: remainderMoney(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
                               return Container(
@@ -298,6 +298,7 @@ class _MenuPageState extends State<MenuPage> {
                 ),
               ),
             ]),
+            // Контейнер истории
             _historyContainer(),
           ],
         ),

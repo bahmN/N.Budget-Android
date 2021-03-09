@@ -23,8 +23,8 @@ class InfoList extends StatelessWidget {
             Container(
               width: 120,
               alignment: Alignment.centerRight,
-              child: FutureBuilder<double>(
-                  future: readIncome(),
+              child: StreamBuilder<double>(
+                  stream: readIncome(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return Text(
@@ -63,8 +63,8 @@ class InfoList extends StatelessWidget {
             Container(
               width: 120,
               alignment: Alignment.centerRight,
-              child: FutureBuilder<double>(
-                  future: readRequiredCosts(),
+              child: StreamBuilder<double>(
+                  stream: readRequiredCosts(),
                   builder: (context, snapshot) {
                     return Text(
                       '${snapshot.data}₽',
@@ -90,8 +90,8 @@ class InfoList extends StatelessWidget {
                 ),
               ),
             ),
-            FutureBuilder<double>(
-                future: freeMoney(),
+            StreamBuilder<double>(
+                stream: freeMoney(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Container(
@@ -134,8 +134,8 @@ class InfoList extends StatelessWidget {
                 ),
               ),
             ),
-            FutureBuilder<double>(
-              future: moneyADay(),
+            StreamBuilder<double>(
+              stream: moneyADay(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Container(

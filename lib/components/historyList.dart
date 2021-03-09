@@ -117,8 +117,7 @@ class _HistoryListState extends State<HistoryList> {
                     ),
                   ),
                   onDismissed: (direction) {
-                    snapshot.data.docs[index].reference
-                        .delete(); //TODO: сделать обновление чисел при удалении данных
+                    snapshot.data.docs[index].reference.delete();
                   },
                   child: _listItem(context, snapshot.data.docs[index]),
                 );
