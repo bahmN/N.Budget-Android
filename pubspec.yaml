@@ -1,7 +1,7 @@
 name: nbudget
 description: A new Flutter project.
 
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -24,11 +24,24 @@ dependencies:
   fluttertoast: ^7.1.8
   calendarro: ^1.2.0
   rxdart: ^0.25.0
+  adaptive_theme: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  r_resources:
+    git:
+      url: https://github.com/SolitaryHat/r_resources.git
+      ref: beta0.0.3
+  build_runner: ^1.10.1
 
 flutter:
-  
+
   uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/strings/
+
+flutter_intl:
+  enabled: true
