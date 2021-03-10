@@ -16,10 +16,10 @@ dependencies:
 
   cupertino_icons: ^1.0.0
   hexcolor: ^1.0.6
-  intl: ^0.16.1
+  intl: ^0.17.0
   date_util: ^0.1.4
-  firebase_auth: ^0.20.1
-  cloud_firestore: ^0.16.0+1
+  firebase_auth: ^1.0.1
+  cloud_firestore: ^1.0.1
   provider: ^4.3.3
   fluttertoast: ^7.1.8
   calendarro: ^1.2.0

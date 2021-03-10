@@ -46,7 +46,7 @@ class IncomeState extends State<Income> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
             icon: Icon(Icons.arrow_back),

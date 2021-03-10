@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\flutterProject\\nbudget\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\flutterProject\\nbudget_v1.0\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\omega\\.gradle\\caches\\transforms-2\\files-2.1\\97461efba6c5e9e0983cc52e8129f2d5\\play-services-base-17.1.0\\res\\values\\values.xml",
@@ -20,25 +20,6 @@
                         "endLines": "2,3,4,5,6,7,8,9,86,87,88,89,90,91,92,93,95,96,97,98,99,100,101,102,103,272,291",
                         "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78,20,20",
                         "endOffsets": "190,270,360,450,530,611,691,771,5497,5678,5803,5910,6090,6213,6329,6432,6787,6892,7073,7198,7373,7521,7584,7646,7725,17721,18138"
-                    }
-                },
-                {
-                    "source": "C:\\flutterProject\\nbudget\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "137,791",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "433,953"
-                    },
-                    "to": {
-                        "startLines": "113,118",
-                        "startColumns": "4,4",
-                        "startOffsets": "8646,8943",
-                        "endLines": "117,120",
-                        "endColumns": "12,12",
-                        "endOffsets": "8938,9103"
                     }
                 },
                 {
@@ -61,20 +42,22 @@
                     }
                 },
                 {
-                    "source": "C:\\flutterProject\\nbudget\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "source": "C:\\flutterProject\\nbudget_v1.0\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,318,400,504,613,733,828",
-                        "endColumns": "143,118,81,103,108,119,94,71",
-                        "endOffsets": "194,313,395,499,608,728,823,895"
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "137,791",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "433,953"
                     },
                     "to": {
-                        "startLines": "104,105,106,107,108,109,110,111",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "7730,7874,7993,8075,8179,8288,8408,8503",
-                        "endColumns": "143,118,81,103,108,119,94,71",
-                        "endOffsets": "7869,7988,8070,8174,8283,8403,8498,8570"
+                        "startLines": "113,118",
+                        "startColumns": "4,4",
+                        "startOffsets": "8646,8943",
+                        "endLines": "117,120",
+                        "endColumns": "12,12",
+                        "endOffsets": "8938,9103"
                     }
                 },
                 {
@@ -92,6 +75,23 @@
                         "startOffsets": "5259,6437",
                         "endColumns": "67,166",
                         "endOffsets": "5322,6599"
+                    }
+                },
+                {
+                    "source": "C:\\flutterProject\\nbudget_v1.0\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,318,400,504,613,733,828",
+                        "endColumns": "143,118,81,103,108,119,94,71",
+                        "endOffsets": "194,313,395,499,608,728,823,895"
+                    },
+                    "to": {
+                        "startLines": "104,105,106,107,108,109,110,111",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "7730,7874,7993,8075,8179,8288,8408,8503",
+                        "endColumns": "143,118,81,103,108,119,94,71",
+                        "endOffsets": "7869,7988,8070,8174,8283,8403,8498,8570"
                     }
                 }
             ]

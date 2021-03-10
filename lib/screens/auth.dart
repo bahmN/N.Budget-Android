@@ -182,7 +182,7 @@ class _AuthorizationState extends State<Authorization> {
     _marginTopFormAuth = _ifKeyboardOpened ? 90 : 322;
 
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: HexColor('#F5F5F6'),
       body: Column(
         children: <Widget>[

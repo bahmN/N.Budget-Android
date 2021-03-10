@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\flutterProject\\nbudget\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ms\\values-ms.xml",
+            "outputFile": "C:\\flutterProject\\nbudget_v1.0\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ms\\values-ms.xml",
             "map": [
                 {
                     "source": "C:\\Users\\omega\\.gradle\\caches\\transforms-2\\files-2.1\\c35e17b62fd762edb4b8239d991c3815\\jetified-play-services-basement-17.1.0\\res\\values-ms\\values.xml",
