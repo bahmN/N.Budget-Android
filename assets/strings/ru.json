@@ -1,4 +1,15 @@
 {
-    "signInButton" : "Войти",
-    "signUpButton":"Зарегистрироваться"
+    "signInButtonAuth" : "Войти",
+    "signUpButtonAuth":"Зарегистрироваться",
+    "loginHintAuth" : "Логин",
+    "passwordHintAuth" : "Пароль",
+    "labelsignInAuth":"Авторизация",
+    "labelsignUpAuth":"Регистрация",
+    "labelBottomSignUpAuth":"Не зарегистрирован? Зарегистрируйся!",
+    "labelBottomSignInAuth":"Уже зарегистрирован? Авторизируйся!",
+    "emptyTextFieldAuth" : "Поля логина или пароля не могут быть пустыми",
+    "emptyUserAuth" : "Неправильно введён логин или пароль",
+    "incorrectEmailAuth" : "Некорректный ввод email",
+    "incorrectPasswordAuth" : "Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов",
+    "successfulSignUpAuth" : "Вы успешно зарегистрированы"
 }

@@ -1,4 +1,15 @@
 {
-    "signInButton" : "Sign in",
-    "signUpButton": "Sign up"
+    "signInButtonAuth" : "Sign in",
+    "signUpButtonAuth": "Sign up",
+    "loginHintAuth" : "Login",
+    "passwordHintAuth" : "Password",
+    "labelsignInAuth":"Sign in",
+    "labelsignUpAuth":"Sign up",
+    "labelBottomSignUpAuth":"Not registered? Sign up!",
+    "labelBottomSignInAuth":"Already registered? Log in!",
+    "emptyTextFieldAuth" : "Login or password fields cannot be empty",
+    "emptyUserAuth" : "Wrong email or password entered",
+    "incorrectEmailAuth" : "Incorrect email input",
+    "incorrectPasswordAuth" : "Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters",
+    "successfulSignUpAuth" : "You have successfully registered"
 }
