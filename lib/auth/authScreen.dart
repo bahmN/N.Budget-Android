@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:nbudget/auth/authBloc.dart';
 import 'package:nbudget/auth/authService.dart';
 import 'package:nbudget/domains/myUser.dart';
 import 'package:nbudget/r.dart';
@@ -19,10 +20,14 @@ class _AuthScreenState extends State<AuthScreen> {
 
   String _email;
   String _password;
-  bool _showLogin = true;
   bool _ifKeyboardOpened = false;
   double _marginTopFormAuth;
-  AuthService _authService = new AuthService();
+  AuthService _authService = AuthService();
+  AuthBloc _authBloc = AuthBloc();
+  void close() {
+    _authBloc.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,63 +35,72 @@ class _AuthScreenState extends State<AuthScreen> {
     _marginTopFormAuth = _ifKeyboardOpened
         ? MediaQuery.of(context).size.height / 5.5
         : MediaQuery.of(context).size.height / 2.4;
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
-      body: Stack(
-        children: [
-          _logo(),
-          (_showLogin
-              ? Column(
-                  children: [
-                    _auth(
-                        R.stringsOf(context).labelsignInAuth,
-                        R.stringsOf(context).signInButtonAuth,
-                        _signInButtonAction,
-                        _marginTopFormAuth),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height / 5.6),
-                      child: GestureDetector(
-                        child: Text(R.stringsOf(context).labelBottomSignUpAuth,
-                            style: bottomBttn),
-                        onTap: () {
-                          setState(() {
-                            _showLogin = false;
-                          });
-                          _emailController.clear();
-                          _passwordController.clear();
-                        },
-                      ),
-                    ),
-                  ],
-                )
-              : Column(
-                  children: [
-                    _auth(
-                        R.stringsOf(context).labelsignUpAuth,
-                        R.stringsOf(context).signUpButtonAuth,
-                        _signUpButtonAction,
-                        _marginTopFormAuth),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height / 5.6),
-                      child: GestureDetector(
-                        child: Text(R.stringsOf(context).labelBottomSignInAuth,
-                            style: bottomBttn),
-                        onTap: () {
-                          setState(() {
-                            _showLogin = true;
-                          });
-                          _emailController.clear();
-                          _passwordController.clear();
-                        },
-                      ),
-                    ),
-                  ],
-                )),
-        ],
-      ),
+    return StreamBuilder<bool>(
+      stream: _authBloc.outputEventSink,
+      builder: (context, snapshot) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Theme.of(context).backgroundColor,
+          body: Stack(
+            children: [
+              _logo(),
+              (showLogin
+                  ? Column(
+                      children: [
+                        _auth(
+                            R.stringsOf(context).labelsignInAuth,
+                            R.stringsOf(context).signInButtonAuth,
+                            _signInButtonAction,
+                            _marginTopFormAuth),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height / 5.6),
+                          child: GestureDetector(
+                            child: Text(
+                                R.stringsOf(context).labelBottomSignUpAuth,
+                                style: bottomBttn),
+                            onTap: () {
+                              setState(() {
+                                _authBloc.inputEventSink
+                                    .add(ButtonEvent.eventHide);
+                              });
+                              _emailController.clear();
+                              _passwordController.clear();
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        _auth(
+                            R.stringsOf(context).labelsignUpAuth,
+                            R.stringsOf(context).signUpButtonAuth,
+                            _signUpButtonAction,
+                            _marginTopFormAuth),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height / 5.6),
+                          child: GestureDetector(
+                            child: Text(
+                                R.stringsOf(context).labelBottomSignInAuth,
+                                style: bottomBttn),
+                            onTap: () {
+                              setState(() {
+                                _authBloc.inputEventSink
+                                    .add(ButtonEvent.eventShow);
+                              });
+                              _emailController.clear();
+                              _passwordController.clear();
+                            },
+                          ),
+                        ),
+                      ],
+                    )),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -241,7 +255,6 @@ class _AuthScreenState extends State<AuthScreen> {
           fontSize: 14.0);
       _emailController.clear();
       _passwordController.clear();
-      _showLogin = true;
     }
   }
 }
