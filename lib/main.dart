@@ -3,9 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:nbudget/auth/authScreen.dart';
 import 'package:nbudget/auth/authService.dart';
 import 'package:nbudget/domains/myUser.dart';
+import 'package:nbudget/landing.dart';
 import 'package:nbudget/r.dart';
 import 'package:provider/provider.dart';
 import 'styles.dart';
@@ -37,7 +37,7 @@ class NBudget extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
               ],
               supportedLocales: RStringsDelegate.supportedLocales,
-              home: AuthScreen(),
+              home: LandingPage(),
             ),
           );
         });
