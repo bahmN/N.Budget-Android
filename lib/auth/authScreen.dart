@@ -52,21 +52,23 @@ class _AuthScreenState extends State<AuthScreen> {
                             R.stringsOf(context).signInButtonAuth,
                             _signInButtonAction,
                             _marginTopFormAuth),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: MediaQuery.of(context).size.height / 5.6),
-                          child: GestureDetector(
-                            child: Text(
-                                R.stringsOf(context).labelBottomSignUpAuth,
-                                style: bottomBttn),
-                            onTap: () {
-                              setState(() {
-                                _authBloc.inputEventSink
-                                    .add(ButtonEvent.eventHide);
-                              });
-                              _emailController.clear();
-                              _passwordController.clear();
-                            },
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            margin: EdgeInsets.only(bottom: 5),
+                            child: GestureDetector(
+                              child: Text(
+                                  R.stringsOf(context).labelBottomSignUpAuth,
+                                  style: bottomBttn),
+                              onTap: () {
+                                setState(() {
+                                  _authBloc.inputEventSink
+                                      .add(ButtonEvent.eventHide);
+                                });
+                                _emailController.clear();
+                                _passwordController.clear();
+                              },
+                            ),
                           ),
                         ),
                       ],
@@ -78,21 +80,23 @@ class _AuthScreenState extends State<AuthScreen> {
                             R.stringsOf(context).signUpButtonAuth,
                             _signUpButtonAction,
                             _marginTopFormAuth),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: MediaQuery.of(context).size.height / 5.6),
-                          child: GestureDetector(
-                            child: Text(
-                                R.stringsOf(context).labelBottomSignInAuth,
-                                style: bottomBttn),
-                            onTap: () {
-                              setState(() {
-                                _authBloc.inputEventSink
-                                    .add(ButtonEvent.eventShow);
-                              });
-                              _emailController.clear();
-                              _passwordController.clear();
-                            },
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            margin: EdgeInsets.only(bottom: 5),
+                            child: GestureDetector(
+                              child: Text(
+                                  R.stringsOf(context).labelBottomSignInAuth,
+                                  style: bottomBttn),
+                              onTap: () {
+                                setState(() {
+                                  _authBloc.inputEventSink
+                                      .add(ButtonEvent.eventShow);
+                                });
+                                _emailController.clear();
+                                _passwordController.clear();
+                              },
+                            ),
                           ),
                         ),
                       ],
@@ -118,10 +122,8 @@ class _AuthScreenState extends State<AuthScreen> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 400),
         curve: Curves.easeOutQuart,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height / 2.7,
         margin: EdgeInsets.fromLTRB(13, marginTopForm, 13, 0),
-        padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
+        padding: EdgeInsets.fromLTRB(10, 30, 10, 5),
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColorLight,
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -151,7 +153,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 true),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.only(top: 50),
+              margin: EdgeInsets.only(top: 40),
               child: _button(labelButton, func),
             )
           ],
