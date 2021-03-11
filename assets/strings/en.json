@@ -11,5 +11,11 @@
     "emptyUserAuth" : "Wrong email or password entered",
     "incorrectEmailAuth" : "Incorrect email input",
     "incorrectPasswordAuth" : "Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters",
-    "successfulSignUpAuth" : "You have successfully registered"
+    "successfulSignUpAuth" : "You have successfully registered",
+    "nameApp":"N.Budget",
+    "balanceMonthFirstBlock": "Until the end of the month",
+    "income":"Income",
+    "mandatoryExpenses" : "Mandatory expenses",
+    "freeMoney": "Free money",
+    "dailyBudget" : "Today you can spend"
 }
