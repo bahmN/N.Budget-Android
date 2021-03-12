@@ -42,17 +42,19 @@ final lightTheme = ThemeData.light().copyWith(
   ),
 );
 
-/*
-  Menu txt style
-*/
 final txtHeader = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
-final txtBalance = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+final txtNormal = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+final txtSymbol = TextStyle(
+    color: HexColor('#000000'), fontSize: 40, fontWeight: FontWeight.w300);
+final txtInsert = TextStyle(
+    fontSize: 40, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
+final hintTxtSum = TextStyle(
+    fontSize: 40, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
+final hintTxt = TextStyle(
+    fontSize: 20, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
 
-/*
-  Auth txt styles
-*/
 final txtInput = TextStyle(
-    fontSize: 17, fontWeight: FontWeight.w300, color: HexColor('#000000'));
+    fontSize: 20, fontWeight: FontWeight.w300, color: HexColor('#000000'));
 final txtHintInput = TextStyle(
     fontSize: 20, fontWeight: FontWeight.w300, color: HexColor('#A7A7A7'));
 final bttnAuth = TextStyle(fontSize: 25, fontWeight: FontWeight.w300);
