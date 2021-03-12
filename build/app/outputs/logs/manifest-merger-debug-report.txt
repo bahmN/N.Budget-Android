@@ -7,6 +7,7 @@ INJECTED from C:\flutterProject\nbudget_v1.0\android\app\src\main\AndroidManifes
 MERGED from C:\flutterProject\nbudget_v1.0\android\app\src\main\AndroidManifest.xml:1:1-47:12
 MERGED from [:firebase_auth] C:\flutterProject\nbudget_v1.0\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:fluttertoast] C:\flutterProject\nbudget_v1.0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences] C:\flutterProject\nbudget_v1.0\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] C:\flutterProject\nbudget_v1.0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] C:\flutterProject\nbudget_v1.0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:hexcolor] C:\flutterProject\nbudget_v1.0\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -140,6 +141,8 @@ MERGED from [:firebase_auth] C:\flutterProject\nbudget_v1.0\build\firebase_auth\
 MERGED from [:firebase_auth] C:\flutterProject\nbudget_v1.0\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] C:\flutterProject\nbudget_v1.0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] C:\flutterProject\nbudget_v1.0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] C:\flutterProject\nbudget_v1.0\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] C:\flutterProject\nbudget_v1.0\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\flutterProject\nbudget_v1.0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\flutterProject\nbudget_v1.0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\flutterProject\nbudget_v1.0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
