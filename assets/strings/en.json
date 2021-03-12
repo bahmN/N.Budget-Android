@@ -14,8 +14,12 @@
     "successfulSignUpAuth" : "You have successfully registered",
     "nameApp":"N.Budget",
     "balanceMonthFirstBlock": "Until the end of the month",
-    "income":"Income",
+    "incomeI":"Income",
     "mandatoryExpenses" : "Mandatory expenses",
     "freeMoney": "Free money",
-    "dailyBudget" : "Today you can spend"
+    "dailyBudget" : "Today you can spend",
+    "incomeLabel" : "Add income",
+    "costsLabel" : "Add costs",
+    "saveData": "Save"
+
 }
