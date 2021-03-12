@@ -20,6 +20,8 @@
     "dailyBudget" : "Today you can spend",
     "incomeLabel" : "Add income",
     "costsLabel" : "Add costs",
-    "saveData": "Save"
-
+    "saveData": "Save",
+    "symbolMoney" : "$",
+    "title" : "Title...",
+    "comment" : "Comment..."
 }

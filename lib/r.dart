@@ -60,6 +60,9 @@ class _Strings {
       'incomeLabel': 'Add income',
       'costsLabel': 'Add costs',
       'saveData': 'Save',
+      'symbolMoney': '\$',
+      'title': 'Title...',
+      'comment': 'Comment...',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -83,6 +86,9 @@ class _Strings {
       'incomeLabel': 'Добавить доход',
       'costsLabel': 'Добавить расходы',
       'saveData': 'Сохранить',
+      'symbolMoney': '₽',
+      'title': 'Название...',
+      'comment': 'Комментарий...',
     },
   };
 
@@ -157,6 +163,15 @@ class _Strings {
 
   /// 'Save'
   String get saveData => _getString('saveData');
+
+  /// '\$'
+  String get symbolMoney => _getString('symbolMoney');
+
+  /// 'Title...'
+  String get title => _getString('title');
+
+  /// 'Comment...'
+  String get comment => _getString('comment');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {

@@ -19,5 +19,8 @@
     "dailyBudget" : "Сегодня можно потратить",
     "incomeLabel" : "Добавить доход",
     "costsLabel" : "Добавить расходы",
-    "saveData": "Сохранить"
+    "saveData": "Сохранить",
+    "symbolMoney" : "₽",
+    "title" : "Название...",
+    "comment" : "Комментарий..."
 }
