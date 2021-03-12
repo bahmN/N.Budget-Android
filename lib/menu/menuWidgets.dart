@@ -27,7 +27,7 @@ class MenuWidgets {
                       alignment: Alignment.centerRight,
                       child: Text(
                         '10000000',
-                        style: txtBalance,
+                        style: txtNormal,
                       ),
                     );
                   },
@@ -59,7 +59,7 @@ class MenuWidgets {
                     alignment: Alignment.centerRight,
                     child: Text(
                       '1000000',
-                      style: txtBalance,
+                      style: txtNormal,
                     ),
                   ),
                 )
@@ -79,7 +79,7 @@ class MenuWidgets {
                     alignment: Alignment.centerRight,
                     child: Text(
                       '1000000',
-                      style: txtBalance,
+                      style: txtNormal,
                     ),
                   ),
                 )
@@ -99,7 +99,7 @@ class MenuWidgets {
                     alignment: Alignment.centerRight,
                     child: Text(
                       '1000000',
-                      style: txtBalance,
+                      style: txtNormal,
                     ),
                   ),
                 )
@@ -117,7 +117,7 @@ class MenuWidgets {
                   alignment: Alignment.centerRight,
                   child: Text(
                     '1000000',
-                    style: txtBalance,
+                    style: txtNormal,
                   ),
                 ),
               )

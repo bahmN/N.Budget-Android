@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nbudget/screensInsertData/costs/incomeScreen.dart';
+import 'package:nbudget/screensInsertData/costs/costsScreen.dart';
 import 'package:nbudget/screensInsertData/income/incomeScreen.dart';
 
 void navIncomScreen(BuildContext context) {
