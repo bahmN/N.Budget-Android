@@ -63,7 +63,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               onTap: () {
                                 setState(() {
                                   _authBloc.inputEventSink
-                                      .add(ButtonEvent.eventHide);
+                                      .add(ButtonEventAuth.eventHide);
                                 });
                                 _emailController.clear();
                                 _passwordController.clear();
@@ -91,7 +91,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               onTap: () {
                                 setState(() {
                                   _authBloc.inputEventSink
-                                      .add(ButtonEvent.eventShow);
+                                      .add(ButtonEventAuth.eventShow);
                                 });
                                 _emailController.clear();
                                 _passwordController.clear();
