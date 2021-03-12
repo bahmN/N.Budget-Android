@@ -1,9 +1,9 @@
 import 'dart:async';
 
 enum ButtonEvent { eventShow, eventHide }
-bool showLogin = true;
 
 class AuthBloc {
+  bool showLogin = true;
   final _inputEventController = StreamController<ButtonEvent>();
   StreamSink<ButtonEvent> get inputEventSink => _inputEventController.sink;
   final _outputEventController = StreamController<bool>();
