@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
@@ -25,7 +26,7 @@ class MenuWidgets {
                     return Container(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        '1000000000',
+                        '10000000',
                         style: txtBalance,
                       ),
                     );
@@ -50,7 +51,7 @@ class MenuWidgets {
             child: Row(
               children: [
                 Text(
-                  R.stringsOf(context).income,
+                  R.stringsOf(context).incomeI,
                   style: txtHeader,
                 ),
                 Expanded(
@@ -123,6 +124,15 @@ class MenuWidgets {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget button(BuildContext context, String label, void func()) {
+    return ElevatedButton(
+      onPressed: func,
+      child: Text(
+        label,
       ),
     );
   }

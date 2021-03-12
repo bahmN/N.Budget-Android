@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nbudget/menu/menuBloc.dart';
 import 'package:nbudget/menu/menuService.dart';
 import 'package:nbudget/menu/menuWidgets.dart';
 import 'package:nbudget/r.dart';
@@ -39,6 +40,30 @@ class _MenuScreenState extends State<MenuScreen> {
           children: [
             _wMenu.progressBlockMenu(context),
             _wMenu.infoBlocMenu(context),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(right: 5, top: 20),
+                    child: _wMenu.button(
+                      context,
+                      R.stringsOf(context).incomeLabel,
+                      () => navIncomScreen(context),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5, top: 20),
+                    child: _wMenu.button(
+                      context,
+                      R.stringsOf(context).costsLabel,
+                      () => navCostsScreen(context),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
