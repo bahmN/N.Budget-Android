@@ -51,6 +51,15 @@ class _Strings {
       'incorrectEmailAuth': 'Incorrect email input',
       'incorrectPasswordAuth': 'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
       'successfulSignUpAuth': 'You have successfully registered',
+      'nameApp': 'N.Budget',
+      'balanceMonthFirstBlock': 'Until the end of the month',
+      'incomeI': 'Income',
+      'mandatoryExpenses': 'Mandatory expenses',
+      'freeMoney': 'Free money',
+      'dailyBudget': 'Today you can spend',
+      'incomeLabel': 'Add income',
+      'costsLabel': 'Add costs',
+      'saveData': 'Save',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -66,6 +75,14 @@ class _Strings {
       'incorrectEmailAuth': 'Некорректный ввод email',
       'incorrectPasswordAuth': 'Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов',
       'successfulSignUpAuth': 'Вы успешно зарегистрированы',
+      'balanceMonthFirstBlock': 'До конца месяца осталось',
+      'incomeI': 'Доход',
+      'mandatoryExpenses': 'Обязательные траты',
+      'freeMoney': 'Свободных денег',
+      'dailyBudget': 'Сегодня можно потратить',
+      'incomeLabel': 'Добавить доход',
+      'costsLabel': 'Добавить расходы',
+      'saveData': 'Сохранить',
     },
   };
 
@@ -113,6 +130,33 @@ class _Strings {
 
   /// 'You have successfully registered'
   String get successfulSignUpAuth => _getString('successfulSignUpAuth');
+
+  /// 'N.Budget'
+  String get nameApp => _getString('nameApp');
+
+  /// 'Until the end of the month'
+  String get balanceMonthFirstBlock => _getString('balanceMonthFirstBlock');
+
+  /// 'Income'
+  String get incomeI => _getString('incomeI');
+
+  /// 'Mandatory expenses'
+  String get mandatoryExpenses => _getString('mandatoryExpenses');
+
+  /// 'Free money'
+  String get freeMoney => _getString('freeMoney');
+
+  /// 'Today you can spend'
+  String get dailyBudget => _getString('dailyBudget');
+
+  /// 'Add income'
+  String get incomeLabel => _getString('incomeLabel');
+
+  /// 'Add costs'
+  String get costsLabel => _getString('costsLabel');
+
+  /// 'Save'
+  String get saveData => _getString('saveData');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {
