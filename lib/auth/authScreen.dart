@@ -44,7 +44,7 @@ class _AuthScreenState extends State<AuthScreen> {
           body: Stack(
             children: [
               _logo(),
-              (showLogin
+              (_authBloc.showLogin
                   ? Column(
                       children: [
                         _auth(
