@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 /*
@@ -76,3 +77,26 @@ final borderShadowsLight = BoxDecoration(
     )
   ],
 );
+
+/*
+    DateTimePicker
+ */
+MaterialRoundedDatePickerStyle datePickerStyle(BuildContext context) {
+  return MaterialRoundedDatePickerStyle(
+    textStyleButtonPositive:
+        TextStyle(color: Theme.of(context).primaryColorDark),
+    textStyleButtonNegative:
+        TextStyle(color: Theme.of(context).primaryColorDark),
+    textStyleDayButton: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    paddingMonthHeader: EdgeInsets.all(13),
+    textStyleDayHeader: TextStyle(fontSize: 17),
+    textStyleCurrentDayOnCalendar: TextStyle(
+        color: Theme.of(context).primaryColorDark, fontWeight: FontWeight.bold),
+    textStyleDayOnCalendarSelected:
+        TextStyle(color: Theme.of(context).primaryColorDark),
+    decorationDateSelected: BoxDecoration(
+      color: Theme.of(context).primaryColor,
+      shape: BoxShape.circle,
+    ),
+  );
+}
