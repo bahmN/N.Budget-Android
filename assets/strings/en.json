@@ -23,5 +23,6 @@
     "saveData": "Save",
     "symbolMoney" : "$",
     "title" : "Title...",
-    "comment" : "Comment..."
+    "comment" : "Comment...",
+    "datePickerActionButton": "Today"
 }

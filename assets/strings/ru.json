@@ -22,5 +22,6 @@
     "saveData": "Сохранить",
     "symbolMoney" : "₽",
     "title" : "Название...",
-    "comment" : "Комментарий..."
+    "comment" : "Комментарий...",
+    "datePickerActionButton": "Сегодня"
 }
