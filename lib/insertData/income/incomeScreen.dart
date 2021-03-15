@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nbudget/insertData/income/incomeService.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/insertData/widgets.dart';
 
@@ -8,6 +9,7 @@ class IncomeScreen extends StatelessWidget {
   TextEditingController _commentController = TextEditingController();
   TextEditingController _sumController = TextEditingController();
   InsertWidgets _wInsert = InsertWidgets();
+  IncomeService _sIncome = IncomeService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +26,13 @@ class IncomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              print('Clicked save');
-            }, //TODO: func for save data
+              _sIncome.writeIncome(
+                  _nameController.text,
+                  _commentController.text,
+                  double.parse(_sumController.text),
+                  selectedDate);
+              Navigator.pop(context);
+            },
             icon: Icon(Icons.save_outlined),
           ),
         ],
@@ -37,7 +44,7 @@ class IncomeScreen extends StatelessWidget {
         child: Column(
           children: [
             _wInsert.textSum(context, _sumController),
-            _wInsert.datePicker(context),
+            DatePickerWidget(),
             _wInsert.textName(context, _nameController),
             _wInsert.textComment(context, _commentController)
           ],
