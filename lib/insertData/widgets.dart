@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
 
@@ -65,9 +68,20 @@ class InsertWidgets {
       ),
     );
   }
+}
 
-  Widget datePicker(BuildContext context) {
-    var _selectedDate = DateTime.now();
+var selectedDate = DateTime.now();
+
+class DatePickerWidget extends StatefulWidget {
+  DatePickerWidget({Key key}) : super(key: key);
+
+  @override
+  _DatePickerWidgetState createState() => _DatePickerWidgetState();
+}
+
+class _DatePickerWidgetState extends State<DatePickerWidget> {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: Row(
@@ -77,10 +91,27 @@ class InsertWidgets {
             padding: EdgeInsets.only(left: 10),
             child: GestureDetector(
               child: Text(
-                '${_selectedDate.toLocal()}'.split(' ')[0],
+                '${selectedDate.toLocal()}'.split(' ')[0],
                 style: txtNormal,
               ),
-              onTap: () {},
+              onTap: () async {
+                final DateTime picked = await showRoundedDatePicker(
+                  context: context,
+                  initialDate: selectedDate,
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime.now(),
+                  borderRadius: 5,
+                  theme:
+                      ThemeData(primaryColor: Theme.of(context).primaryColor),
+                  styleDatePicker: datePickerStyle(context),
+                );
+                if (picked != null) {
+                  setState(() {
+                    selectedDate = picked;
+                  });
+                }
+                return picked;
+              },
             ),
           ),
         ],
