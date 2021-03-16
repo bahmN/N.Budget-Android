@@ -12,6 +12,7 @@ final lightTheme = ThemeData.light().copyWith(
   primaryColorLight: HexColor('#FFFFFF'),
   primaryColorDark: HexColor("#000000"),
   backgroundColor: HexColor('#F5F5F6'),
+  accentColor: HexColor('#A7A7A7'),
   shadowColor: HexColor("#000000").withOpacity(0.35),
   appBarTheme: AppBarTheme(
     color: HexColor('#FFE60D'),
@@ -62,6 +63,7 @@ final bttnAuth = TextStyle(fontSize: 25, fontWeight: FontWeight.w300);
 final bottomBttn = TextStyle(
     color: HexColor('#A7A7A7'), fontSize: 15, fontWeight: FontWeight.w200);
 final labelAuth = TextStyle(fontSize: 30, fontWeight: FontWeight.w200);
+final filterChipTxt = TextStyle(fontSize: 17, fontWeight: FontWeight.w300);
 
 /*
   BorderShadows
