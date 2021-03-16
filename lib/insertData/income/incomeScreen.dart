@@ -25,8 +25,8 @@ class IncomeScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {
-              _sIncome.writeIncome(
+            onPressed: () async {
+              await _sIncome.writeIncome(
                   _nameController.text,
                   _commentController.text,
                   double.parse(_sumController.text),

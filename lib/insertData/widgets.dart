@@ -119,3 +119,38 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     );
   }
 }
+
+bool isChooseCategory = false;
+
+// ignore: must_be_immutable
+class CategoryWidget extends StatefulWidget {
+  bool isSelected = false;
+  CategoryWidget({Key key}) : super(key: key);
+
+  @override
+  _CategoryWidgetState createState() => _CategoryWidgetState();
+}
+
+class _CategoryWidgetState extends State<CategoryWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      child: FilterChip(
+        backgroundColor: Theme.of(context).accentColor,
+        selectedColor: Theme.of(context).primaryColor,
+        label:
+            Text(R.stringsOf(context).mandatoryExpenses, style: filterChipTxt),
+        selected: widget.isSelected,
+        onSelected: (bool selected) {
+          setState(() {
+            widget.isSelected = !widget.isSelected;
+          });
+          widget.isSelected == true
+              ? isChooseCategory = true
+              : isChooseCategory = false;
+        },
+      ),
+    );
+  }
+}
