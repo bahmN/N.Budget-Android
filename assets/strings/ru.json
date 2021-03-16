@@ -23,5 +23,6 @@
     "symbolMoney" : "₽",
     "title" : "Название...",
     "comment" : "Комментарий...",
-    "datePickerActionButton": "Сегодня"
+    "datePickerActionButton": "Сегодня",
+    "zeroMoney" : "0.0"
 }

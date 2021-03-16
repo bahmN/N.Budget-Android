@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nbudget/screensInsertData/costs/costsScreen.dart';
-import 'package:nbudget/screensInsertData/income/incomeScreen.dart';
+import 'package:nbudget/insertData/costs/costsScreen.dart';
+import 'package:nbudget/insertData/income/incomeScreen.dart';
 
 void navIncomScreen(BuildContext context) {
   Navigator.push(

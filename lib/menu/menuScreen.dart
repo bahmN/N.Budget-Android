@@ -39,7 +39,7 @@ class _MenuScreenState extends State<MenuScreen> {
         child: Column(
           children: [
             _wMenu.progressBlockMenu(context),
-            _wMenu.infoBlocMenu(context),
+            _wMenu.infoContainerMenu(context),
             Row(
               children: [
                 Expanded(

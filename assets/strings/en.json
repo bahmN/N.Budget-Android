@@ -24,5 +24,7 @@
     "symbolMoney" : "$",
     "title" : "Title...",
     "comment" : "Comment...",
-    "datePickerActionButton": "Today"
+    "datePickerActionButton": "Today",
+    "zeroMoney" : "0.0"
+
 }

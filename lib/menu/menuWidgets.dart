@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nbudget/menu/menuService.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
 
 class MenuWidgets {
+  ServiceMenu _sMenu = ServiceMenu();
+
   Widget progressBlockMenu(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 16,
@@ -21,15 +24,26 @@ class MenuWidgets {
               ),
               Expanded(
                 child: StreamBuilder<double>(
-                  stream: null,
+                  stream: _sMenu.remainderMoney(),
                   builder: (context, snapshot) {
-                    return Container(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        '10000000',
-                        style: txtNormal,
-                      ),
-                    );
+                    if (!snapshot.hasData) {
+                      return Container(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          R.stringsOf(context).zeroMoney +
+                              R.stringsOf(context).symbolMoney,
+                          style: txtNormal,
+                        ),
+                      );
+                    } else {
+                      return Container(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          '${snapshot.data}' + R.stringsOf(context).symbolMoney,
+                          style: txtNormal,
+                        ),
+                      );
+                    }
                   },
                 ),
               ),
@@ -40,7 +54,7 @@ class MenuWidgets {
     );
   }
 
-  Widget infoBlocMenu(BuildContext context) {
+  Widget infoContainerMenu(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: borderShadowsLight,
@@ -55,12 +69,29 @@ class MenuWidgets {
                   style: txtHeader,
                 ),
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '1000000',
-                      style: txtNormal,
-                    ),
+                  child: StreamBuilder<double>(
+                    stream: _sMenu.readIncome(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Container(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            R.stringsOf(context).zeroMoney +
+                                R.stringsOf(context).symbolMoney,
+                            style: txtNormal,
+                          ),
+                        );
+                      } else {
+                        return Container(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            '${snapshot.data}' +
+                                R.stringsOf(context).symbolMoney,
+                            style: txtNormal,
+                          ),
+                        );
+                      }
+                    },
                   ),
                 )
               ],
@@ -75,12 +106,29 @@ class MenuWidgets {
                   style: txtHeader,
                 ),
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '1000000',
-                      style: txtNormal,
-                    ),
+                  child: StreamBuilder<double>(
+                    stream: _sMenu.readMandatoryCosts(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Container(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            R.stringsOf(context).zeroMoney +
+                                R.stringsOf(context).symbolMoney,
+                            style: txtNormal,
+                          ),
+                        );
+                      } else {
+                        return Container(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            '${snapshot.data}' +
+                                R.stringsOf(context).symbolMoney,
+                            style: txtNormal,
+                          ),
+                        );
+                      }
+                    },
                   ),
                 )
               ],
@@ -95,13 +143,29 @@ class MenuWidgets {
                   style: txtHeader,
                 ),
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '1000000',
-                      style: txtNormal,
-                    ),
-                  ),
+                  child: StreamBuilder<double>(
+                      stream: _sMenu.freeMoney(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return Container(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              R.stringsOf(context).zeroMoney +
+                                  R.stringsOf(context).symbolMoney,
+                              style: txtNormal,
+                            ),
+                          );
+                        } else {
+                          return Container(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              '${snapshot.data}' +
+                                  R.stringsOf(context).symbolMoney,
+                              style: txtNormal,
+                            ),
+                          );
+                        }
+                      }),
                 )
               ],
             ),
@@ -113,13 +177,29 @@ class MenuWidgets {
                 style: txtHeader,
               ),
               Expanded(
-                child: Container(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    '1000000',
-                    style: txtNormal,
-                  ),
-                ),
+                child: StreamBuilder<double>(
+                    stream: _sMenu.moneyPerDay(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Container(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            R.stringsOf(context).zeroMoney +
+                                R.stringsOf(context).symbolMoney,
+                            style: txtNormal,
+                          ),
+                        );
+                      } else {
+                        return Container(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            '${snapshot.data.toStringAsFixed(2)}' +
+                                R.stringsOf(context).symbolMoney,
+                            style: txtNormal,
+                          ),
+                        );
+                      }
+                    }),
               )
             ],
           ),
