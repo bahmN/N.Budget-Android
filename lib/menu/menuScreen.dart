@@ -38,30 +38,35 @@ class _MenuScreenState extends State<MenuScreen> {
         padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: Column(
           children: [
-            _wMenu.progressBlockMenu(context),
-            _wMenu.infoContainerMenu(context),
-            Row(
+            Stack(
               children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(right: 5, top: 20),
-                    child: _wMenu.button(
-                      context,
-                      R.stringsOf(context).incomeLabel,
-                      () => navIncomScreen(context),
+                _wMenu.progressBlockMenu(context),
+                _wMenu.infoContainerMenu(context),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(right: 5, top: 20),
+                        child: _wMenu.button(
+                          context,
+                          R.stringsOf(context).incomeLabel,
+                          () => navIncomScreen(context),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 5, top: 20),
-                    child: _wMenu.button(
-                      context,
-                      R.stringsOf(context).costsLabel,
-                      () => navCostsScreen(context),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 5, top: 20),
+                        child: _wMenu.button(
+                          context,
+                          R.stringsOf(context).costsLabel,
+                          () => navCostsScreen(context),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
+                HistoryWidget(),
               ],
             ),
           ],

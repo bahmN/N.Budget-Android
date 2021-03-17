@@ -92,4 +92,11 @@ class ServiceMenu {
 
     return remainderMoney().map((event) => event / lastDayOfMonthAsInt);
   }
+
+  Stream<QuerySnapshot> readHistoryStream() {
+    return FirebaseFirestore.instance
+        .collection('Costs')
+        .where('idUser', isEqualTo: _idUser)
+        .snapshots();
+  }
 }
