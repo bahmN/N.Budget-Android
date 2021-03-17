@@ -64,6 +64,11 @@ final bottomBttn = TextStyle(
     color: HexColor('#A7A7A7'), fontSize: 15, fontWeight: FontWeight.w200);
 final labelAuth = TextStyle(fontSize: 30, fontWeight: FontWeight.w200);
 final filterChipTxt = TextStyle(fontSize: 17, fontWeight: FontWeight.w300);
+final dateTxt = TextStyle(
+    fontSize: 14, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
+final nameHistoryTxt = TextStyle(
+    color: HexColor('#A7A7A7'), fontSize: 17, fontWeight: FontWeight.w300);
+final sumHistoryTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
 
 /*
   BorderShadows
@@ -78,6 +83,14 @@ final borderShadowsLight = BoxDecoration(
       offset: Offset(4, 4),
     )
   ],
+);
+
+/*
+  Don't shadows
+*/
+final borderDontShadowsLight = BoxDecoration(
+  color: HexColor('#FFE60D'),
+  borderRadius: BorderRadius.all(Radius.circular(5.0)),
 );
 
 /*
