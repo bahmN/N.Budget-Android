@@ -65,6 +65,7 @@ class _Strings {
       'comment': 'Comment...',
       'datePickerActionButton': 'Today',
       'zeroMoney': '0.0',
+      'historyContainer': 'History',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -93,6 +94,7 @@ class _Strings {
       'comment': 'Комментарий...',
       'datePickerActionButton': 'Сегодня',
       'zeroMoney': '0.0',
+      'historyContainer': 'История',
     },
   };
 
@@ -182,6 +184,9 @@ class _Strings {
 
   /// '0.0'
   String get zeroMoney => _getString('zeroMoney');
+
+  /// 'History'
+  String get historyContainer => _getString('historyContainer');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {

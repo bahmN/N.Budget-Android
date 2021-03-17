@@ -25,6 +25,6 @@
     "title" : "Title...",
     "comment" : "Comment...",
     "datePickerActionButton": "Today",
-    "zeroMoney" : "0.0"
-
+    "zeroMoney" : "0.0",
+    "historyContainer" : "History"
 }
