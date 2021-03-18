@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nbudget/menu/menuBloc.dart';
 import 'package:nbudget/menu/menuComponents.dart';
 import 'package:nbudget/menu/menuService.dart';
 import 'package:nbudget/r.dart';
@@ -58,7 +59,6 @@ class MenuWidgets {
   Widget infoContainerMenu(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 11),
       decoration: borderShadowsLight,
       child: Column(
         children: [
@@ -214,7 +214,7 @@ class MenuWidgets {
 
   Widget button(BuildContext context, String label, void func()) {
     return Container(
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
+      margin: EdgeInsets.only(bottom: 20),
       child: ElevatedButton(
         onPressed: func,
         child: Text(
@@ -226,8 +226,8 @@ class MenuWidgets {
 }
 
 class HistoryWidget extends StatefulWidget {
-  HistoryWidget({Key key}) : super(key: key);
-
+  HistoryWidget({Key key, @required this.bloc}) : super(key: key);
+  final MenuBloc bloc;
   @override
   _HistoryWidgetState createState() => _HistoryWidgetState();
 }
@@ -235,30 +235,35 @@ class HistoryWidget extends StatefulWidget {
 class _HistoryWidgetState extends State<HistoryWidget> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 400),
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 2.8),
-      curve: Curves.easeOutCirc,
-      width: double.infinity,
-      height: 300,
-      decoration: borderShadowsLight,
-      child: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height / 20,
-            decoration: borderDontShadowsLight,
-            child: Center(
-              child: Text(
-                R.stringsOf(context).historyContainer,
-                style: txtHeader,
+    return Expanded(
+      child: Container(
+        width: double.infinity,
+        decoration: borderShadowsLight,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height / 20,
+              decoration: borderDontShadowsLight,
+              child: Center(
+                child: Text(
+                  R.stringsOf(context).historyContainer,
+                  style: txtHeader,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: HistoryComponents(),
-          ),
-        ],
+            Expanded(
+              child: HistoryComponents(),
+            ),
+            IconButton(
+              icon: Icon(Icons.fullscreen_rounded),
+              onPressed: () {
+                widget.bloc.inputEventSink.add(ButtonEventMenu.event_Click);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
