@@ -90,11 +90,21 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                 );
               } else {
                 return Dismissible(
-                    key: ObjectKey(snapshot.data.docs[index]),
-                    direction: DismissDirection.endToStart,
-                    onDismissed: (direction) =>
-                        snapshot.data.docs[index].reference.delete(),
-                    child: _listItem(context, snapshot.data.docs[index]));
+                  key: ObjectKey(snapshot.data.docs[index]),
+                  direction: DismissDirection.endToStart,
+                  background: Container(
+                    padding: EdgeInsets.only(right: 15),
+                    color: Theme.of(context).errorColor,
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.delete_rounded,
+                      color: Theme.of(context).backgroundColor,
+                    ),
+                  ),
+                  onDismissed: (direction) =>
+                      snapshot.data.docs[index].reference.delete(),
+                  child: _listItem(context, snapshot.data.docs[index]),
+                );
               }
             },
           );
