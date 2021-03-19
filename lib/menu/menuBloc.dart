@@ -20,7 +20,7 @@ void navCostsScreen(BuildContext context) {
 Stream<double> widthPB(totalWidth) {
   ServiceMenu _sMenu = ServiceMenu();
   return CombineLatestStream(
-      [_sMenu.freeMoney(), _sMenu.readNotMandatoryCosts()], (args) {
+      [_sMenu.freeMoney(), _sMenu.readNotMandatoryCostsSum()], (args) {
     double percentMoney = ((args[0] - args[1]) / args[0]) *
         100; //(Остаток / свободные деньги) * 100
 

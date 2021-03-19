@@ -17,7 +17,7 @@ class ServiceMenu {
     await _logOut.signOut();
   }
 
-  Stream<double> readIncome() {
+  Stream<double> readIncomeSum() {
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
 
@@ -34,7 +34,7 @@ class ServiceMenu {
     return _streamC.stream;
   }
 
-  Stream<double> readMandatoryCosts() {
+  Stream<double> readMandatoryCostsSum() {
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
 
@@ -50,7 +50,7 @@ class ServiceMenu {
     return _streamC.stream;
   }
 
-  Stream<double> readNotMandatoryCosts() {
+  Stream<double> readNotMandatoryCostsSum() {
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
 
@@ -67,13 +67,15 @@ class ServiceMenu {
   }
 
   Stream<double> freeMoney() {
-    return CombineLatestStream([readIncome(), readMandatoryCosts()], (args) {
+    return CombineLatestStream([readIncomeSum(), readMandatoryCostsSum()],
+        (args) {
       return args[0] - args[1];
     });
   }
 
   Stream<double> remainderMoney() {
-    return CombineLatestStream([freeMoney(), readNotMandatoryCosts()], (args) {
+    return CombineLatestStream([freeMoney(), readNotMandatoryCostsSum()],
+        (args) {
       return args[0] - args[1];
     });
   }
@@ -93,9 +95,16 @@ class ServiceMenu {
     return remainderMoney().map((event) => event / lastDayOfMonthAsInt);
   }
 
-  Stream<QuerySnapshot> readHistoryStream() {
+  Stream<QuerySnapshot> readHistoryCostsStream() {
     return FirebaseFirestore.instance
         .collection('Costs')
+        .where('idUser', isEqualTo: _idUser)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> readHistoryIncomeStream() {
+    return FirebaseFirestore.instance
+        .collection('Income')
         .where('idUser', isEqualTo: _idUser)
         .snapshots();
   }

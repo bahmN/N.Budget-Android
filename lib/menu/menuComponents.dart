@@ -75,7 +75,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: _sMenu.readHistoryStream(),
+      stream: _sMenu.readHistoryCostsStream(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Container();

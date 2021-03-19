@@ -106,7 +106,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.readIncome(),
+                    stream: _sMenu.readIncomeSum(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
@@ -143,7 +143,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.readMandatoryCosts(),
+                    stream: _sMenu.readMandatoryCostsSum(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
