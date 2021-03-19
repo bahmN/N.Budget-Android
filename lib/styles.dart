@@ -94,6 +94,21 @@ final borderDontShadowsLight = BoxDecoration(
 );
 
 /*
+  Don't shadows (red)
+*/
+final borderDontShadowsLightRed = BoxDecoration(
+  color: HexColor('#E5213E'),
+  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+);
+/*
+  Don't shadows (Green)
+*/
+final borderDontShadowsLightGreen = BoxDecoration(
+  color: HexColor('#51A34F'),
+  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+);
+
+/*
     DateTimePicker
  */
 MaterialRoundedDatePickerStyle datePickerStyle(BuildContext context) {

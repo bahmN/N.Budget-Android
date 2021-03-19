@@ -9,6 +9,38 @@ import 'package:nbudget/styles.dart';
 class MenuWidgets {
   ServiceMenu _sMenu = ServiceMenu();
 
+  Widget progressBarBlocMenu(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 7),
+      child: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height / 60,
+            width: double.infinity,
+            decoration: borderDontShadowsLightRed,
+          ),
+          LayoutBuilder(
+            builder: (context, constrains) {
+              return StreamBuilder<double>(
+                stream: widthPB(constrains.maxWidth),
+                builder: (context, snapshot) {
+                  print(snapshot);
+                  return AnimatedContainer(
+                    duration: Duration(seconds: 3),
+                    curve: Curves.ease,
+                    decoration: borderDontShadowsLightGreen,
+                    height: MediaQuery.of(context).size.height / 60,
+                    width: snapshot.data ?? constrains.maxWidth,
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget progressBlockMenu(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 16,
@@ -16,7 +48,8 @@ class MenuWidgets {
       margin: EdgeInsets.only(bottom: 20),
       decoration: borderShadowsLight,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             children: [
@@ -51,6 +84,7 @@ class MenuWidgets {
               ),
             ],
           ),
+          progressBarBlocMenu(context)
         ],
       ),
     );
