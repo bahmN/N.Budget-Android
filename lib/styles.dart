@@ -94,6 +94,17 @@ final borderDontShadowsLight = BoxDecoration(
 );
 
 /*
+  Don't shadows
+*/
+final borderDontShadowsLightCircularUp = BoxDecoration(
+  color: HexColor('#FFE60D'),
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(5.0),
+    topRight: Radius.circular(5.0),
+  ),
+);
+
+/*
   Don't shadows (red)
 */
 final borderDontShadowsLightRed = BoxDecoration(

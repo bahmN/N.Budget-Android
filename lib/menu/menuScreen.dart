@@ -53,7 +53,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      _wMenu.progressBlockMenu(context),
+                      _wMenu.progressMenu(context),
                       _wMenu.infoContainerMenu(context),
                       Row(
                         mainAxisSize: MainAxisSize.max,

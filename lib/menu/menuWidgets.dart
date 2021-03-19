@@ -9,7 +9,7 @@ import 'package:nbudget/styles.dart';
 class MenuWidgets {
   ServiceMenu _sMenu = ServiceMenu();
 
-  Widget progressBarBlocMenu(BuildContext context) {
+  Widget progressBarMenu(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 7),
       child: Stack(
@@ -41,7 +41,7 @@ class MenuWidgets {
     );
   }
 
-  Widget progressBlockMenu(BuildContext context) {
+  Widget progressMenu(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 16,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -84,7 +84,7 @@ class MenuWidgets {
               ),
             ],
           ),
-          progressBarBlocMenu(context)
+          progressBarMenu(context)
         ],
       ),
     );
@@ -279,7 +279,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
             Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height / 20,
-              decoration: borderDontShadowsLight,
+              decoration: borderDontShadowsLightCircularUp,
               child: Center(
                 child: Text(
                   R.stringsOf(context).historyContainer,
