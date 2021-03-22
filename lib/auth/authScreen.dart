@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nbudget/auth/authBloc.dart';
@@ -24,6 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
   double _marginTopFormAuth;
   AuthService _authService = AuthService();
   AuthBloc _authBloc = AuthBloc();
+
   void close() {
     _authBloc.close();
     super.dispose();
@@ -192,30 +194,41 @@ class _AuthScreenState extends State<AuthScreen> {
   void _signInButtonAction() async {
     _email = _emailController.text;
     _password = _passwordController.text;
-
-    if (_email.isEmpty || _password.isEmpty) {
-      Fluttertoast.showToast(
-          msg: R.stringsOf(context).emptyTextFieldAuth,
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 15.2);
-    } else {
-      MyUser user = await _authService.signInWithEmailAndPassword(
-          _email.trim(), _password.trim());
-      if (user == null) {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      if (_email.isEmpty || _password.isEmpty) {
         Fluttertoast.showToast(
-            msg: R.stringsOf(context).emptyUserAuth,
+            msg: R.stringsOf(context).emptyTextFieldAuth,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.CENTER,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 15.0);
+            backgroundColor: Theme.of(context).errorColor,
+            textColor: Theme.of(context).primaryColorLight,
+            fontSize: 15.2);
       } else {
-        _emailController.clear();
-        _passwordController.clear();
+        MyUser user = await _authService.signInWithEmailAndPassword(
+            _email.trim(), _password.trim());
+        if (user == null) {
+          Fluttertoast.showToast(
+              msg: R.stringsOf(context).emptyUserAuth,
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.CENTER,
+              backgroundColor: Theme.of(context).errorColor,
+              textColor: Theme.of(context).primaryColorLight,
+              fontSize: 15.0);
+        } else {
+          _emailController.clear();
+          _passwordController.clear();
+        }
       }
+    } else {
+      Fluttertoast.showToast(
+          msg: R.stringsOf(context).conntectionState,
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Theme.of(context).errorColor,
+          textColor: Theme.of(context).primaryColorLight,
+          fontSize: 14.0);
     }
   }
 
@@ -229,34 +242,46 @@ class _AuthScreenState extends State<AuthScreen> {
         "(?=.*[0-9])(?=.*[!@#%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#%^&*]{6,}";
     RegExp passwordRegExp = new RegExp(_passwordVal);
 
-    if (!emailRegExp.hasMatch(_email)) {
-      Fluttertoast.showToast(
-          msg: R.stringsOf(context).incorrectEmailAuth,
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 14.0);
-    } else if (!passwordRegExp.hasMatch(_password)) {
-      Fluttertoast.showToast(
-          msg: R.stringsOf(context).incorrectPasswordAuth,
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 14.0);
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      if (!emailRegExp.hasMatch(_email)) {
+        Fluttertoast.showToast(
+            msg: R.stringsOf(context).incorrectEmailAuth,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Theme.of(context).errorColor,
+            textColor: Theme.of(context).primaryColorLight,
+            fontSize: 14.0);
+      } else if (!passwordRegExp.hasMatch(_password)) {
+        Fluttertoast.showToast(
+            msg: R.stringsOf(context).incorrectPasswordAuth,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Theme.of(context).errorColor,
+            textColor: Theme.of(context).primaryColorLight,
+            fontSize: 14.0);
+      } else {
+        MyUser _ = await _authService.signUpWithEmainAndPassword(
+            _email.trim(), _password.trim());
+        Fluttertoast.showToast(
+            msg: R.stringsOf(context).successfulSignUpAuth,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Theme.of(context).indicatorColor,
+            textColor: Theme.of(context).primaryColorLight,
+            fontSize: 14.0);
+        _emailController.clear();
+        _passwordController.clear();
+      }
     } else {
-      MyUser _ = await _authService.signUpWithEmainAndPassword(
-          _email.trim(), _password.trim());
       Fluttertoast.showToast(
-          msg: R.stringsOf(context).successfulSignUpAuth,
+          msg: R.stringsOf(context).conntectionState,
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.green,
-          textColor: Colors.white,
+          backgroundColor: Theme.of(context).errorColor,
+          textColor: Theme.of(context).primaryColorLight,
           fontSize: 14.0);
-      _emailController.clear();
-      _passwordController.clear();
     }
   }
 }
