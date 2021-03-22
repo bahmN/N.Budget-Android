@@ -26,5 +26,6 @@
     "comment" : "Comment...",
     "datePickerActionButton": "Today",
     "zeroMoney" : "0.0",
-    "historyContainer" : "History"
+    "historyContainer" : "History",
+    "conntectionState" : "No internet connection"
 }

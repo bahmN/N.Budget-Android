@@ -66,6 +66,7 @@ class _Strings {
       'datePickerActionButton': 'Today',
       'zeroMoney': '0.0',
       'historyContainer': 'History',
+      'conntectionState': 'No internet connection',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -95,6 +96,7 @@ class _Strings {
       'datePickerActionButton': 'Сегодня',
       'zeroMoney': '0.0',
       'historyContainer': 'История',
+      'conntectionState': 'Нет подключения к интернету',
     },
   };
 
@@ -187,6 +189,9 @@ class _Strings {
 
   /// 'History'
   String get historyContainer => _getString('historyContainer');
+
+  /// 'No internet connection'
+  String get conntectionState => _getString('conntectionState');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {

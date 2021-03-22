@@ -25,5 +25,6 @@
     "comment" : "Комментарий...",
     "datePickerActionButton": "Сегодня",
     "zeroMoney" : "0.0",
-    "historyContainer" : "История"
+    "historyContainer" : "История",
+    "conntectionState" : "Нет подключения к интернету"
 }
