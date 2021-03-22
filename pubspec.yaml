@@ -26,6 +26,7 @@ dependencies:
   rxdart: ^0.25.0
   adaptive_theme: ^1.1.0
   flutter_rounded_date_picker: ^2.0.0
+  connectivity: ^3.0.3
 
 dev_dependencies:
   flutter_test:

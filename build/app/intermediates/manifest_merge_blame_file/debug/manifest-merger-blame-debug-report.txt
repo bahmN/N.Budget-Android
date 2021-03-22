@@ -15,8 +15,8 @@
 14-->C:\flutterProject\nbudget_v1.0\android\app\src\debug\AndroidManifest.xml:6:5-66
 14-->C:\flutterProject\nbudget_v1.0\android\app\src\debug\AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\573cf76bf109891716f7a407adebda3d\jetified-firebase-auth-20.0.1\AndroidManifest.xml:24:5-79
-15-->[com.google.firebase:firebase-auth:20.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\573cf76bf109891716f7a407adebda3d\jetified-firebase-auth-20.0.1\AndroidManifest.xml:24:22-76
+15-->[:connectivity] C:\flutterProject\nbudget_v1.0\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
+15-->[:connectivity] C:\flutterProject\nbudget_v1.0\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-76
 16    <!--
 17 io.flutter.app.FlutterApplication is an android.app.Application that
 18         calls FlutterMain.startInitialization(this); in its onCreate method.

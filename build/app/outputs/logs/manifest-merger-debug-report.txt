@@ -8,6 +8,7 @@ MERGED from C:\flutterProject\nbudget_v1.0\android\app\src\main\AndroidManifest.
 MERGED from [:firebase_auth] C:\flutterProject\nbudget_v1.0\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:fluttertoast] C:\flutterProject\nbudget_v1.0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences] C:\flutterProject\nbudget_v1.0\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:connectivity] C:\flutterProject\nbudget_v1.0\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:cloud_firestore] C:\flutterProject\nbudget_v1.0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] C:\flutterProject\nbudget_v1.0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:hexcolor] C:\flutterProject\nbudget_v1.0\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -143,6 +144,8 @@ MERGED from [:fluttertoast] C:\flutterProject\nbudget_v1.0\build\fluttertoast\in
 MERGED from [:fluttertoast] C:\flutterProject\nbudget_v1.0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences] C:\flutterProject\nbudget_v1.0\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences] C:\flutterProject\nbudget_v1.0\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity] C:\flutterProject\nbudget_v1.0\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity] C:\flutterProject\nbudget_v1.0\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\flutterProject\nbudget_v1.0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\flutterProject\nbudget_v1.0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\flutterProject\nbudget_v1.0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -245,6 +248,16 @@ ADDED from [:firebase_auth] C:\flutterProject\nbudget_v1.0\build\firebase_auth\i
 		ADDED from [:firebase_auth] C:\flutterProject\nbudget_v1.0\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_auth] C:\flutterProject\nbudget_v1.0\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:connectivity] C:\flutterProject\nbudget_v1.0\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
+MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\573cf76bf109891716f7a407adebda3d\jetified-firebase-auth-20.0.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\573cf76bf109891716f7a407adebda3d\jetified-firebase-auth-20.0.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-firestore:22.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\6fa8101c93db5eabe57de61a64f2146d\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-firestore:22.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\6fa8101c93db5eabe57de61a64f2146d\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:13:5-79
+MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\c40b3a1ade295bee345fced2eee0a115\grpc-android-1.28.0\AndroidManifest.xml:11:5-79
+MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\c40b3a1ade295bee345fced2eee0a115\grpc-android-1.28.0\AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from [:connectivity] C:\flutterProject\nbudget_v1.0\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-76
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
 ADDED from [:cloud_firestore] C:\flutterProject\nbudget_v1.0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
@@ -257,14 +270,6 @@ ADDED from [:firebase_core] C:\flutterProject\nbudget_v1.0\build\firebase_core\i
 		ADDED from [:firebase_core] C:\flutterProject\nbudget_v1.0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] C:\flutterProject\nbudget_v1.0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\573cf76bf109891716f7a407adebda3d\jetified-firebase-auth-20.0.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-firestore:22.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\6fa8101c93db5eabe57de61a64f2146d\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:13:5-79
-MERGED from [com.google.firebase:firebase-firestore:22.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\6fa8101c93db5eabe57de61a64f2146d\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:13:5-79
-MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\c40b3a1ade295bee345fced2eee0a115\grpc-android-1.28.0\AndroidManifest.xml:11:5-79
-MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\c40b3a1ade295bee345fced2eee0a115\grpc-android-1.28.0\AndroidManifest.xml:11:5-79
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\573cf76bf109891716f7a407adebda3d\jetified-firebase-auth-20.0.1\AndroidManifest.xml:24:22-76
 activity#com.google.firebase.auth.internal.GenericIdpActivity
 ADDED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\omega\.gradle\caches\transforms-2\files-2.1\573cf76bf109891716f7a407adebda3d\jetified-firebase-auth-20.0.1\AndroidManifest.xml:27:9-44:20
 	android:excludeFromRecents

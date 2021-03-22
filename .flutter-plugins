@@ -1,6 +1,9 @@
 # This is a generated file; do not edit or check into version control.
 cloud_firestore=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore-1.0.1\\
 cloud_firestore_web=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore_web-1.0.1\\
+connectivity=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity-3.0.3\\
+connectivity_for_web=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity_for_web-0.4.0\\
+connectivity_macos=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity_macos-0.2.0\\
 firebase_auth=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth-1.0.1\\
 firebase_auth_web=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth_web-1.0.2\\
 firebase_core=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-1.0.1\\
