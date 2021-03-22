@@ -1,4 +1,4 @@
-#### N.Budget Android application
+##### N.Budget Android application
 
 This app is designed to manage your own budget.
 The application is under development.
