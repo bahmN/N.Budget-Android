@@ -6,12 +6,54 @@ import 'package:nbudget/styles.dart';
 
 class HistoryComponents extends StatefulWidget {
   HistoryComponents({Key key}) : super(key: key);
+  ServiceMenu _sMenu = ServiceMenu();
 
   @override
   _HistoryComponentsState createState() => _HistoryComponentsState();
 }
 
 class _HistoryComponentsState extends State<HistoryComponents> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: widget._sMenu.readHistoryCostsStream(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return Container();
+        } else {
+          return ListView.builder(
+            itemCount: snapshot.data.docs.length,
+            itemBuilder: (context, index) {
+              if (!snapshot.hasData) {
+                return CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).primaryColor),
+                );
+              } else {
+                return Dismissible(
+                  key: ObjectKey(snapshot.data.docs[index]),
+                  direction: DismissDirection.endToStart,
+                  background: Container(
+                    padding: EdgeInsets.only(right: 15),
+                    color: Theme.of(context).errorColor,
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.delete_rounded,
+                      color: Theme.of(context).backgroundColor,
+                    ),
+                  ),
+                  onDismissed: (direction) =>
+                      snapshot.data.docs[index].reference.delete(),
+                  child: _listItem(context, snapshot.data.docs[index]),
+                );
+              }
+            },
+          );
+        }
+      },
+    );
+  }
+
   Widget _listItem(BuildContext context, DocumentSnapshot document) {
     return Container(
       padding: EdgeInsets.only(top: 5),
@@ -68,48 +110,6 @@ class _HistoryComponentsState extends State<HistoryComponents> {
           ],
         ),
       ),
-    );
-  }
-
-  ServiceMenu _sMenu = ServiceMenu();
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: _sMenu.readHistoryCostsStream(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return Container();
-        } else {
-          return ListView.builder(
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (context, index) {
-              if (!snapshot.hasData) {
-                return CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                      Theme.of(context).primaryColor),
-                );
-              } else {
-                return Dismissible(
-                  key: ObjectKey(snapshot.data.docs[index]),
-                  direction: DismissDirection.endToStart,
-                  background: Container(
-                    padding: EdgeInsets.only(right: 15),
-                    color: Theme.of(context).errorColor,
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.delete_rounded,
-                      color: Theme.of(context).backgroundColor,
-                    ),
-                  ),
-                  onDismissed: (direction) =>
-                      snapshot.data.docs[index].reference.delete(),
-                  child: _listItem(context, snapshot.data.docs[index]),
-                );
-              }
-            },
-          );
-        }
-      },
     );
   }
 }

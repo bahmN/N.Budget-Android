@@ -98,13 +98,7 @@ class ServiceMenu {
   Stream<QuerySnapshot> readHistoryCostsStream() {
     return FirebaseFirestore.instance
         .collection('Costs')
-        .where('idUser', isEqualTo: _idUser)
-        .snapshots();
-  }
-
-  Stream<QuerySnapshot> readHistoryIncomeStream() {
-    return FirebaseFirestore.instance
-        .collection('Income')
+        .orderBy('dateCosts')
         .where('idUser', isEqualTo: _idUser)
         .snapshots();
   }
