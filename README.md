@@ -8,7 +8,7 @@ data storage. There is localization for 2 languages: English and Russian.
 
 Link to the [apk file](https://github.com/bahmN/N.Budget-Android/blob/main/build/app/outputs/flutter-apk/app.apk). 
 
-## Packages used:  
+##### Packages used:  
 1. cupertino_icons: ^1.0.0  
 2. hexcolor: ^1.0.6  
 3. intl: ^0.17.0  
@@ -24,7 +24,7 @@ Link to the [apk file](https://github.com/bahmN/N.Budget-Android/blob/main/build
 13. connectivity: ^3.0.3  
 Full pubspec: [pubspec.yaml](https://github.com/bahmN/N.Budget-Android/blob/main/pubspec.yaml).
 
-### Verison 1.1 (22.03.2020)
+##### Verison 1.1 (22.03.2020)
 Version 1.1 adds all the main features of the app:  
 1. Authorization, registration  
 2. Payment of expenses, income  
