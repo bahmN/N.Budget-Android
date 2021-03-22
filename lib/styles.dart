@@ -26,6 +26,7 @@ final lightTheme = ThemeData.light().copyWith(
     ),
   ),
   errorColor: HexColor('#E5213E'),
+  indicatorColor: HexColor('#51A34F'),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       foregroundColor: MaterialStateProperty.resolveWith(
