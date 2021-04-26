@@ -25,7 +25,7 @@ Link to the [apk file](https://github.com/bahmN/N.Budget-Android/blob/main/build
 Full pubspec: [pubspec.yaml](https://github.com/bahmN/N.Budget-Android/blob/main/pubspec.yaml).
 
 ##### Verison 1.0 (22.03.2020)  
-Version 1.1 adds all the main features of the app:  
+Version 1.0 adds all the main features of the app:  
 1. Authorization, registration  
 2. Payment of expenses, income  
 3. Displaying your spending history  
