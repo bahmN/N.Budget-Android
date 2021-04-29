@@ -27,6 +27,9 @@ dependencies:
   adaptive_theme: ^1.1.0
   flutter_rounded_date_picker: ^2.0.0
   connectivity: ^3.0.3
+  introduction_screen: ^2.1.0
+  get:
+  get_storage:
 
 dev_dependencies:
   flutter_test:
