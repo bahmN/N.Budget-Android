@@ -69,7 +69,11 @@ final dateTxt = TextStyle(
     fontSize: 14, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
 final nameHistoryTxt = TextStyle(
     color: HexColor('#A7A7A7'), fontSize: 17, fontWeight: FontWeight.w300);
-final sumHistoryTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+final sumCostsHistoryTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+final sumIncomeHistoryTxt = TextStyle(
+    fontSize: 20, fontWeight: FontWeight.w300, color: HexColor('#51A34F'));
+final welcomeTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+final welcomelabelTxt = TextStyle(fontSize: 40, fontWeight: FontWeight.w200);
 
 /*
   BorderShadows
