@@ -19,6 +19,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -36,7 +37,7 @@ class _MenuScreenState extends State<MenuScreen> {
       body: Container(
         color: Theme.of(context).backgroundColor,
         width: double.infinity,
-        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: StreamBuilder<bool>(
           stream: _bMenu.outputStateStream,
           builder: (context, snapshot) {
