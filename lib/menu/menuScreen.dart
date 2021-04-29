@@ -36,7 +36,7 @@ class _MenuScreenState extends State<MenuScreen> {
       body: Container(
         color: Theme.of(context).backgroundColor,
         width: double.infinity,
-        padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: StreamBuilder<bool>(
           stream: _bMenu.outputStateStream,
           builder: (context, snapshot) {

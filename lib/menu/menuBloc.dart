@@ -21,12 +21,19 @@ Stream<double> widthPB(totalWidth) {
   ServiceMenu _sMenu = ServiceMenu();
   return CombineLatestStream(
       [_sMenu.freeMoney(), _sMenu.readNotMandatoryCostsSum()], (args) {
-    double percentMoney = ((args[0] - args[1]) / args[0]) *
-        100; //(Остаток / свободные деньги) * 100
-
-    //Width
-    double _greenWidth = (totalWidth * percentMoney) / 100;
-    return _greenWidth;
+    if (args[0] != 0.0 || args[1] != 0.0) {
+      double percentMoney = ((args[0] - args[1]) / args[0]) *
+          100; //(Остаток / свободные деньги) * 100
+      if (percentMoney > 0) {
+        //Width
+        double _greenWidth = (totalWidth * percentMoney) / 100;
+        return _greenWidth;
+      } else {
+        return 0.0;
+      }
+    } else {
+      return 0.0;
+    }
   });
 }
 

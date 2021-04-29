@@ -4,6 +4,7 @@ import 'package:calendarro/date_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
+import 'package:nbudget/menu/menuComponents.dart';
 import 'package:rxdart/rxdart.dart';
 
 // ID user for read data
@@ -98,8 +99,57 @@ class ServiceMenu {
   Stream<QuerySnapshot> readHistoryCostsStream() {
     return FirebaseFirestore.instance
         .collection('Costs')
-        .orderBy('dateCosts')
         .where('idUser', isEqualTo: _idUser)
         .snapshots();
+  }
+
+  Stream<QuerySnapshot> readHistoryIncomeStream() {
+    return FirebaseFirestore.instance
+        .collection('income')
+        .where('idUser', isEqualTo: _idUser)
+        .snapshots();
+  }
+
+  Stream<List<FinanceItem>> get items {
+    final costsStream = readHistoryCostsStream().map(
+      (event) {
+        return event.docs
+            .map(
+              (doc) => FinanceItem(
+                title: doc['nameCosts'],
+                sum: doc['sumCosts'],
+                type: FinanceItemType.costs,
+                date: doc['dateCosts'].toDate(),
+                category: doc['category'],
+              ),
+            )
+            .toList();
+      },
+    );
+
+    final incomeStream = readHistoryIncomeStream().map(
+      (event) {
+        return event.docs
+            .map(
+              (doc) => FinanceItem(
+                title: doc['nameIncome'],
+                sum: doc['sumIncome'],
+                type: FinanceItemType.income,
+                date: doc['dateIncome'].toDate(),
+                category: null,
+              ),
+            )
+            .toList();
+      },
+    );
+
+    return CombineLatestStream(
+      [costsStream, incomeStream],
+      (args) {
+        final combinedList = args[0] + args[1];
+        combinedList.sort((lv, rv) => lv.date.compareTo(rv.date));
+        return combinedList;
+      },
+    );
   }
 }

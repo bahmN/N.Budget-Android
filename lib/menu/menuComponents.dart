@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nbudget/menu/menuService.dart';
 import 'package:nbudget/styles.dart';
 
+// ignore: must_be_immutable
 class HistoryComponents extends StatefulWidget {
   HistoryComponents({Key key}) : super(key: key);
   ServiceMenu _sMenu = ServiceMenu();
@@ -16,13 +16,13 @@ class _HistoryComponentsState extends State<HistoryComponents> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: widget._sMenu.readHistoryCostsStream(),
+      stream: widget._sMenu.items,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Container();
         } else {
           return ListView.builder(
-            itemCount: snapshot.data.docs.length,
+            itemCount: snapshot.data.length,
             itemBuilder: (context, index) {
               if (!snapshot.hasData) {
                 return CircularProgressIndicator(
@@ -31,7 +31,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                 );
               } else {
                 return Dismissible(
-                  key: ObjectKey(snapshot.data.docs[index]),
+                  key: ObjectKey(snapshot.data[index]),
                   direction: DismissDirection.endToStart,
                   background: Container(
                     padding: EdgeInsets.only(right: 15),
@@ -43,8 +43,8 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                     ),
                   ),
                   onDismissed: (direction) =>
-                      snapshot.data.docs[index].reference.delete(),
-                  child: _listItem(context, snapshot.data.docs[index]),
+                      snapshot.data[index].reference.delete(),
+                  child: _listItem(context, snapshot.data[index]),
                 );
               }
             },
@@ -54,15 +54,14 @@ class _HistoryComponentsState extends State<HistoryComponents> {
     );
   }
 
-  Widget _listItem(BuildContext context, DocumentSnapshot document) {
-    return Container(
-      padding: EdgeInsets.only(top: 5),
-      child: Padding(
-        padding: EdgeInsets.only(bottom: 5),
+  Widget _listItem(BuildContext context, FinanceItem item) {
+    if (item.type == FinanceItemType.costs) {
+      return Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5),
         child: Column(
           children: [
             Text(
-              '${DateFormat('dd-MM-yyyy').format(document['dateCosts'].toDate()).toString()}',
+              '${DateFormat('dd-MM-yyyy').format(item.date).toString()}',
               style: dateTxt,
             ),
             Container(
@@ -76,7 +75,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                       Container(
                         width: 200,
                         child: Text(
-                          document['nameCosts'].toString(),
+                          item.title,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -85,7 +84,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                       ),
                       Container(
                         child: Text(
-                          document['category'].toString(),
+                          item.category,
                           style: nameHistoryTxt,
                         ),
                       ),
@@ -96,20 +95,86 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                     margin: EdgeInsets.only(left: 25),
                     alignment: Alignment.centerRight,
                     child: Text(
-                      '-' + document['sumCosts'].toString() + '₽',
-                      style: sumHistoryTxt,
+                      '- ${item.sum} ₽',
+                      style: sumCostsHistoryTxt,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-                height: 2,
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                color: Theme.of(context).backgroundColor)
+              height: 2,
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              color: Theme.of(context).backgroundColor,
+            ),
           ],
         ),
-      ),
-    );
+      );
+    } else {
+      return Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5),
+        child: Column(
+          children: [
+            Text(
+              '${DateFormat('dd-MM-yyyy').format(item.date).toString()}',
+              style: dateTxt,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 200,
+                        child: Text(
+                          item.title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width: 125,
+                    margin: EdgeInsets.only(left: 25),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      '+ ${item.sum} ₽',
+                      style: sumIncomeHistoryTxt,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              height: 2,
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              color: Theme.of(context).backgroundColor,
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
+
+class FinanceItem {
+  final String title;
+  final double sum;
+  final FinanceItemType type;
+  final DateTime date;
+  final String category;
+  FinanceItem(
+      {@required this.title,
+      @required this.sum,
+      @required this.type,
+      @required this.date,
+      @required this.category});
+}
+
+enum FinanceItemType { income, costs }

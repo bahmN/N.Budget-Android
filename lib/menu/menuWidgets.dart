@@ -11,11 +11,11 @@ class MenuWidgets {
 
   Widget progressBarMenu(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 7),
+      height: MediaQuery.of(context).size.height / 50,
+      padding: EdgeInsets.only(top: 5),
       child: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height / 60,
             width: double.infinity,
             decoration: borderDontShadowsLightRed,
           ),
@@ -24,12 +24,10 @@ class MenuWidgets {
               return StreamBuilder<double>(
                 stream: widthPB(constrains.maxWidth),
                 builder: (context, snapshot) {
-                  print(snapshot);
                   return AnimatedContainer(
                     duration: Duration(seconds: 3),
                     curve: Curves.ease,
                     decoration: borderDontShadowsLightGreen,
-                    height: MediaQuery.of(context).size.height / 60,
                     width: snapshot.data ?? constrains.maxWidth,
                   );
                 },
@@ -271,6 +269,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
+        margin: EdgeInsets.only(bottom: 20),
         width: double.infinity,
         decoration: borderShadowsLight,
         child: Column(
