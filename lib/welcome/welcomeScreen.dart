@@ -39,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height / 8.5),
               child: Image.asset(
-                R.images.logo,
+                R.images.logo_white,
                 width: 205,
                 height: 205,
               ),

@@ -19,6 +19,9 @@ class _ImageResources {
 
   /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logoApp.png)
   final logo_app = r'assets/images/logoApp.png';
+
+  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logoWhite.png)
+  final logo_white = r'assets/images/logoWhite.png';
 }
 
 class _SvgResources {
