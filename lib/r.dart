@@ -14,8 +14,11 @@ class R {
 class _ImageResources {
   const _ImageResources();
 
-  /// ![](C:\flutterProject\nbudget_v1.0\assets/images/logo.png)
+  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logo.png)
   final logo = r'assets/images/logo.png';
+
+  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logoApp.png)
+  final logo_app = r'assets/images/logoApp.png';
 }
 
 class _SvgResources {
@@ -67,6 +70,12 @@ class _Strings {
       'zeroMoney': '0.0',
       'historyContainer': 'History',
       'conntectionState': 'No internet connection',
+      'forgotPassword': 'Forgot password',
+      'messageSentToEmail': 'An email to reset your password was sent to your email address',
+      'welcome': 'Welcome',
+      'getStarted': 'Get started',
+      'welcomeText': 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
+      'welcomeTextFoundError': 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -97,6 +106,12 @@ class _Strings {
       'zeroMoney': '0.0',
       'historyContainer': 'История',
       'conntectionState': 'Нет подключения к интернету',
+      'forgotPassword': 'Забыл пароль',
+      'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
+      'welcome': 'Добро пожаловать',
+      'getStarted': 'Начать',
+      'welcomeText': 'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним ты можешь запросто следить за своими тратами и будешь знать сколько осталось до конца месяца.',
+      'welcomeTextFoundError': 'Если вы обнаружили какую-то ошибку или у вас есть предложение как улучшить приложение, то пишите на нашу почту example@gmail.com.',
     },
   };
 
@@ -192,6 +207,24 @@ class _Strings {
 
   /// 'No internet connection'
   String get conntectionState => _getString('conntectionState');
+
+  /// 'Forgot password'
+  String get forgotPassword => _getString('forgotPassword');
+
+  /// 'An email to reset your password was sent to your email address'
+  String get messageSentToEmail => _getString('messageSentToEmail');
+
+  /// 'Welcome'
+  String get welcome => _getString('welcome');
+
+  /// 'Get started'
+  String get getStarted => _getString('getStarted');
+
+  /// 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month'
+  String get welcomeText => _getString('welcomeText');
+
+  /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.'
+  String get welcomeTextFoundError => _getString('welcomeTextFoundError');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {
