@@ -22,7 +22,7 @@ class MenuWidgets {
           LayoutBuilder(
             builder: (context, constrains) {
               return StreamBuilder<double>(
-                stream: widthPB(constrains.maxWidth),
+                stream: _sMenu.widthPB(constrains.maxWidth),
                 builder: (context, snapshot) {
                   return AnimatedContainer(
                     duration: Duration(seconds: 3),

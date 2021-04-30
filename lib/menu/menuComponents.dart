@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nbudget/menu/menuService.dart';
@@ -15,7 +16,7 @@ class HistoryComponents extends StatefulWidget {
 class _HistoryComponentsState extends State<HistoryComponents> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<List<FinanceItem>>(
       stream: widget._sMenu.items,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
@@ -42,8 +43,9 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                       color: Theme.of(context).backgroundColor,
                     ),
                   ),
-                  onDismissed: (direction) =>
-                      snapshot.data[index].reference.delete(),
+                  onDismissed: (direction) async {
+                    //Delete method
+                  },
                   child: _listItem(context, snapshot.data[index]),
                 );
               }
@@ -120,7 +122,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
               style: dateTxt,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -174,7 +176,7 @@ class FinanceItem {
       @required this.sum,
       @required this.type,
       @required this.date,
-      @required this.category});
+      this.category});
 }
 
 enum FinanceItemType { income, costs }

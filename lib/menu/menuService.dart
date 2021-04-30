@@ -22,15 +22,21 @@ class ServiceMenu {
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
 
+    DateTime date = DateTime.now();
+    var begMonth = DateTime(date.year, date.month, 1);
+
     FirebaseFirestore.instance
         .collection('Income')
         .where('idUser', isEqualTo: _idUser)
+        .where('dateIncome', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
         .listen((event) {
-      _streamC.add(event.docs.fold<double>(
+      _streamC.add(
+        event.docs.fold<double>(
           0.0,
-          (previousValue, element) =>
-              previousValue + element.get('sumIncome')));
+          (previousValue, element) => previousValue + element.get('sumIncome'),
+        ),
+      );
     });
     return _streamC.stream;
   }
@@ -38,11 +44,14 @@ class ServiceMenu {
   Stream<double> readMandatoryCostsSum() {
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
+    DateTime date = DateTime.now();
+    var begMonth = DateTime(date.year, date.month, 1);
 
     FirebaseFirestore.instance
         .collection('Costs')
         .where('idUser', isEqualTo: _idUser)
         .where('category', isEqualTo: 'Обязательные траты')
+        .where('dateIncome', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
         .listen((event) {
       _streamC.add(event.docs.fold<double>(0.0,
@@ -54,11 +63,14 @@ class ServiceMenu {
   Stream<double> readNotMandatoryCostsSum() {
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
+    DateTime date = DateTime.now();
+    var begMonth = DateTime(date.year, date.month, 1);
 
     FirebaseFirestore.instance
         .collection('Costs')
         .where('idUser', isEqualTo: _idUser)
         .where('category', isEqualTo: '')
+        .where('dateIncome', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
         .listen((event) {
       _streamC.add(event.docs.fold<double>(0.0,
@@ -105,7 +117,7 @@ class ServiceMenu {
 
   Stream<QuerySnapshot> readHistoryIncomeStream() {
     return FirebaseFirestore.instance
-        .collection('income')
+        .collection('Income')
         .where('idUser', isEqualTo: _idUser)
         .snapshots();
   }
@@ -136,7 +148,6 @@ class ServiceMenu {
                 sum: doc['sumIncome'],
                 type: FinanceItemType.income,
                 date: doc['dateIncome'].toDate(),
-                category: null,
               ),
             )
             .toList();
@@ -146,10 +157,30 @@ class ServiceMenu {
     return CombineLatestStream(
       [costsStream, incomeStream],
       (args) {
-        final combinedList = args[0] + args[1];
-        combinedList.sort((lv, rv) => lv.date.compareTo(rv.date));
+        final List combinedList = args[0] + args[1];
+        combinedList.sort((lv, rv) => rv.date.compareTo(lv.date));
         return combinedList;
       },
     );
+  }
+
+  Stream<double> widthPB(totalWidth) {
+    ServiceMenu _sMenu = ServiceMenu();
+    return CombineLatestStream(
+        [_sMenu.freeMoney(), _sMenu.readNotMandatoryCostsSum()], (args) {
+      if (args[0] != 0.0 || args[1] != 0.0) {
+        double percentMoney = ((args[0] - args[1]) / args[0]) *
+            100; //(Остаток / свободные деньги) * 100
+        if (percentMoney > 0) {
+          //Width
+          double _greenWidth = (totalWidth * percentMoney) / 100;
+          return _greenWidth;
+        } else {
+          return 0.0;
+        }
+      } else {
+        return 0.0;
+      }
+    });
   }
 }

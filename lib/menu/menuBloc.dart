@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nbudget/insertData/costs/costsScreen.dart';
 import 'package:nbudget/insertData/income/incomeScreen.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:nbudget/menu/menuService.dart';
 
 void navIncomScreen(BuildContext context) {
   Navigator.push(
@@ -15,26 +13,6 @@ void navIncomScreen(BuildContext context) {
 void navCostsScreen(BuildContext context) {
   Navigator.push(
       context, MaterialPageRoute(builder: (context) => CostsScreen()));
-}
-
-Stream<double> widthPB(totalWidth) {
-  ServiceMenu _sMenu = ServiceMenu();
-  return CombineLatestStream(
-      [_sMenu.freeMoney(), _sMenu.readNotMandatoryCostsSum()], (args) {
-    if (args[0] != 0.0 || args[1] != 0.0) {
-      double percentMoney = ((args[0] - args[1]) / args[0]) *
-          100; //(Остаток / свободные деньги) * 100
-      if (percentMoney > 0) {
-        //Width
-        double _greenWidth = (totalWidth * percentMoney) / 100;
-        return _greenWidth;
-      } else {
-        return 0.0;
-      }
-    } else {
-      return 0.0;
-    }
-  });
 }
 
 enum ButtonEventMenu { event_Click }
