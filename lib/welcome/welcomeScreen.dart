@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:nbudget/landing.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
 import 'package:flutter/services.dart';
+import 'package:nbudget/welcome/welcomeLogic.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key key}) : super(key: key);
@@ -11,17 +10,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-
-    final welcomedata = GetStorage();
-    void _endWelcomeScreen(context) {
-      Navigator.pop(context);
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => LandingPage(),
-        ),
-      );
-      welcomedata.write("displayed", true);
-    }
+    WelcomeLogic _wLogic = WelcomeLogic();
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorLight,
@@ -66,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: ElevatedButton(
                     child: Text(R.stringsOf(context).getStarted),
                     onPressed: () {
-                      _endWelcomeScreen(context);
+                      _wLogic.endWelcomeScreen(context);
                     },
                   ),
                 ),
