@@ -51,7 +51,7 @@ class ServiceMenu {
         .collection('Costs')
         .where('idUser', isEqualTo: _idUser)
         .where('category', isEqualTo: 'Обязательные траты')
-        .where('dateIncome', isGreaterThanOrEqualTo: begMonth)
+        .where('dateCosts', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
         .listen((event) {
       _streamC.add(event.docs.fold<double>(0.0,
@@ -70,7 +70,7 @@ class ServiceMenu {
         .collection('Costs')
         .where('idUser', isEqualTo: _idUser)
         .where('category', isEqualTo: '')
-        .where('dateIncome', isGreaterThanOrEqualTo: begMonth)
+        .where('dateCosts', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
         .listen((event) {
       _streamC.add(event.docs.fold<double>(0.0,
@@ -105,7 +105,14 @@ class ServiceMenu {
         DateTime(int.parse(formattedYear), int.parse(formattedMonth)));
     int lastDayOfMonthAsInt = lastDayOfMonth.day;
 
-    return remainderMoney().map((event) => event / lastDayOfMonthAsInt);
+    //Today
+    final DateTime toDay = DateTime.now();
+    final DateFormat formatterDay = DateFormat.d();
+    final String formattedDay = formatterDay.format(toDay);
+    int toDayAsInt = int.parse(formattedDay);
+
+    return remainderMoney()
+        .map((event) => event / (lastDayOfMonthAsInt - toDayAsInt));
   }
 
   Stream<QuerySnapshot> readHistoryCostsStream() {
