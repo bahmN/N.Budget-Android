@@ -11,11 +11,11 @@ class MenuScreen extends StatefulWidget {
   _MenuScreenState createState() => _MenuScreenState();
 }
 
-ServiceMenu _sMenu = ServiceMenu();
-MenuWidgets _wMenu = MenuWidgets();
-MenuBloc _bMenu = MenuBloc();
-
 class _MenuScreenState extends State<MenuScreen> {
+  ServiceMenu _sMenu = ServiceMenu();
+  MenuWidgets _wMenu = MenuWidgets();
+  MenuBloc _bMenu = MenuBloc();
+  MenuMethods _mMenu = MenuMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +65,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               child: _wMenu.button(
                                 context,
                                 R.stringsOf(context).incomeLabel,
-                                () => navIncomScreen(context),
+                                () => _mMenu.navIncomScreen(context),
                               ),
                             ),
                           ),
@@ -75,7 +75,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               child: _wMenu.button(
                                 context,
                                 R.stringsOf(context).costsLabel,
-                                () => navCostsScreen(context),
+                                () => _mMenu.navCostsScreen(context),
                               ),
                             ),
                           ),

@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
+import 'package:nbudget/menu/menuBloc.dart';
 import 'package:nbudget/menu/menuService.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
@@ -11,7 +10,7 @@ import 'package:nbudget/styles.dart';
 class HistoryComponents extends StatefulWidget {
   HistoryComponents({Key key}) : super(key: key);
   ServiceMenu _sMenu = ServiceMenu();
-
+  MenuMethods _mMenu = MenuMethods();
   @override
   _HistoryComponentsState createState() => _HistoryComponentsState();
 }
@@ -48,14 +47,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                         color: Theme.of(context).errorColor,
                         icon: Icons.delete_rounded,
                         onTap: () async {
-                          //TODO: переделать
-                          await FirebaseFirestore.instance
-                              .collection(snapshot.data[index].type ==
-                                      FinanceItemType.income
-                                  ? 'Income'
-                                  : 'Costs')
-                              .doc(snapshot.data[index].id)
-                              .delete();
+                          await widget._mMenu.deleteHistory(snapshot, index);
                         },
                       ),
                     ],
@@ -99,7 +91,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                         width: 150,
                         child: Text(
                           item.category,
-                          style: nameHistoryTxt,
+                          style: categoryHistoryTxt,
                         ),
                       ),
                     ],

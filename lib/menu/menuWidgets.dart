@@ -250,6 +250,8 @@ class MenuWidgets {
         onPressed: func,
         child: Text(
           label,
+          textAlign: TextAlign.center,
+          style: bttnInsertTxt(context),
         ),
       ),
     );
