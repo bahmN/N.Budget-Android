@@ -41,7 +41,6 @@ class MenuWidgets {
 
   Widget progressMenu(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 16,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       margin: EdgeInsets.only(bottom: 20),
       decoration: borderShadowsLight,

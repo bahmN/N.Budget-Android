@@ -14,13 +14,13 @@ class R {
 class _ImageResources {
   const _ImageResources();
 
-  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logo.png)
+  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logo.png)
   final logo = r'assets/images/logo.png';
 
-  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logoApp.png)
+  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logoApp.png)
   final logo_app = r'assets/images/logoApp.png';
 
-  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logoWhite.png)
+  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logoWhite.png)
   final logo_white = r'assets/images/logoWhite.png';
 }
 
@@ -79,6 +79,7 @@ class _Strings {
       'getStarted': 'Get started',
       'welcomeText': 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
       'welcomeTextFoundError': 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.',
+      'deleteHistory': 'Delete',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -115,6 +116,7 @@ class _Strings {
       'getStarted': 'Начать',
       'welcomeText': 'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним ты можешь запросто следить за своими тратами и будешь знать сколько осталось до конца месяца.',
       'welcomeTextFoundError': 'Если вы обнаружили какую-то ошибку или у вас есть предложение как улучшить приложение, то пишите на нашу почту example@gmail.com.',
+      'deleteHistory': 'Удалить',
     },
   };
 
@@ -228,6 +230,9 @@ class _Strings {
 
   /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.'
   String get welcomeTextFoundError => _getString('welcomeTextFoundError');
+
+  /// 'Delete'
+  String get deleteHistory => _getString('deleteHistory');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {

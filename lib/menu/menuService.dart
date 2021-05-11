@@ -128,12 +128,12 @@ class ServiceMenu {
         return event.docs
             .map(
               (doc) => FinanceItem(
-                title: doc['nameCosts'],
-                sum: doc['sumCosts'],
-                type: FinanceItemType.costs,
-                date: doc['dateCosts'].toDate(),
-                category: doc['category'],
-              ),
+                  title: doc['nameCosts'],
+                  sum: doc['sumCosts'],
+                  type: FinanceItemType.costs,
+                  date: doc['dateCosts'].toDate(),
+                  category: doc['category'],
+                  id: doc.reference.id),
             )
             .toList();
       },
@@ -144,11 +144,11 @@ class ServiceMenu {
         return event.docs
             .map(
               (doc) => FinanceItem(
-                title: doc['nameIncome'],
-                sum: doc['sumIncome'],
-                type: FinanceItemType.income,
-                date: doc['dateIncome'].toDate(),
-              ),
+                  title: doc['nameIncome'],
+                  sum: doc['sumIncome'],
+                  type: FinanceItemType.income,
+                  date: doc['dateIncome'].toDate(),
+                  id: doc.reference.id),
             )
             .toList();
       },

@@ -15,18 +15,19 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorLight,
       body: Container(
-        padding: EdgeInsets.fromLTRB(13, 60, 13, 20),
+        padding: EdgeInsets.fromLTRB(
+            13, MediaQuery.of(context).size.width / 10, 13, 20),
         child: Column(
           children: [
             Center(
               child: Text(
                 R.stringsOf(context).welcome.toUpperCase(),
-                style: welcomelabelTxt,
+                style: welcomelabelTxt(context),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height / 8.5),
+              padding:
+                  EdgeInsets.only(top: MediaQuery.of(context).size.width / 5),
               child: Image.asset(
                 R.images.logo_white,
                 width: 205,
@@ -35,17 +36,17 @@ class WelcomeScreen extends StatelessWidget {
             ),
             Padding(
               padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 40),
+                  EdgeInsets.only(top: MediaQuery.of(context).size.width / 10),
               child: Text(
                 R.stringsOf(context).welcomeText,
                 textAlign: TextAlign.justify,
-                style: welcomeTxt,
+                style: welcomeTxt(context),
               ),
             ),
             Text(
               R.stringsOf(context).welcomeTextFoundError,
               textAlign: TextAlign.justify,
-              style: welcomeTxt,
+              style: welcomeTxt(context),
             ),
             Expanded(
               child: Container(

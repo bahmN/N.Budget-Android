@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:nbudget/menu/menuService.dart';
+import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
 
 // ignore: must_be_immutable
@@ -31,22 +34,33 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                       Theme.of(context).primaryColor),
                 );
               } else {
-                return Dismissible(
-                  key: ObjectKey(snapshot.data[index]),
-                  direction: DismissDirection.endToStart,
-                  background: Container(
-                    padding: EdgeInsets.only(right: 15),
-                    color: Theme.of(context).errorColor,
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.delete_rounded,
-                      color: Theme.of(context).backgroundColor,
-                    ),
+                return Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration:
+                      BoxDecoration(color: Theme.of(context).primaryColorLight),
+                  child: Slidable(
+                    actionPane: SlidableStrechActionPane(),
+                    key: ObjectKey(snapshot.data[index]),
+                    actionExtentRatio: 0.20,
+                    secondaryActions: [
+                      IconSlideAction(
+                        caption: R.stringsOf(context).deleteHistory,
+                        color: Theme.of(context).errorColor,
+                        icon: Icons.delete_rounded,
+                        onTap: () async {
+                          //TODO: переделать
+                          await FirebaseFirestore.instance
+                              .collection(snapshot.data[index].type ==
+                                      FinanceItemType.income
+                                  ? 'Income'
+                                  : 'Costs')
+                              .doc(snapshot.data[index].id)
+                              .delete();
+                        },
+                      ),
+                    ],
+                    child: _listItem(context, snapshot.data[index]),
                   ),
-                  onDismissed: (direction) async {
-                    //Delete method
-                  },
-                  child: _listItem(context, snapshot.data[index]),
                 );
               }
             },
@@ -75,16 +89,14 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 200,
+                        width: MediaQuery.of(context).size.width / 2.8,
                         child: Text(
                           item.title,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: nameHistoryTxt,
                         ),
                       ),
                       Container(
+                        width: 150,
                         child: Text(
                           item.category,
                           style: nameHistoryTxt,
@@ -92,13 +104,13 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                       ),
                     ],
                   ),
-                  Container(
-                    width: 125,
-                    margin: EdgeInsets.only(left: 25),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '- ${item.sum} ₽',
-                      style: sumCostsHistoryTxt,
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '- ${item.sum} ₽',
+                        style: sumCostsHistoryTxt,
+                      ),
                     ),
                   ),
                 ],
@@ -130,24 +142,21 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 200,
+                        width: MediaQuery.of(context).size.width / 2.8,
                         child: Text(
                           item.title,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: nameHistoryTxt,
                         ),
                       ),
                     ],
                   ),
-                  Container(
-                    width: 125,
-                    margin: EdgeInsets.only(left: 25),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '+ ${item.sum} ₽',
-                      style: sumIncomeHistoryTxt,
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '+ ${item.sum} ₽',
+                        style: sumIncomeHistoryTxt,
+                      ),
                     ),
                   ),
                 ],
@@ -171,11 +180,13 @@ class FinanceItem {
   final FinanceItemType type;
   final DateTime date;
   final String category;
+  final String id;
   FinanceItem(
       {@required this.title,
       @required this.sum,
       @required this.type,
       @required this.date,
+      @required this.id,
       this.category});
 }
 
