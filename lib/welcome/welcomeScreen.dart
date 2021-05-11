@@ -16,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColorLight,
       body: Container(
         padding: EdgeInsets.fromLTRB(
-            13, MediaQuery.of(context).size.width / 10, 13, 20),
+            13, MediaQuery.of(context).size.width / 15, 13, 20),
         child: Column(
           children: [
             Center(
@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             Padding(
               padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).size.width / 5),
+                  EdgeInsets.only(top: MediaQuery.of(context).size.width / 8),
               child: Image.asset(
                 R.images.logo_white,
                 width: 205,
