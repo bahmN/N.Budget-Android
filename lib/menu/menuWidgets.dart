@@ -265,25 +265,76 @@ class HistoryWidget extends StatefulWidget {
   _HistoryWidgetState createState() => _HistoryWidgetState();
 }
 
+String selectedChoices;
+
 class _HistoryWidgetState extends State<HistoryWidget> {
+  void _select(String choice) {
+    setState(() {
+      selectedChoices = choice;
+    });
+    showSnackBar(choice);
+  }
+
+  void showSnackBar(String selection) {
+    final snackBarContent = SnackBar(
+      content: Text(
+        R.stringsOf(context).selectedFilter + '$selectedChoices',
+        style: selectedFilterTxt(context),
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBarContent);
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<String> choices = <String>[
+      R.stringsOf(context).showOnlyCosts,
+      R.stringsOf(context).showOnlyIncome,
+      R.stringsOf(context).showAllHistory
+    ];
     return Expanded(
       child: Container(
-        width: double.infinity,
         decoration: borderShadowsLight,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              width: double.infinity,
               height: MediaQuery.of(context).size.height / 20,
               decoration: borderDontShadowsLightCircularUp,
-              child: Center(
-                child: Text(
-                  R.stringsOf(context).historyContainer,
-                  style: txtHeader,
-                ),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width / 2.8),
+                    child: Text(
+                      R.stringsOf(context).historyContainer,
+                      style: txtHeader,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: PopupMenuButton(
+                        onSelected: _select,
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (BuildContext context) {
+                          return choices.map(
+                            (String choice) {
+                              return PopupMenuItem<String>(
+                                value: choice,
+                                child: Text(
+                                  choice,
+                                  style: bttnInsertTxt(context),
+                                ),
+                              );
+                            },
+                          ).toList();
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(

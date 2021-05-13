@@ -3,8 +3,11 @@ import 'dart:async';
 import 'package:calendarro/date_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:nbudget/menu/menuComponents.dart';
+import 'package:nbudget/menu/menuWidgets.dart';
+import 'package:nbudget/r.dart';
 import 'package:rxdart/rxdart.dart';
 
 // ID user for read data
@@ -129,7 +132,7 @@ class ServiceMenu {
         .snapshots();
   }
 
-  Stream<List<FinanceItem>> get items {
+  Stream<List<FinanceItem>> items(BuildContext context) {
     final costsStream = readHistoryCostsStream().map(
       (event) {
         return event.docs
@@ -161,14 +164,20 @@ class ServiceMenu {
       },
     );
 
-    return CombineLatestStream(
-      [costsStream, incomeStream],
-      (args) {
-        final List combinedList = args[0] + args[1];
-        combinedList.sort((lv, rv) => rv.date.compareTo(lv.date));
-        return combinedList;
-      },
-    );
+    if (selectedChoices == R.stringsOf(context).showOnlyCosts) {
+      return costsStream;
+    } else if (selectedChoices == R.stringsOf(context).showOnlyIncome) {
+      return incomeStream;
+    } else {
+      return CombineLatestStream(
+        [costsStream, incomeStream],
+        (args) {
+          final List combinedList = args[0] + args[1];
+          combinedList.sort((lv, rv) => rv.date.compareTo(lv.date));
+          return combinedList;
+        },
+      );
+    }
   }
 
   Stream<double> widthPB(totalWidth) {

@@ -19,7 +19,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<FinanceItem>>(
-      stream: widget._sMenu.items,
+      stream: widget._sMenu.items(context),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Container();
@@ -100,7 +100,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        '- ${item.sum} ₽',
+                        '- ${item.sum}₽',
                         style: sumCostsHistoryTxt,
                       ),
                     ),
@@ -146,7 +146,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        '+ ${item.sum} ₽',
+                        '+ ${item.sum}₽',
                         style: sumIncomeHistoryTxt,
                       ),
                     ),
