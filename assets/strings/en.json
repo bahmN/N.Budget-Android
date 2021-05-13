@@ -34,5 +34,9 @@
     "getStarted" : "Get started",
     "welcomeText" : "Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month",
     "welcomeTextFoundError" : "If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.",
-    "deleteHistory" : "Delete"
+    "deleteHistory" : "Delete",
+    "showOnlyCosts" : "Costs",
+    "showOnlyIncome" : "Income",
+    "showAllHistory" : "All history",
+    "selectedFilter" : "Selected: "
 }

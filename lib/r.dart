@@ -80,6 +80,10 @@ class _Strings {
       'welcomeText': 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
       'welcomeTextFoundError': 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.',
       'deleteHistory': 'Delete',
+      'showOnlyCosts': 'Costs',
+      'showOnlyIncome': 'Income',
+      'showAllHistory': 'All history',
+      'selectedFilter': 'Selected: ',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -117,6 +121,10 @@ class _Strings {
       'welcomeText': 'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним ты можешь запросто следить за своими тратами и будешь знать сколько осталось до конца месяца.',
       'welcomeTextFoundError': 'Если вы обнаружили какую-то ошибку или у вас есть предложение как улучшить приложение, то пишите на нашу почту example@gmail.com.',
       'deleteHistory': 'Удалить',
+      'showOnlyCosts': 'Траты',
+      'showOnlyIncome': 'Доход',
+      'showAllHistory': 'Вся история',
+      'selectedFilter': 'Выбран: ',
     },
   };
 
@@ -233,6 +241,18 @@ class _Strings {
 
   /// 'Delete'
   String get deleteHistory => _getString('deleteHistory');
+
+  /// 'Costs'
+  String get showOnlyCosts => _getString('showOnlyCosts');
+
+  /// 'Income'
+  String get showOnlyIncome => _getString('showOnlyIncome');
+
+  /// 'All history'
+  String get showAllHistory => _getString('showAllHistory');
+
+  /// 'Selected: '
+  String get selectedFilter => _getString('selectedFilter');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {
