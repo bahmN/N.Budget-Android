@@ -19,11 +19,10 @@ class WelcomeScreen extends StatelessWidget {
             13, MediaQuery.of(context).size.width / 15, 13, 20),
         child: Column(
           children: [
-            Center(
-              child: Text(
-                R.stringsOf(context).welcome.toUpperCase(),
-                style: welcomelabelTxt(context),
-              ),
+            Text(
+              R.stringsOf(context).welcome.toUpperCase(),
+              style: welcomelabelTxt(context),
+              textAlign: TextAlign.center,
             ),
             Padding(
               padding:
