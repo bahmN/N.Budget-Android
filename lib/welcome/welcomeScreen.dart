@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
-import 'package:flutter/services.dart';
 import 'package:nbudget/welcome/welcomeLogic.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-    WelcomeLogic _wLogic = WelcomeLogic();
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
 
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIOverlays(
+        [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    WelcomeLogic _wLogic = WelcomeLogic();
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorLight,
       body: Container(
