@@ -1,12 +1,12 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nbudget/auth/authBloc.dart';
 import 'package:nbudget/auth/authService.dart';
 import 'package:nbudget/domains/myUser.dart';
 import 'package:nbudget/r.dart';
-
-import '../styles.dart';
+import 'package:nbudget/styles.dart';
 
 class AuthScreen extends StatefulWidget {
   AuthScreen({Key key}) : super(key: key);
@@ -21,7 +21,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
   String _email;
   String _password;
-  bool _ifKeyboardOpened = false;
   double _marginTopFormAuth;
   AuthService _authService = AuthService();
   AuthBloc _authBloc = AuthBloc();
@@ -33,80 +32,69 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _ifKeyboardOpened = MediaQuery.of(context).viewInsets.bottom > 0;
-    _marginTopFormAuth = _ifKeyboardOpened
-        ? MediaQuery.of(context).size.height / 5.5
-        : MediaQuery.of(context).size.height / 2.4;
-    return StreamBuilder<bool>(
-      stream: _authBloc.outputEventSink,
-      builder: (context, snapshot) {
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Theme.of(context).backgroundColor,
-          body: Stack(
-            children: [
-              _logo(),
-              (_authBloc.showLogin
-                  ? Column(
-                      children: [
-                        _auth(
-                            R.stringsOf(context).labelsignInAuth,
-                            R.stringsOf(context).signInButtonAuth,
-                            _signInButtonAction,
-                            _marginTopFormAuth),
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.bottomCenter,
-                            margin: EdgeInsets.only(bottom: 5),
-                            child: GestureDetector(
-                              child: Text(
-                                  R.stringsOf(context).labelBottomSignUpAuth,
-                                  style: bottomBttn),
-                              onTap: () {
-                                setState(() {
-                                  _authBloc.inputEventSink
-                                      .add(ButtonEventAuth.eventHide);
-                                });
-                                _emailController.clear();
-                                _passwordController.clear();
-                              },
-                            ),
-                          ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: Stack(
+        children: [
+          _logo(),
+          (_authBloc.showLogin
+              ? Column(
+                  children: [
+                    _auth(
+                        R.stringsOf(context).labelsignInAuth,
+                        R.stringsOf(context).signInButtonAuth,
+                        _signInButtonAction),
+                    Expanded(
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        margin: EdgeInsets.only(bottom: 5),
+                        child: GestureDetector(
+                          child: Text(
+                              R.stringsOf(context).labelBottomSignUpAuth,
+                              style: bottomBttn),
+                          onTap: () {
+                            setState(() {
+                              _authBloc.inputEventSink
+                                  .add(ButtonEventAuth.eventHide);
+                            });
+                            _emailController.clear();
+                            _passwordController.clear();
+                          },
                         ),
-                      ],
-                    )
-                  : Column(
-                      children: [
-                        _auth(
-                            R.stringsOf(context).labelsignUpAuth,
-                            R.stringsOf(context).signUpButtonAuth,
-                            _signUpButtonAction,
-                            _marginTopFormAuth),
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.bottomCenter,
-                            margin: EdgeInsets.only(bottom: 5),
-                            child: GestureDetector(
-                              child: Text(
-                                  R.stringsOf(context).labelBottomSignInAuth,
-                                  style: bottomBttn),
-                              onTap: () {
-                                setState(() {
-                                  _authBloc.inputEventSink
-                                      .add(ButtonEventAuth.eventShow);
-                                });
-                                _emailController.clear();
-                                _passwordController.clear();
-                              },
-                            ),
-                          ),
+                      ),
+                    ),
+                  ],
+                )
+              : Column(
+                  children: [
+                    _auth(
+                        R.stringsOf(context).labelsignUpAuth,
+                        R.stringsOf(context).signUpButtonAuth,
+                        _signUpButtonAction),
+                    Expanded(
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        margin: EdgeInsets.only(bottom: 5),
+                        child: GestureDetector(
+                          child: Text(
+                              R.stringsOf(context).labelBottomSignInAuth,
+                              style: bottomBttn),
+                          onTap: () {
+                            setState(() {
+                              _authBloc.inputEventSink
+                                  .add(ButtonEventAuth.eventShow);
+                            });
+                            _emailController.clear();
+                            _passwordController.clear();
+                          },
                         ),
-                      ],
-                    )),
-            ],
-          ),
-        );
-      },
+                      ),
+                    ),
+                  ],
+                )),
+        ],
+      ),
     );
   }
 
@@ -118,49 +106,58 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  Widget _auth(
-      String label, String labelButton, void func(), double marginTopForm) {
-    return Center(
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 400),
-        curve: Curves.easeOutQuart,
-        margin: EdgeInsets.fromLTRB(13, marginTopForm, 13, 0),
-        padding: EdgeInsets.fromLTRB(10, 30, 10, 5),
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColorLight,
-          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 3,
-              color: Theme.of(context).shadowColor,
-              offset: Offset(4, 4),
-            )
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              child: Text(
-                label.toUpperCase(),
-                style: labelAuth,
-              ),
+  Widget _auth(String label, String labelButton, void func()) {
+    return KeyboardVisibilityBuilder(
+      builder: (context, isKeyboardVisible) {
+        _marginTopFormAuth = isKeyboardVisible
+            ? MediaQuery.of(context).size.height / 5.5
+            : MediaQuery.of(context).size.height / 2.4;
+        return Center(
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 400),
+            curve: Curves.easeOutQuart,
+            margin: EdgeInsets.fromLTRB(13, _marginTopFormAuth, 13, 0),
+            padding: EdgeInsets.fromLTRB(10, 30, 10, 5),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColorLight,
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 3,
+                  color: Theme.of(context).shadowColor,
+                  offset: Offset(4, 4),
+                )
+              ],
             ),
-            _inputLoginOrPassword(Icon(Icons.account_box_rounded),
-                R.stringsOf(context).loginHintAuth, _emailController, false),
-            _inputLoginOrPassword(
-                Icon(Icons.lock_rounded),
-                R.stringsOf(context).passwordHintAuth,
-                _passwordController,
-                true),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 40),
-              child: _button(labelButton, func),
-            )
-          ],
-        ),
-      ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text(
+                    label.toUpperCase(),
+                    style: labelAuth,
+                  ),
+                ),
+                _inputLoginOrPassword(
+                    Icon(Icons.account_box_rounded),
+                    R.stringsOf(context).loginHintAuth,
+                    _emailController,
+                    false),
+                _inputLoginOrPassword(
+                    Icon(Icons.lock_rounded),
+                    R.stringsOf(context).passwordHintAuth,
+                    _passwordController,
+                    true),
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 40),
+                  child: _button(labelButton, func),
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 

@@ -8,9 +8,9 @@ import 'package:nbudget/auth/authService.dart';
 import 'package:nbudget/domains/myUser.dart';
 import 'package:nbudget/landing.dart';
 import 'package:nbudget/r.dart';
+import 'package:nbudget/styles.dart';
 import 'package:nbudget/welcome/welcomeScreen.dart';
 import 'package:provider/provider.dart';
-import 'styles.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
