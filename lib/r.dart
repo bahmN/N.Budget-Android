@@ -55,7 +55,8 @@ class _Strings {
       'emptyTextFieldAuth': 'Login or password fields cannot be empty',
       'emptyUserAuth': 'Wrong email or password entered',
       'incorrectEmailAuth': 'Incorrect email input',
-      'incorrectPasswordAuth': 'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
+      'incorrectPasswordAuth':
+          'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
       'successfulSignUpAuth': 'You have successfully registered',
       'nameApp': 'N.Budget',
       'balanceMonthFirstBlock': 'Until the end of the month',
@@ -74,11 +75,14 @@ class _Strings {
       'historyContainer': 'History',
       'conntectionState': 'No internet connection',
       'forgotPassword': 'Forgot password',
-      'messageSentToEmail': 'An email to reset your password was sent to your email address',
+      'messageSentToEmail':
+          'An email to reset your password was sent to your email address',
       'welcome': 'Welcome',
       'getStarted': 'Get started',
-      'welcomeText': 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
-      'welcomeTextFoundError': 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.',
+      'welcomeText':
+          'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
+      'welcomeTextFoundError':
+          'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
       'deleteHistory': 'Delete',
       'showOnlyCosts': 'Costs',
       'showOnlyIncome': 'Income',
@@ -97,7 +101,8 @@ class _Strings {
       'emptyTextFieldAuth': 'Поля логина или пароля не могут быть пустыми',
       'emptyUserAuth': 'Неправильно введён логин или пароль',
       'incorrectEmailAuth': 'Некорректный ввод email',
-      'incorrectPasswordAuth': 'Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов',
+      'incorrectPasswordAuth':
+          'Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов',
       'successfulSignUpAuth': 'Вы успешно зарегистрированы',
       'balanceMonthFirstBlock': 'До конца месяца осталось',
       'incomeI': 'Доход',
@@ -118,8 +123,10 @@ class _Strings {
       'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
       'welcome': 'Добро пожаловать',
       'getStarted': 'Начать',
-      'welcomeText': 'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним ты можешь запросто следить за своими тратами и будешь знать сколько осталось до конца месяца.',
-      'welcomeTextFoundError': 'Если вы обнаружили какую-то ошибку или у вас есть предложение как улучшить приложение, то пишите на нашу почту example@gmail.com.',
+      'welcomeText':
+          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним ты можешь запросто следить за своими тратами и будешь знать сколько осталось до конца месяца.',
+      'welcomeTextFoundError':
+          'Если вы обнаружили какую-то ошибку или у вас есть предложение как улучшить приложение, то пишите на нашу почту nbudget.help@gmail.com.',
       'deleteHistory': 'Удалить',
       'showOnlyCosts': 'Траты',
       'showOnlyIncome': 'Доход',
