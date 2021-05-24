@@ -14,8 +14,14 @@ class R {
 class _ImageResources {
   const _ImageResources();
 
-  /// ![](C:\flutterProject\nbudget_v1.0\assets/images/logo.png)
+  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logo.png)
   final logo = r'assets/images/logo.png';
+
+  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logoApp.png)
+  final logo_app = r'assets/images/logoApp.png';
+
+  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logoWhite.png)
+  final logo_white = r'assets/images/logoWhite.png';
 }
 
 class _SvgResources {
@@ -49,7 +55,8 @@ class _Strings {
       'emptyTextFieldAuth': 'Login or password fields cannot be empty',
       'emptyUserAuth': 'Wrong email or password entered',
       'incorrectEmailAuth': 'Incorrect email input',
-      'incorrectPasswordAuth': 'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
+      'incorrectPasswordAuth':
+          'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
       'successfulSignUpAuth': 'You have successfully registered',
       'nameApp': 'N.Budget',
       'balanceMonthFirstBlock': 'Until the end of the month',
@@ -67,6 +74,20 @@ class _Strings {
       'zeroMoney': '0.0',
       'historyContainer': 'History',
       'conntectionState': 'No internet connection',
+      'forgotPassword': 'Forgot password',
+      'messageSentToEmail':
+          'An email to reset your password was sent to your email address',
+      'welcome': 'Welcome',
+      'getStarted': 'Get started',
+      'welcomeText':
+          'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
+      'welcomeTextFoundError':
+          'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
+      'deleteHistory': 'Delete',
+      'showOnlyCosts': 'Costs',
+      'showOnlyIncome': 'Income',
+      'showAllHistory': 'All history',
+      'selectedFilter': 'Selected: ',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -80,7 +101,8 @@ class _Strings {
       'emptyTextFieldAuth': 'Поля логина или пароля не могут быть пустыми',
       'emptyUserAuth': 'Неправильно введён логин или пароль',
       'incorrectEmailAuth': 'Некорректный ввод email',
-      'incorrectPasswordAuth': 'Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов',
+      'incorrectPasswordAuth':
+          'Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов',
       'successfulSignUpAuth': 'Вы успешно зарегистрированы',
       'balanceMonthFirstBlock': 'До конца месяца осталось',
       'incomeI': 'Доход',
@@ -97,6 +119,19 @@ class _Strings {
       'zeroMoney': '0.0',
       'historyContainer': 'История',
       'conntectionState': 'Нет подключения к интернету',
+      'forgotPassword': 'Забыл пароль',
+      'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
+      'welcome': 'Добро пожаловать',
+      'getStarted': 'Начать',
+      'welcomeText':
+          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним ты можешь запросто следить за своими тратами и будешь знать сколько осталось до конца месяца.',
+      'welcomeTextFoundError':
+          'Если вы обнаружили какую-то ошибку или у вас есть предложение как улучшить приложение, то пишите на нашу почту nbudget.help@gmail.com.',
+      'deleteHistory': 'Удалить',
+      'showOnlyCosts': 'Траты',
+      'showOnlyIncome': 'Доход',
+      'showAllHistory': 'Вся история',
+      'selectedFilter': 'Выбран: ',
     },
   };
 
@@ -192,6 +227,39 @@ class _Strings {
 
   /// 'No internet connection'
   String get conntectionState => _getString('conntectionState');
+
+  /// 'Forgot password'
+  String get forgotPassword => _getString('forgotPassword');
+
+  /// 'An email to reset your password was sent to your email address'
+  String get messageSentToEmail => _getString('messageSentToEmail');
+
+  /// 'Welcome'
+  String get welcome => _getString('welcome');
+
+  /// 'Get started'
+  String get getStarted => _getString('getStarted');
+
+  /// 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month'
+  String get welcomeText => _getString('welcomeText');
+
+  /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.'
+  String get welcomeTextFoundError => _getString('welcomeTextFoundError');
+
+  /// 'Delete'
+  String get deleteHistory => _getString('deleteHistory');
+
+  /// 'Costs'
+  String get showOnlyCosts => _getString('showOnlyCosts');
+
+  /// 'Income'
+  String get showOnlyIncome => _getString('showOnlyIncome');
+
+  /// 'All history'
+  String get showAllHistory => _getString('showAllHistory');
+
+  /// 'Selected: '
+  String get selectedFilter => _getString('selectedFilter');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {

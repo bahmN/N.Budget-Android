@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -55,7 +53,6 @@ final hintTxtSum = TextStyle(
     fontSize: 40, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
 final hintTxt = TextStyle(
     fontSize: 20, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
-
 final txtInput = TextStyle(
     fontSize: 20, fontWeight: FontWeight.w300, color: HexColor('#000000'));
 final txtHintInput = TextStyle(
@@ -67,9 +64,36 @@ final labelAuth = TextStyle(fontSize: 30, fontWeight: FontWeight.w200);
 final filterChipTxt = TextStyle(fontSize: 17, fontWeight: FontWeight.w300);
 final dateTxt = TextStyle(
     fontSize: 14, fontWeight: FontWeight.w200, color: HexColor('#A7A7A7'));
-final nameHistoryTxt = TextStyle(
+final nameHistoryTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
+final categoryHistoryTxt = TextStyle(
     color: HexColor('#A7A7A7'), fontSize: 17, fontWeight: FontWeight.w300);
-final sumHistoryTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+final sumCostsHistoryTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+final sumIncomeHistoryTxt = TextStyle(
+    fontSize: 20, fontWeight: FontWeight.w300, color: HexColor('#51A34F'));
+TextStyle selectedFilterTxt(BuildContext context) {
+  return TextStyle(
+      color: Theme.of(context).primaryColorDark,
+      fontSize: 17,
+      fontWeight: FontWeight.w300);
+}
+
+TextStyle bttnInsertTxt(BuildContext context) {
+  return TextStyle(
+      fontSize: MediaQuery.of(context).size.width / 21.8,
+      fontWeight: FontWeight.w300);
+}
+
+TextStyle welcomeTxt(BuildContext context) {
+  return TextStyle(
+      fontSize: MediaQuery.of(context).size.width / 20,
+      fontWeight: FontWeight.w300);
+}
+
+TextStyle welcomelabelTxt(BuildContext context) {
+  return TextStyle(
+      fontSize: MediaQuery.of(context).size.width / 10,
+      fontWeight: FontWeight.w200);
+}
 
 /*
   BorderShadows

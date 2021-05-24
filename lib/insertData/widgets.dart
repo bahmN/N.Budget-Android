@@ -37,7 +37,7 @@ class InsertWidgets {
         style: txtInput,
         cursorColor: Theme.of(context).primaryColor,
         cursorHeight: 20,
-        textCapitalization: TextCapitalization.words,
+        textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           hintText: R.stringsOf(context).title,
           hintStyle: hintTxt,
@@ -58,7 +58,7 @@ class InsertWidgets {
         style: txtInput,
         cursorColor: Theme.of(context).primaryColor,
         cursorHeight: 20,
-        textCapitalization: TextCapitalization.words,
+        textCapitalization: TextCapitalization.sentences,
         maxLines: null,
         decoration: InputDecoration(
           hintText: R.stringsOf(context).comment,

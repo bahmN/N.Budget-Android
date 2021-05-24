@@ -11,25 +11,23 @@ class MenuWidgets {
 
   Widget progressBarMenu(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 7),
+      height: MediaQuery.of(context).size.height / 50,
+      padding: EdgeInsets.only(top: 5),
       child: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height / 60,
             width: double.infinity,
             decoration: borderDontShadowsLightRed,
           ),
           LayoutBuilder(
             builder: (context, constrains) {
               return StreamBuilder<double>(
-                stream: widthPB(constrains.maxWidth),
+                stream: _sMenu.widthPB(constrains.maxWidth),
                 builder: (context, snapshot) {
-                  print(snapshot);
                   return AnimatedContainer(
                     duration: Duration(seconds: 3),
                     curve: Curves.ease,
                     decoration: borderDontShadowsLightGreen,
-                    height: MediaQuery.of(context).size.height / 60,
                     width: snapshot.data ?? constrains.maxWidth,
                   );
                 },
@@ -43,7 +41,6 @@ class MenuWidgets {
 
   Widget progressMenu(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 16,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       margin: EdgeInsets.only(bottom: 20),
       decoration: borderShadowsLight,
@@ -253,6 +250,8 @@ class MenuWidgets {
         onPressed: func,
         child: Text(
           label,
+          textAlign: TextAlign.center,
+          style: bttnInsertTxt(context),
         ),
       ),
     );
@@ -266,25 +265,76 @@ class HistoryWidget extends StatefulWidget {
   _HistoryWidgetState createState() => _HistoryWidgetState();
 }
 
+String selectedChoices;
+
 class _HistoryWidgetState extends State<HistoryWidget> {
+  void _select(String choice) {
+    setState(() {
+      selectedChoices = choice;
+    });
+    showSnackBar(choice);
+  }
+
+  void showSnackBar(String selection) {
+    final snackBarContent = SnackBar(
+      content: Text(
+        R.stringsOf(context).selectedFilter + '$selectedChoices',
+        style: selectedFilterTxt(context),
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBarContent);
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<String> choices = <String>[
+      R.stringsOf(context).showOnlyCosts,
+      R.stringsOf(context).showOnlyIncome,
+      R.stringsOf(context).showAllHistory
+    ];
     return Expanded(
       child: Container(
-        width: double.infinity,
         decoration: borderShadowsLight,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              width: double.infinity,
               height: MediaQuery.of(context).size.height / 20,
               decoration: borderDontShadowsLightCircularUp,
-              child: Center(
-                child: Text(
-                  R.stringsOf(context).historyContainer,
-                  style: txtHeader,
-                ),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width / 2.8),
+                    child: Text(
+                      R.stringsOf(context).historyContainer,
+                      style: txtHeader,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: PopupMenuButton(
+                        onSelected: _select,
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (BuildContext context) {
+                          return choices.map(
+                            (String choice) {
+                              return PopupMenuItem<String>(
+                                value: choice,
+                                child: Text(
+                                  choice,
+                                  style: bttnInsertTxt(context),
+                                ),
+                              );
+                            },
+                          ).toList();
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
