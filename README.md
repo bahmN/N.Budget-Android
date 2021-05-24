@@ -22,6 +22,10 @@ Link to the [apk file](https://github.com/bahmN/N.Budget-Android/blob/main/build
 11. adaptive_theme: ^1.1.0  
 12. flutter_rounded_date_picker: ^2.0.0  
 13. connectivity: ^3.0.3  
+14. introduction_screen: ^2.1.0  
+15. flutter_slidable: ^0.6.0  
+16. flutter_keyboard_visibility: ^5.0.2  
+17. flutter_native_splash: ^1.1.8+4  
 Full pubspec: [pubspec.yaml](https://github.com/bahmN/N.Budget-Android/blob/main/pubspec.yaml).
 
 ##### Verison 1.0 (22.03.2020)  
@@ -30,3 +34,13 @@ Version 1.0 adds all the main features of the app:
 2. Payment of expenses, income  
 3. Displaying your spending history  
 4. Delete History 
+
+##### Verison 1.1 (24.05.2020)  
+Updates to version 1.1:  
+1. Added revenue history  
+2. Added history filtering  
+3. Normalized the definition of the width and height of widgets  
+4. Added "Welcome screen"
+5. Implemented updating the numbers every new month
+6. Changed the formula for calculating "Today you can spend"
+7. Added splash screen
