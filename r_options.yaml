@@ -1,5 +1,9 @@
+path: 'lib/'
+generate_strings: true
+
 supported_locales:
-  - en
+  - en_US
+  - en_GB
   - ru
 
-fallback_locale: en
+fallback_locale: en_US
