@@ -7,20 +7,19 @@ import 'package:flutter/material.dart';
 class R {
   static const images = _ImageResources();
   static const svg = _SvgResources();
-  static const fonts = _FontResources();
   static _Strings stringsOf(BuildContext context) => _Strings.of(context);
 }
 
 class _ImageResources {
   const _ImageResources();
 
-  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logo.png)
+  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logo.png)
   final logo = r'assets/images/logo.png';
 
-  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logoApp.png)
+  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logoApp.png)
   final logo_app = r'assets/images/logoApp.png';
 
-  /// ![](C:\flutterProject\N.Budget-Android\assets/images/logoWhite.png)
+  /// ![](D:\programming\flutter\N.Budget-Android\assets/images/logoWhite.png)
   final logo_white = r'assets/images/logoWhite.png';
 }
 
@@ -28,14 +27,10 @@ class _SvgResources {
   const _SvgResources();
 }
 
-class _FontResources {
-  const _FontResources();
-}
-
 class _Strings {
   const _Strings(this.locale);
 
-  static const _fallbackLocale = Locale('en');
+  static const _fallbackLocale = Locale('en', 'US');
   final Locale locale;
 
   static _Strings of(BuildContext context) {
@@ -43,7 +38,53 @@ class _Strings {
   }
 
   static const Map<String, Map<String, String>> _localizedValues = {
-    'en': {
+    'en_US': {
+      'signInButtonAuth': 'Sign in',
+      'signUpButtonAuth': 'Sign up',
+      'loginHintAuth': 'Login',
+      'passwordHintAuth': 'Password',
+      'labelsignInAuth': 'Sign in',
+      'labelsignUpAuth': 'Sign up',
+      'labelBottomSignUpAuth': 'Not registered? Sign up!',
+      'labelBottomSignInAuth': 'Already registered? Log in!',
+      'emptyTextFieldAuth': 'Login or password fields cannot be empty',
+      'emptyUserAuth': 'Wrong email or password entered',
+      'incorrectEmailAuth': 'Incorrect email input',
+      'incorrectPasswordAuth':
+          'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
+      'successfulSignUpAuth': 'You have successfully registered',
+      'nameApp': 'N.Budget',
+      'balanceMonthFirstBlock': 'Until the end of the month',
+      'incomeI': 'Income',
+      'mandatoryExpenses': 'Mandatory expenses',
+      'freeMoney': 'Free money',
+      'dailyBudget': 'Today you can spend',
+      'incomeLabel': 'Add income',
+      'costsLabel': 'Add costs',
+      'saveData': 'Save',
+      'symbolMoney': '\$',
+      'title': 'Title...',
+      'comment': 'Comment...',
+      'datePickerActionButton': 'Today',
+      'zeroMoney': '0.0',
+      'historyContainer': 'History',
+      'conntectionState': 'No internet connection',
+      'forgotPassword': 'Forgot password',
+      'messageSentToEmail':
+          'An email to reset your password was sent to your email address',
+      'welcome': 'Welcome',
+      'getStarted': 'Get started',
+      'welcomeText':
+          'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
+      'welcomeTextFoundError':
+          'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
+      'deleteHistory': 'Delete',
+      'showOnlyCosts': 'Costs',
+      'showOnlyIncome': 'Income',
+      'showAllHistory': 'All history',
+      'selectedFilter': 'Selected: ',
+    },
+    'en_GB': {
       'signInButtonAuth': 'Sign in',
       'signUpButtonAuth': 'Sign up',
       'loginHintAuth': 'Login',
@@ -124,9 +165,9 @@ class _Strings {
       'welcome': 'Добро пожаловать',
       'getStarted': 'Начать',
       'welcomeText':
-          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним ты можешь запросто следить за своими тратами и будешь знать сколько осталось до конца месяца.',
+          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним Вы сможете запросто следить за своими тратами и будете знать сколько осталось до конца месяца.',
       'welcomeTextFoundError':
-          'Если вы обнаружили какую-то ошибку или у вас есть предложение как улучшить приложение, то пишите на нашу почту nbudget.help@gmail.com.',
+          'Если Вы обнаружили какую-то ошибку или у Вас есть предложение как улучшить приложение, то пишите на нашу почту nbudget.help@gmail.com.',
       'deleteHistory': 'Удалить',
       'showOnlyCosts': 'Траты',
       'showOnlyIncome': 'Доход',
@@ -243,7 +284,7 @@ class _Strings {
   /// 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month'
   String get welcomeText => _getString('welcomeText');
 
-  /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email example@gmail.com.'
+  /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.'
   String get welcomeTextFoundError => _getString('welcomeTextFoundError');
 
   /// 'Delete'
@@ -266,11 +307,12 @@ class RStringsDelegate extends LocalizationsDelegate<_Strings> {
   const RStringsDelegate();
 
   static const supportedLocales = [
-    Locale('en'),
+    Locale('en', 'US'),
+    Locale('en', 'GB'),
     Locale('ru'),
   ];
 
-  static const fallbackLocale = Locale('en');
+  static const fallbackLocale = Locale('en', 'US');
 
   @override
   bool isSupported(Locale locale) => supportedLocales.contains(locale);
