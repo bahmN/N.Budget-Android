@@ -41,7 +41,6 @@ class _MenuScreenState extends State<MenuScreen> {
         child: StreamBuilder<bool>(
           stream: _bMenu.outputStateStream,
           builder: (context, snapshot) {
-            print(snapshot);
             return snapshot.data ?? false
                 ? Column(
                     mainAxisSize: MainAxisSize.max,

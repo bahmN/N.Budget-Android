@@ -85,7 +85,7 @@ TextStyle bttnInsertTxt(BuildContext context) {
 
 TextStyle welcomeTxt(BuildContext context) {
   return TextStyle(
-      fontSize: MediaQuery.of(context).size.width / 20,
+      fontSize: MediaQuery.of(context).size.width / 22,
       fontWeight: FontWeight.w300);
 }
 
