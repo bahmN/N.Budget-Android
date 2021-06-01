@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nbudget/menu/menuBloc.dart';
 import 'package:nbudget/menu/menuComponents.dart';
 import 'package:nbudget/menu/menuService.dart';
 import 'package:nbudget/r.dart';
@@ -259,8 +258,7 @@ class MenuWidgets {
 }
 
 class HistoryWidget extends StatefulWidget {
-  HistoryWidget({Key key, @required this.bloc}) : super(key: key);
-  final MenuBloc bloc;
+  HistoryWidget({Key key}) : super(key: key);
   @override
   _HistoryWidgetState createState() => _HistoryWidgetState();
 }
@@ -294,61 +292,53 @@ class _HistoryWidgetState extends State<HistoryWidget> {
       R.stringsOf(context).showAllHistory
     ];
 
-    return Expanded(
-      child: Container(
-        decoration: borderShadowsLight,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 20,
-              decoration: borderDontShadowsLightCircularUp,
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 2.8),
-                    child: Text(
-                      R.stringsOf(context).historyContainer,
-                      style: txtHeader,
+    return Container(
+      decoration: borderShadowsLight,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height / 20,
+            decoration: borderDontShadowsLightCircularUp,
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width / 2.8),
+                  child: Text(
+                    R.stringsOf(context).historyContainer,
+                    style: txtHeader,
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: PopupMenuButton(
+                      onSelected: _select,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (BuildContext context) {
+                        return choices.map(
+                          (String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(
+                                choice,
+                                style: bttnInsertTxt(context),
+                              ),
+                            );
+                          },
+                        ).toList();
+                      },
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.centerRight,
-                      child: PopupMenuButton(
-                        onSelected: _select,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (BuildContext context) {
-                          return choices.map(
-                            (String choice) {
-                              return PopupMenuItem<String>(
-                                value: choice,
-                                child: Text(
-                                  choice,
-                                  style: bttnInsertTxt(context),
-                                ),
-                              );
-                            },
-                          ).toList();
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
-              child: HistoryComponents(),
-            ),
-            IconButton(
-              icon: Icon(Icons.fullscreen_rounded),
-              onPressed: () {
-                widget.bloc.inputEventSink.add(ButtonEventMenu.event_Click);
-              },
-            ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: HistoryComponents(),
+          ),
+        ],
       ),
     );
   }
