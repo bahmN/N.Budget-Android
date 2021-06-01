@@ -227,7 +227,7 @@ class MenuWidgets {
                       return Container(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          '${snapshot.data.toStringAsFixed(2)}' +
+                          '${snapshot.data.toStringAsFixed(1)}' +
                               R.stringsOf(context).symbolMoney,
                           style: txtNormal,
                         ),
@@ -293,6 +293,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
       R.stringsOf(context).showOnlyIncome,
       R.stringsOf(context).showAllHistory
     ];
+
     return Expanded(
       child: Container(
         decoration: borderShadowsLight,

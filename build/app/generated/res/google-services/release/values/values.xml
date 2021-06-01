@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">917288411835-c87ruat3visfr2t69hulvlbovdd2bc4b.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://nbudget-ivn-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">917288411835</string>
+    <string name="google_api_key" translatable="false">AIzaSyAK5FPlpcm5IJHFXX-8Ma2q-pMr7k8LvtI</string>
+    <string name="google_app_id" translatable="false">1:917288411835:android:cabe8966d2ad9c504bbf9e</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAK5FPlpcm5IJHFXX-8Ma2q-pMr7k8LvtI</string>
+    <string name="google_storage_bucket" translatable="false">nbudget-ivn.appspot.com</string>
+    <string name="project_id" translatable="false">nbudget-ivn</string>
+</resources>

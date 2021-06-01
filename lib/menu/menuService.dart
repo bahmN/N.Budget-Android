@@ -114,8 +114,14 @@ class ServiceMenu {
     final String formattedDay = formatterDay.format(toDay);
     int toDayAsInt = int.parse(formattedDay);
 
-    return remainderMoney()
-        .map((event) => event / (lastDayOfMonthAsInt - toDayAsInt));
+    return remainderMoney().map((event) {
+      int remainingDaysAsInt = lastDayOfMonthAsInt - toDayAsInt;
+      if (remainingDaysAsInt > 0) {
+        return event / (lastDayOfMonthAsInt - toDayAsInt);
+      } else {
+        return event;
+      }
+    });
   }
 
   Stream<QuerySnapshot> readHistoryCostsStream() {

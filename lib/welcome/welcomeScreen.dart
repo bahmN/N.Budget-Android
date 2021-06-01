@@ -19,16 +19,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   @override
-  void dispose() {
-    SystemChrome.setEnabledSystemUIOverlays(
-        [SystemUiOverlay.top, SystemUiOverlay.bottom]);
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     WelcomeLogic _wLogic = WelcomeLogic();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).primaryColorLight,
       body: Container(
         padding: EdgeInsets.fromLTRB(
@@ -45,8 +39,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   EdgeInsets.only(top: MediaQuery.of(context).size.width / 8),
               child: Image.asset(
                 R.images.logo_white,
-                width: 205,
-                height: 205,
+                width: MediaQuery.of(context).size.width / 2,
+                height: MediaQuery.of(context).size.height / 5,
               ),
             ),
             Padding(
@@ -57,6 +51,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 textAlign: TextAlign.justify,
                 style: welcomeTxt(context),
               ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             Text(
               R.stringsOf(context).welcomeTextFoundError,
