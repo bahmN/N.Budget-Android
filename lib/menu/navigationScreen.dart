@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:nbudget/info/infoScreen.dart';
 import 'package:nbudget/menu/historyScreen.dart';
@@ -28,6 +29,16 @@ class _NavScreenState extends State<NavScreen> {
     }
 
     return Scaffold(
+      body: PageTransitionSwitcher(
+        transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+            SharedAxisTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          transitionType: SharedAxisTransitionType.horizontal,
+          child: child,
+        ),
+        child: pageList[_selectedIndex],
+      ),
       bottomNavigationBar: StreamBuilder<bool>(
         builder: (context, snapshot) {
           return BottomNavigationBar(
@@ -37,23 +48,22 @@ class _NavScreenState extends State<NavScreen> {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_rounded),
-                label: R.stringsOf(context).NavBarHome,
+                label: R.stringsOf(context).navBarHome,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.history_rounded),
-                label: R.stringsOf(context).NavBarHistory,
+                label: R.stringsOf(context).navBarHistory,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.info_outline_rounded),
-                label: R.stringsOf(context).NavBarInfo,
-              )
+                label: R.stringsOf(context).navBarInfo,
+              ),
             ],
             currentIndex: _selectedIndex,
             onTap: (value) => _onItemTapped(value, snapshot),
           );
         },
       ),
-      body: pageList[_selectedIndex],
     );
   }
 }
