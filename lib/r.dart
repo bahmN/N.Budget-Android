@@ -83,9 +83,11 @@ class _Strings {
       'showOnlyIncome': 'Income',
       'showAllHistory': 'All history',
       'selectedFilter': 'Selected: ',
-      'NavBarHome': 'Home',
-      'NavBarHistory': 'History',
-      'NavBarInfo': 'Info',
+      'navBarHome': 'Home',
+      'navBarHistory': 'History',
+      'navBarInfo': 'Info',
+      'versionApp': 'Verison 1.1',
+      'writeToTheMail': 'Write to the email',
     },
     'en_GB': {
       'signInButtonAuth': 'Sign in',
@@ -132,9 +134,11 @@ class _Strings {
       'showOnlyIncome': 'Income',
       'showAllHistory': 'All history',
       'selectedFilter': 'Selected: ',
-      'NavBarHome': 'Home',
-      'NavBarHistory': 'History',
-      'NavBarInfo': 'Info',
+      'navBarHome': 'Home',
+      'navBarHistory': 'History',
+      'navBarInfo': 'Info',
+      'versionApp': 'Version 1.1',
+      'writeToTheMail': 'Write to the email',
     },
     'ru': {
       'signInButtonAuth': 'Войти',
@@ -179,9 +183,11 @@ class _Strings {
       'showOnlyIncome': 'Доход',
       'showAllHistory': 'Вся история',
       'selectedFilter': 'Выбран: ',
-      'NavBarHome': 'Домой',
-      'NavBarHistory': 'История',
-      'NavBarInfo': 'Информация',
+      'navBarHome': 'Домой',
+      'navBarHistory': 'История',
+      'navBarInfo': 'Информация',
+      'versionApp': 'Версия 1.1',
+      'writeToTheMail': 'Написать на почту',
     },
   };
 
@@ -312,13 +318,19 @@ class _Strings {
   String get selectedFilter => _getString('selectedFilter');
 
   /// 'Home'
-  String get NavBarHome => _getString('NavBarHome');
+  String get navBarHome => _getString('navBarHome');
 
   /// 'History'
-  String get NavBarHistory => _getString('NavBarHistory');
+  String get navBarHistory => _getString('navBarHistory');
 
   /// 'Info'
-  String get NavBarInfo => _getString('NavBarInfo');
+  String get navBarInfo => _getString('navBarInfo');
+
+  /// 'Verison 1.1'
+  String get versionApp => _getString('versionApp');
+
+  /// 'Write to the email'
+  String get writeToTheMail => _getString('writeToTheMail');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {

@@ -38,7 +38,9 @@
     "showOnlyIncome" : "Доход",
     "showAllHistory" : "Вся история",
     "selectedFilter" : "Выбран: ",
-    "NavBarHome": "Домой",
-    "NavBarHistory" : "История",
-    "NavBarInfo": "Информация"  
+    "navBarHome": "Домой",
+    "navBarHistory" : "История",
+    "navBarInfo": "Информация",
+    "versionApp" : "Версия 1.1",
+    "writeToTheMail" : "Написать на почту"
 }

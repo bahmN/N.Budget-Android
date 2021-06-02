@@ -39,7 +39,10 @@
     "showOnlyIncome" : "Income",
     "showAllHistory" : "All history",
     "selectedFilter" : "Selected: ",
-    "NavBarHome": "Home",
-    "NavBarHistory" : "History",
-    "NavBarInfo": "Info"  
+    "navBarHome": "Home",
+    "navBarHistory" : "History",
+    "navBarInfo": "Info",
+    "versionApp" : "Verison 1.1",
+    "writeToTheMail" : "Write to the email"
+
 }
