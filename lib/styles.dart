@@ -70,6 +70,13 @@ final categoryHistoryTxt = TextStyle(
 final sumCostsHistoryTxt = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
 final sumIncomeHistoryTxt = TextStyle(
     fontSize: 20, fontWeight: FontWeight.w300, color: HexColor('#51A34F'));
+TextStyle versionApp(BuildContext context) {
+  return TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w300,
+      color: Theme.of(context).primaryColorDark);
+}
+
 TextStyle selectedFilterTxt(BuildContext context) {
   return TextStyle(
       color: Theme.of(context).primaryColorDark,
@@ -109,15 +116,6 @@ final borderShadowsLight = BoxDecoration(
     )
   ],
 );
-
-/*
-  Don't shadows
-*/
-final borderDontShadowsLight = BoxDecoration(
-  color: HexColor('#FFE60D'),
-  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-);
-
 /*
   Don't shadows
 */

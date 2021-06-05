@@ -31,19 +31,25 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
         ],
       ),
-      body: Container(
-        color: Theme.of(context).backgroundColor,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          children: [
-            _iWidget.verisonApp(context),
-            Expanded(
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                child: _iWidget.infoButton(context, () => _iLogic.sendEmail()),
+      body: Center(
+        child: Container(
+          color: Theme.of(context).backgroundColor,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Column(
+            children: [
+              _iWidget.verisonApp(context),
+              _iWidget.infoButton(
+                context,
+                R.stringsOf(context).writeToTheMail,
+                () async => await _iLogic.sendEmail(),
               ),
-            ),
-          ],
+              _iWidget.infoButton(
+                context,
+                R.stringsOf(context).resetPassword,
+                () async => await _iLogic.resetPassword(context),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -30,6 +30,10 @@ class AuthService {
     }
   }
 
+  Future resetPassword(String email) async {
+    return await _fAuth.sendPasswordResetEmail(email: email);
+  }
+
   Stream<MyUser> get currentUser {
     return _fAuth
         .authStateChanges()

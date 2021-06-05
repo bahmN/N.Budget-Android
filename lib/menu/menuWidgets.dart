@@ -270,10 +270,10 @@ class _HistoryWidgetState extends State<HistoryWidget> {
     setState(() {
       selectedChoices = choice;
     });
-    showSnackBar(choice);
+    showSnackBar();
   }
 
-  void showSnackBar(String selection) {
+  void showSnackBar() {
     final snackBarContent = SnackBar(
       content: Text(
         R.stringsOf(context).selectedFilter + '$selectedChoices',
