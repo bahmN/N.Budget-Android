@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nbudget/domains/myUser.dart';
 import 'package:nbudget/insertData/costs/costsService.dart';
 import 'package:nbudget/insertData/widgets.dart';
 import 'package:nbudget/r.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CostsScreen extends StatelessWidget {
@@ -11,8 +13,11 @@ class CostsScreen extends StatelessWidget {
   String _category;
   InsertWidgets _wInsert = InsertWidgets();
   CostsService _sCosts = CostsService();
+
   @override
   Widget build(BuildContext context) {
+    final MyUser user = Provider.of<MyUser>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -31,6 +36,7 @@ class CostsScreen extends StatelessWidget {
                   ? _category = R.stringsOf(context).mandatoryExpenses
                   : _category = '';
               await _sCosts.writeCosts(
+                  user.id,
                   _nameControllerC.text,
                   _commentControllerC.text,
                   double.parse(_sumControllerC.text),
