@@ -85,7 +85,7 @@ class _Strings {
       'versionApp': 'Verison 1.1',
       'welcome': 'Welcome',
       'welcomeText':
-          'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
+          'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.',
       'welcomeTextFoundError':
           'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
       'writeToTheMail': 'Write to the email',
@@ -138,7 +138,7 @@ class _Strings {
       'versionApp': 'Verison 1.1',
       'welcome': 'Welcome',
       'welcomeText':
-          'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
+          'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.',
       'welcomeTextFoundError':
           'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
       'writeToTheMail': 'Write to the email',
@@ -191,7 +191,7 @@ class _Strings {
       'versionApp': 'Версия 1.1',
       'welcome': 'Добро пожаловать',
       'welcomeText':
-          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним Вы сможете запросто следить за своими тратами и будете знать сколько осталось до конца месяца.',
+          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним Вы сможете запросто следить за своими расходами и будете знать сколько осталось средств до конца месяца.',
       'welcomeTextFoundError':
           'Если Вы обнаружили какую-то ошибку или у Вас есть предложение как улучшить приложение, то пишите на нашу почту nbudget.help@gmail.com.',
       'writeToTheMail': 'Написать на почту',
@@ -334,7 +334,7 @@ class _Strings {
   /// 'Welcome'
   String get welcome => _getString('welcome');
 
-  /// 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month'
+  /// 'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.'
   String get welcomeText => _getString('welcomeText');
 
   /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.'
