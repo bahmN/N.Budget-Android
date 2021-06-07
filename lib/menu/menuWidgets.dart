@@ -21,7 +21,7 @@ class MenuWidgets {
           LayoutBuilder(
             builder: (context, constrains) {
               return StreamBuilder<double>(
-                stream: _sMenu.widthPB(constrains.maxWidth),
+                stream: _sMenu.widthPB(context, constrains.maxWidth),
                 builder: (context, snapshot) {
                   return AnimatedContainer(
                     duration: Duration(seconds: 3),
@@ -55,7 +55,7 @@ class MenuWidgets {
               ),
               Expanded(
                 child: StreamBuilder<double>(
-                  stream: _sMenu.remainderMoney(),
+                  stream: _sMenu.remainderMoney(context),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Container(
@@ -102,7 +102,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.readIncomeSum(),
+                    stream: _sMenu.readIncomeSum(context),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
@@ -139,7 +139,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.readMandatoryCostsSum(),
+                    stream: _sMenu.readMandatoryCostsSum(context),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
@@ -176,7 +176,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.freeMoney(),
+                    stream: _sMenu.freeMoney(context),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
@@ -211,7 +211,7 @@ class MenuWidgets {
               ),
               Expanded(
                 child: StreamBuilder<double>(
-                  stream: _sMenu.moneyPerDay(),
+                  stream: _sMenu.moneyPerDay(context),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Container(

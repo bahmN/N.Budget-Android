@@ -1,19 +1,16 @@
 import 'dart:async';
 
-import 'package:calendarro/date_utils.dart';
+import 'package:calendarro/date_utils.dart' as dUtils;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:nbudget/domains/myUser.dart';
 import 'package:nbudget/menu/menuComponents.dart';
 import 'package:nbudget/menu/menuWidgets.dart';
 import 'package:nbudget/r.dart';
+import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
-
-// ID user for read data
-final FirebaseAuth _auth = FirebaseAuth.instance;
-final User _user = _auth.currentUser;
-final _idUser = _user.uid;
 
 class ServiceMenu {
   Future signOut() async {
@@ -21,7 +18,8 @@ class ServiceMenu {
     await _logOut.signOut();
   }
 
-  Stream<double> readIncomeSum() {
+  Stream<double> readIncomeSum(BuildContext context) {
+    final MyUser user = Provider.of<MyUser>(context);
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
 
@@ -30,7 +28,7 @@ class ServiceMenu {
 
     FirebaseFirestore.instance
         .collection('Income')
-        .where('idUser', isEqualTo: _idUser)
+        .where('idUser', isEqualTo: user.id)
         .where('dateIncome', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
         .listen((event) {
@@ -44,7 +42,9 @@ class ServiceMenu {
     return _streamC.stream;
   }
 
-  Stream<double> readMandatoryCostsSum() {
+  Stream<double> readMandatoryCostsSum(BuildContext context) {
+    final MyUser user = Provider.of<MyUser>(context);
+
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
     DateTime date = DateTime.now();
@@ -52,7 +52,7 @@ class ServiceMenu {
 
     FirebaseFirestore.instance
         .collection('Costs')
-        .where('idUser', isEqualTo: _idUser)
+        .where('idUser', isEqualTo: user.id)
         .where('category', isEqualTo: 'Обязательные траты')
         .where('dateCosts', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
@@ -63,7 +63,9 @@ class ServiceMenu {
     return _streamC.stream;
   }
 
-  Stream<double> readNotMandatoryCostsSum() {
+  Stream<double> readNotMandatoryCostsSum(BuildContext context) {
+    final MyUser user = Provider.of<MyUser>(context);
+
     // ignore: close_sinks
     StreamController<double> _streamC = StreamController.broadcast();
     DateTime date = DateTime.now();
@@ -71,7 +73,7 @@ class ServiceMenu {
 
     FirebaseFirestore.instance
         .collection('Costs')
-        .where('idUser', isEqualTo: _idUser)
+        .where('idUser', isEqualTo: user.id)
         .where('category', isEqualTo: '')
         .where('dateCosts', isGreaterThanOrEqualTo: begMonth)
         .snapshots()
@@ -82,21 +84,21 @@ class ServiceMenu {
     return _streamC.stream;
   }
 
-  Stream<double> freeMoney() {
-    return CombineLatestStream([readIncomeSum(), readMandatoryCostsSum()],
-        (args) {
+  Stream<double> freeMoney(BuildContext context) {
+    return CombineLatestStream(
+        [readIncomeSum(context), readMandatoryCostsSum(context)], (args) {
       return args[0] - args[1];
     });
   }
 
-  Stream<double> remainderMoney() {
-    return CombineLatestStream([freeMoney(), readNotMandatoryCostsSum()],
-        (args) {
+  Stream<double> remainderMoney(BuildContext context) {
+    return CombineLatestStream(
+        [freeMoney(context), readNotMandatoryCostsSum(context)], (args) {
       return args[0] - args[1];
     });
   }
 
-  Stream<double> moneyPerDay() {
+  Stream<double> moneyPerDay(BuildContext context) {
     //Last day of month
     final DateTime nowYear = DateTime.now();
     final DateFormat formatterYear = DateFormat.y();
@@ -104,7 +106,7 @@ class ServiceMenu {
     final DateTime nowMonth = DateTime.now();
     final DateFormat formatterMonth = DateFormat.M();
     final String formattedMonth = formatterMonth.format(nowMonth);
-    DateTime lastDayOfMonth = DateUtils.getLastDayOfMonth(
+    DateTime lastDayOfMonth = dUtils.DateUtils.getLastDayOfMonth(
         DateTime(int.parse(formattedYear), int.parse(formattedMonth)));
     int lastDayOfMonthAsInt = lastDayOfMonth.day;
 
@@ -114,7 +116,7 @@ class ServiceMenu {
     final String formattedDay = formatterDay.format(toDay);
     int toDayAsInt = int.parse(formattedDay);
 
-    return remainderMoney().map((event) {
+    return remainderMoney(context).map((event) {
       int remainingDaysAsInt = lastDayOfMonthAsInt - toDayAsInt;
       if (remainingDaysAsInt > 0) {
         return event / (lastDayOfMonthAsInt - toDayAsInt);
@@ -124,22 +126,26 @@ class ServiceMenu {
     });
   }
 
-  Stream<QuerySnapshot> readHistoryCostsStream() {
+  Stream<QuerySnapshot> readHistoryCostsStream(BuildContext context) {
+    final MyUser user = Provider.of<MyUser>(context);
+
     return FirebaseFirestore.instance
         .collection('Costs')
-        .where('idUser', isEqualTo: _idUser)
+        .where('idUser', isEqualTo: user.id)
         .snapshots();
   }
 
-  Stream<QuerySnapshot> readHistoryIncomeStream() {
+  Stream<QuerySnapshot> readHistoryIncomeStream(BuildContext context) {
+    final MyUser user = Provider.of<MyUser>(context);
+
     return FirebaseFirestore.instance
         .collection('Income')
-        .where('idUser', isEqualTo: _idUser)
+        .where('idUser', isEqualTo: user.id)
         .snapshots();
   }
 
   Stream<List<FinanceItem>> items(BuildContext context) {
-    final costsStream = readHistoryCostsStream().map(
+    final costsStream = readHistoryCostsStream(context).map(
       (event) {
         return event.docs
             .map(
@@ -155,7 +161,7 @@ class ServiceMenu {
       },
     );
 
-    final incomeStream = readHistoryIncomeStream().map(
+    final incomeStream = readHistoryIncomeStream(context).map(
       (event) {
         return event.docs
             .map(
@@ -186,10 +192,11 @@ class ServiceMenu {
     }
   }
 
-  Stream<double> widthPB(totalWidth) {
+  Stream<double> widthPB(BuildContext context, totalWidth) {
     ServiceMenu _sMenu = ServiceMenu();
     return CombineLatestStream(
-        [_sMenu.freeMoney(), _sMenu.readNotMandatoryCostsSum()], (args) {
+        [_sMenu.freeMoney(context), _sMenu.readNotMandatoryCostsSum(context)],
+        (args) {
       if (args[0] != 0.0 || args[1] != 0.0) {
         double percentMoney = ((args[0] - args[1]) / args[0]) *
             100; //(Остаток / свободные деньги) * 100

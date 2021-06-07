@@ -11,6 +11,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final MyUser user = Provider.of<MyUser>(context);
     final bool isLoggedIn = user != null;
+
     return isLoggedIn ? NavScreen() : AuthScreen();
   }
 }

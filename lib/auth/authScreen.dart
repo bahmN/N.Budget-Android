@@ -74,7 +74,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         context,
                         R.stringsOf(context).labelsignUpAuth,
                         R.stringsOf(context).signUpButtonAuth,
-                        () => _signUpButtonAction,
+                        _signUpButtonAction,
                         _emailController,
                         _passwordController),
                     Expanded(
@@ -144,7 +144,7 @@ class _AuthScreenState extends State<AuthScreen> {
     }
   }
 
-  void _signUpButtonAction(BuildContext context) async {
+  void _signUpButtonAction() async {
     _email = _emailController.text;
     _password = _passwordController.text;
     String _emailVal =
@@ -176,6 +176,7 @@ class _AuthScreenState extends State<AuthScreen> {
       } else {
         MyUser _ = await _authService.signUpWithEmainAndPassword(
             _email.trim(), _password.trim());
+
         Fluttertoast.showToast(
             msg: R.stringsOf(context).successfulSignUpAuth,
             toastLength: Toast.LENGTH_LONG,

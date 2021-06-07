@@ -12,9 +12,9 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  ServiceMenu _sMenu = ServiceMenu();
   MenuWidgets _wMenu = MenuWidgets();
   MenuMethods _mMenu = MenuMethods();
+  ServiceMenu _sMenu = ServiceMenu();
 
   @override
   Widget build(BuildContext context) {

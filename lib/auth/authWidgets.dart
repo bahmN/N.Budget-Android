@@ -1,9 +1,7 @@
-//TODO: перенести все виджеты сюда
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:nbudget/auth/resetPassword/resetPasswordScreen.dart';
-import 'package:nbudget/auth/resetPassword/resetpasswordLogic.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
 
@@ -20,7 +18,7 @@ class AuthWidgets {
       BuildContext context,
       String label,
       String labelButton,
-      void func(),
+      Function func,
       TextEditingController emailController,
       TextEditingController passwordController) {
     double _marginTopFormAuth;
@@ -107,7 +105,7 @@ class AuthWidgets {
     );
   }
 
-  Widget button(BuildContext context, String label, void func()) {
+  Widget button(BuildContext context, String label, Function func) {
     // ignore: deprecated_member_use
     return FlatButton(
       onPressed: func,
