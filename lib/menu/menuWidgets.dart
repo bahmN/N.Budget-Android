@@ -274,13 +274,33 @@ class _HistoryWidgetState extends State<HistoryWidget> {
   }
 
   void showSnackBar() {
-    final snackBarContent = SnackBar(
-      content: Text(
-        R.stringsOf(context).selectedFilter + '$selectedChoices',
-        style: selectedFilterTxt(context),
-      ),
-      backgroundColor: Theme.of(context).primaryColor,
-    );
+    var snackBarContent;
+    if (selectedChoices == R.stringsOf(context).showOnlyCosts) {
+      snackBarContent = SnackBar(
+        content: Text(
+          R.stringsOf(context).selectedFilterCosts,
+          style: selectedFilterTxt(context),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+      );
+    } else if (selectedChoices == R.stringsOf(context).showOnlyIncome) {
+      snackBarContent = SnackBar(
+        content: Text(
+          R.stringsOf(context).selectedFilterIncome,
+          style: selectedFilterTxt(context),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+      );
+    } else if (selectedChoices == R.stringsOf(context).showAllHistory) {
+      snackBarContent = SnackBar(
+        content: Text(
+          R.stringsOf(context).selectedFilterAll,
+          style: selectedFilterTxt(context),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+      );
+    }
+
     ScaffoldMessenger.of(context).showSnackBar(snackBarContent);
   }
 
@@ -291,7 +311,6 @@ class _HistoryWidgetState extends State<HistoryWidget> {
       R.stringsOf(context).showOnlyIncome,
       R.stringsOf(context).showAllHistory
     ];
-
     return Container(
       decoration: borderShadowsLight,
       child: Column(

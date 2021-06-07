@@ -73,7 +73,9 @@ class _Strings {
       'passwordHintAuth': 'Password',
       'resetPassword': 'Reset password',
       'saveData': 'Save',
-      'selectedFilter': 'Selected: ',
+      'selectedFilterCosts': 'Selected: costs',
+      'selectedFilterIncome': 'Selected: income',
+      'selectedFilterAll': 'Selected: all history',
       'showAllHistory': 'All history',
       'showOnlyCosts': 'Costs',
       'showOnlyIncome': 'Income',
@@ -126,7 +128,9 @@ class _Strings {
       'passwordHintAuth': 'Password',
       'resetPassword': 'Reset password',
       'saveData': 'Save',
-      'selectedFilter': 'Selected: ',
+      'selectedFilterCosts': 'Selected: costs',
+      'selectedFilterIncome': 'Selected: income',
+      'selectedFilterAll': 'Selected: all history',
       'showAllHistory': 'All history',
       'showOnlyCosts': 'Costs',
       'showOnlyIncome': 'Income',
@@ -169,7 +173,7 @@ class _Strings {
       'labelsignInAuth': 'Авторизация',
       'labelsignUpAuth': 'Регистрация',
       'loginHintAuth': 'Логин',
-      'mandatoryExpenses': 'Обязательные траты',
+      'mandatoryExpenses': 'Обязательные расходы',
       'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
       'navBarHistory': 'История',
       'navBarHome': 'Домой',
@@ -177,11 +181,11 @@ class _Strings {
       'passwordHintAuth': 'Пароль',
       'resetPassword': 'Сбросить пароль',
       'saveData': 'Сохранить',
-      'selectedFilter': 'Выбраны: траты',
-      'selectedFilter2': 'Выбран: доход',
-      'selectedFilter3': 'Выбрана: вся история',
+      'selectedFilterCosts': 'Выбраны: расходы',
+      'selectedFilterIncome': 'Выбран: доход',
+      'selectedFilterAll': 'Выбрана: вся история',
       'showAllHistory': 'Вся история',
-      'showOnlyCosts': 'Траты',
+      'showOnlyCosts': 'Расходы',
       'showOnlyIncome': 'Доход',
       'signInButtonAuth': 'Войти',
       'signUpButtonAuth': 'Зарегистрироваться',
@@ -301,8 +305,14 @@ class _Strings {
   /// 'Save'
   String get saveData => _getString('saveData');
 
-  /// 'Selected: '
-  String get selectedFilter => _getString('selectedFilter');
+  /// 'Selected: costs'
+  String get selectedFilterCosts => _getString('selectedFilterCosts');
+
+  /// 'Selected: income'
+  String get selectedFilterIncome => _getString('selectedFilterIncome');
+
+  /// 'Selected: all history'
+  String get selectedFilterAll => _getString('selectedFilterAll');
 
   /// 'All history'
   String get showAllHistory => _getString('showAllHistory');
