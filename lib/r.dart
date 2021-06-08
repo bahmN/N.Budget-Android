@@ -39,7 +39,9 @@ class _Strings {
 
   static const Map<String, Map<String, String>> _localizedValues = {
     'en_US': {
-      'balanceMonthFirstBlock': 'Until the end of the month',
+      'balanceMonthFirstBlock': 'Until the end',
+      'balanceMonthFirstBlock2': 'left',
+      'balanceMonthFirstBlock3': 'Until the end of the month',
       'comment': 'Comment...',
       'conntectionState': 'No internet connection',
       'costsLabel': 'Add costs',
@@ -92,9 +94,23 @@ class _Strings {
           'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
       'writeToTheMail': 'Write to the email',
       'zeroMoney': '0.0',
+      'january': 'january',
+      'february': 'february',
+      'march': 'march',
+      'april': 'april',
+      'may': 'may',
+      'june': 'june',
+      'july': 'july',
+      'august': 'august',
+      'september': 'septemper',
+      'october': 'october',
+      'november': 'november',
+      'december': 'december',
     },
     'en_GB': {
-      'balanceMonthFirstBlock': 'Until the end of the month',
+      'balanceMonthFirstBlock': 'Until the end',
+      'balanceMonthFirstBlock2': 'left',
+      'balanceMonthFirstBlock3': 'Until the end of the month',
       'comment': 'Comment...',
       'conntectionState': 'No internet connection',
       'costsLabel': 'Add costs',
@@ -147,9 +163,23 @@ class _Strings {
           'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
       'writeToTheMail': 'Write to the email',
       'zeroMoney': '0.0',
+      'january': 'january',
+      'february': 'february',
+      'march': 'march',
+      'april': 'april',
+      'may': 'may',
+      'june': 'june',
+      'july': 'july',
+      'august': 'august',
+      'september': 'septemper',
+      'october': 'october',
+      'november': 'november',
+      'december': 'december',
     },
     'ru': {
-      'balanceMonthFirstBlock': 'До конца месяца осталось',
+      'balanceMonthFirstBlock': 'До конца ',
+      'balanceMonthFirstBlock2': 'осталось',
+      'balanceMonthFirstBlock3': 'До конца месяца осталось',
       'comment': 'Комментарий...',
       'conntectionState': 'Нет подключения к интернету',
       'costsLabel': 'Добавить расходы',
@@ -200,6 +230,18 @@ class _Strings {
           'Если Вы обнаружили какую-то ошибку или у Вас есть предложение как улучшить приложение, то пишите на нашу почту nbudget.help@gmail.com.',
       'writeToTheMail': 'Написать на почту',
       'zeroMoney': '0.0',
+      'january': 'января',
+      'february': 'февраля',
+      'march': 'марта',
+      'april': 'апреля',
+      'may': 'мая',
+      'june': 'июня',
+      'july': 'июля',
+      'august': 'авгуса',
+      'september': 'сентября',
+      'october': 'октября',
+      'november': 'ноября',
+      'december': 'декабря',
     },
   };
 
@@ -209,8 +251,14 @@ class _Strings {
         code;
   }
 
-  /// 'Until the end of the month'
+  /// 'Until the end'
   String get balanceMonthFirstBlock => _getString('balanceMonthFirstBlock');
+
+  /// 'left'
+  String get balanceMonthFirstBlock2 => _getString('balanceMonthFirstBlock2');
+
+  /// 'Until the end of the month'
+  String get balanceMonthFirstBlock3 => _getString('balanceMonthFirstBlock3');
 
   /// 'Comment...'
   String get comment => _getString('comment');
@@ -355,6 +403,42 @@ class _Strings {
 
   /// '0.0'
   String get zeroMoney => _getString('zeroMoney');
+
+  /// 'january'
+  String get january => _getString('january');
+
+  /// 'february'
+  String get february => _getString('february');
+
+  /// 'march'
+  String get march => _getString('march');
+
+  /// 'april'
+  String get april => _getString('april');
+
+  /// 'may'
+  String get may => _getString('may');
+
+  /// 'june'
+  String get june => _getString('june');
+
+  /// 'july'
+  String get july => _getString('july');
+
+  /// 'august'
+  String get august => _getString('august');
+
+  /// 'septemper'
+  String get september => _getString('september');
+
+  /// 'october'
+  String get october => _getString('october');
+
+  /// 'november'
+  String get november => _getString('november');
+
+  /// 'december'
+  String get december => _getString('december');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {

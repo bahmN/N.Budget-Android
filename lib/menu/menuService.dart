@@ -212,4 +212,48 @@ class ServiceMenu {
       }
     });
   }
+
+  Stream<String> nameMonth(BuildContext context) {
+    //Month
+    var nowDate = DateTime.now();
+    var formatterDate = DateFormat.M();
+    int monthInt = int.parse(formatterDate.format(nowDate));
+    String monthStr;
+
+    // ignore: close_sinks
+    StreamController<String> controller;
+
+    if (monthInt == 1) {
+      monthStr = R.stringsOf(context).january;
+    } else if (monthInt == 2) {
+      monthStr = R.stringsOf(context).february;
+    } else if (monthInt == 3) {
+      monthStr = R.stringsOf(context).march;
+    } else if (monthInt == 4) {
+      monthStr = R.stringsOf(context).april;
+    } else if (monthInt == 5) {
+      monthStr = R.stringsOf(context).may;
+    } else if (monthInt == 6) {
+      monthStr = R.stringsOf(context).june;
+    } else if (monthInt == 7) {
+      monthStr = R.stringsOf(context).july;
+    } else if (monthInt == 8) {
+      monthStr = R.stringsOf(context).august;
+    } else if (monthInt == 9) {
+      monthStr = R.stringsOf(context).september;
+    } else if (monthInt == 10) {
+      monthStr = R.stringsOf(context).october;
+    } else if (monthInt == 11) {
+      monthStr = R.stringsOf(context).november;
+    } else if (monthInt == 12) {
+      monthStr = R.stringsOf(context).december;
+    }
+
+    controller = StreamController<String>(
+      onListen: () {
+        controller.add(monthStr);
+      },
+    );
+    return controller.stream;
+  }
 }
