@@ -39,110 +39,53 @@ class MenuWidgets {
   }
 
   Widget progressMenu(BuildContext context) {
-    return StreamBuilder<String>(
-      stream: _sMenu.nameMonth(context),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            margin: EdgeInsets.only(bottom: 20),
-            decoration: borderShadowsLight,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      R.stringsOf(context).balanceMonthFirstBlock +
-                          snapshot.data +
-                          ' ' +
-                          R.stringsOf(context).balanceMonthFirstBlock2,
-                      style: txtHeader,
-                    ),
-                    Expanded(
-                      child: StreamBuilder<double>(
-                        stream: _sMenu.remainderMoney(context),
-                        builder: (context, snapshot) {
-                          if (!snapshot.hasData) {
-                            return Container(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                R.stringsOf(context).balanceMonthFirstBlock3,
-                                style: txtNormal,
-                              ),
-                            );
-                          } else {
-                            return Container(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                '${snapshot.data}' +
-                                    R.stringsOf(context).symbolMoney,
-                                style: txtNormal,
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    ),
-                  ],
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      margin: EdgeInsets.only(bottom: 20),
+      decoration: borderShadowsLight,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Text(
+                R.stringsOf(context).balanceMonthFirstBlock +
+                    _sMenu.nameMonth(context) +
+                    ' ' +
+                    R.stringsOf(context).balanceMonthFirstBlock2,
+                style: txtHeader,
+              ),
+              Expanded(
+                child: StreamBuilder<double>(
+                  stream: _sMenu.remainderMoney(context),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Container(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          R.stringsOf(context).zeroMoney +
+                              R.stringsOf(context).symbolMoney,
+                          style: txtNormal,
+                        ),
+                      );
+                    } else {
+                      return Container(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          '${snapshot.data}' + R.stringsOf(context).symbolMoney,
+                          style: txtNormal,
+                        ),
+                      );
+                    }
+                  },
                 ),
-                progressBarMenu(context)
-              ],
-            ),
-          );
-        } else {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            margin: EdgeInsets.only(bottom: 20),
-            decoration: borderShadowsLight,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      R.stringsOf(context).balanceMonthFirstBlock +
-                          snapshot.data +
-                          ' ' +
-                          R.stringsOf(context).balanceMonthFirstBlock2,
-                      style: txtHeader,
-                    ),
-                    Expanded(
-                      child: StreamBuilder<double>(
-                        stream: _sMenu.remainderMoney(context),
-                        builder: (context, snapshot) {
-                          if (!snapshot.hasData) {
-                            return Container(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                R.stringsOf(context).zeroMoney +
-                                    R.stringsOf(context).symbolMoney,
-                                style: txtNormal,
-                              ),
-                            );
-                          } else {
-                            return Container(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                '${snapshot.data}' +
-                                    R.stringsOf(context).symbolMoney,
-                                style: txtNormal,
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                progressBarMenu(context)
-              ],
-            ),
-          );
-        }
-      },
+              ),
+            ],
+          ),
+          progressBarMenu(context)
+        ],
+      ),
     );
   }
 

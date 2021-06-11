@@ -155,6 +155,7 @@ class ServiceMenu {
                   type: FinanceItemType.costs,
                   date: doc['dateCosts'].toDate(),
                   category: doc['category'],
+                  comment: doc['commentCosts'],
                   id: doc.reference.id),
             )
             .toList();
@@ -170,6 +171,7 @@ class ServiceMenu {
                   sum: doc['sumIncome'],
                   type: FinanceItemType.income,
                   date: doc['dateIncome'].toDate(),
+                  comment: doc['commentIncome'],
                   id: doc.reference.id),
             )
             .toList();
@@ -213,15 +215,12 @@ class ServiceMenu {
     });
   }
 
-  Stream<String> nameMonth(BuildContext context) {
+  String nameMonth(BuildContext context) {
     //Month
     var nowDate = DateTime.now();
     var formatterDate = DateFormat.M();
     int monthInt = int.parse(formatterDate.format(nowDate));
     String monthStr;
-
-    // ignore: close_sinks
-    StreamController<String> controller;
 
     if (monthInt == 1) {
       monthStr = R.stringsOf(context).january;
@@ -249,11 +248,6 @@ class ServiceMenu {
       monthStr = R.stringsOf(context).december;
     }
 
-    controller = StreamController<String>(
-      onListen: () {
-        controller.add(monthStr);
-      },
-    );
-    return controller.stream;
+    return monthStr;
   }
 }

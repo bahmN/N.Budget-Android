@@ -6,7 +6,6 @@ import 'package:nbudget/r.dart';
 
 class MenuScreen extends StatefulWidget {
   MenuScreen({Key key}) : super(key: key);
-
   @override
   _MenuScreenState createState() => _MenuScreenState();
 }

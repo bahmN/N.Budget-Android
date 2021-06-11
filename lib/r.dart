@@ -42,7 +42,9 @@ class _Strings {
       'balanceMonthFirstBlock': 'Until the end',
       'balanceMonthFirstBlock2': 'left',
       'balanceMonthFirstBlock3': 'Until the end of the month',
+      'categoryFullHistoryInfo': 'Category: ',
       'comment': 'Comment...',
+      'commentFullHistoryInfo': 'Comments: ',
       'conntectionState': 'No internet connection',
       'costsLabel': 'Add costs',
       'dailyBudget': 'Today you can spend',
@@ -53,6 +55,7 @@ class _Strings {
       'enterEmail': 'Enter email',
       'forgotPassword': 'Forgot password',
       'freeMoney': 'Free money',
+      'fullHistoryInfo': 'Full information',
       'getStarted': 'Get started',
       'historyContainer': 'History',
       'incomeI': 'Income',
@@ -69,21 +72,24 @@ class _Strings {
       'messageSentToEmail':
           'An email to reset your password was sent to your email address',
       'nameApp': 'N.Budget',
+      'nameFullHistoryInfo': 'Name: ',
       'navBarHistory': 'History',
       'navBarHome': 'Home',
       'navBarInfo': 'Info',
       'passwordHintAuth': 'Password',
       'resetPassword': 'Reset password',
       'saveData': 'Save',
+      'selectedFilterAll': 'Selected: all history',
       'selectedFilterCosts': 'Selected: costs',
       'selectedFilterIncome': 'Selected: income',
-      'selectedFilterAll': 'Selected: all history',
       'showAllHistory': 'All history',
+      'showFullInfoHistory': 'View',
       'showOnlyCosts': 'Costs',
       'showOnlyIncome': 'Income',
       'signInButtonAuth': 'Sign in',
       'signUpButtonAuth': 'Sign up',
       'successfulSignUpAuth': 'You have successfully registered',
+      'sumFullHistoryInfo': 'Sum: ',
       'symbolMoney': '\$',
       'title': 'Title...',
       'versionApp': 'Verison 1.1',
@@ -111,7 +117,9 @@ class _Strings {
       'balanceMonthFirstBlock': 'Until the end',
       'balanceMonthFirstBlock2': 'left',
       'balanceMonthFirstBlock3': 'Until the end of the month',
+      'categoryFullHistoryInfo': 'Category: ',
       'comment': 'Comment...',
+      'commentFullHistoryInfo': 'Comments: ',
       'conntectionState': 'No internet connection',
       'costsLabel': 'Add costs',
       'dailyBudget': 'Today you can spend',
@@ -122,6 +130,7 @@ class _Strings {
       'enterEmail': 'Enter email',
       'forgotPassword': 'Forgot password',
       'freeMoney': 'Free money',
+      'fullHistoryInfo': 'Full information',
       'getStarted': 'Get started',
       'historyContainer': 'History',
       'incomeI': 'Income',
@@ -138,21 +147,24 @@ class _Strings {
       'messageSentToEmail':
           'An email to reset your password was sent to your email address',
       'nameApp': 'N.Budget',
+      'nameFullHistoryInfo': 'Name: ',
       'navBarHistory': 'History',
       'navBarHome': 'Home',
       'navBarInfo': 'Info',
       'passwordHintAuth': 'Password',
       'resetPassword': 'Reset password',
       'saveData': 'Save',
+      'selectedFilterAll': 'Selected: all history',
       'selectedFilterCosts': 'Selected: costs',
       'selectedFilterIncome': 'Selected: income',
-      'selectedFilterAll': 'Selected: all history',
       'showAllHistory': 'All history',
+      'showFullInfoHistory': 'View',
       'showOnlyCosts': 'Costs',
       'showOnlyIncome': 'Income',
       'signInButtonAuth': 'Sign in',
       'signUpButtonAuth': 'Sign up',
       'successfulSignUpAuth': 'You have successfully registered',
+      'sumFullHistoryInfo': 'Sum: ',
       'symbolMoney': '\$',
       'title': 'Title...',
       'versionApp': 'Verison 1.1',
@@ -180,7 +192,9 @@ class _Strings {
       'balanceMonthFirstBlock': 'До конца ',
       'balanceMonthFirstBlock2': 'осталось',
       'balanceMonthFirstBlock3': 'До конца месяца осталось',
+      'categoryFullHistoryInfo': 'Категория: ',
       'comment': 'Комментарий...',
+      'commentFullHistoryInfo': 'Комментарий: ',
       'conntectionState': 'Нет подключения к интернету',
       'costsLabel': 'Добавить расходы',
       'dailyBudget': 'Сегодня можно потратить',
@@ -191,6 +205,7 @@ class _Strings {
       'enterEmail': 'Введите почту',
       'forgotPassword': 'Забыл пароль',
       'freeMoney': 'Свободных денег',
+      'fullHistoryInfo': 'Полная информация',
       'getStarted': 'Начать',
       'historyContainer': 'История',
       'incomeI': 'Доход',
@@ -205,21 +220,24 @@ class _Strings {
       'loginHintAuth': 'Логин',
       'mandatoryExpenses': 'Обязательные расходы',
       'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
+      'nameFullHistoryInfo': 'Наименование: ',
       'navBarHistory': 'История',
       'navBarHome': 'Домой',
       'navBarInfo': 'Информация',
       'passwordHintAuth': 'Пароль',
       'resetPassword': 'Сбросить пароль',
       'saveData': 'Сохранить',
+      'selectedFilterAll': 'Выбрана: вся история',
       'selectedFilterCosts': 'Выбраны: расходы',
       'selectedFilterIncome': 'Выбран: доход',
-      'selectedFilterAll': 'Выбрана: вся история',
       'showAllHistory': 'Вся история',
+      'showFullInfoHistory': 'Посмотреть',
       'showOnlyCosts': 'Расходы',
       'showOnlyIncome': 'Доход',
       'signInButtonAuth': 'Войти',
       'signUpButtonAuth': 'Зарегистрироваться',
       'successfulSignUpAuth': 'Вы успешно зарегистрированы',
+      'sumFullHistoryInfo': 'Сумма: ',
       'symbolMoney': '₽',
       'title': 'Название...',
       'versionApp': 'Версия 1.1',
@@ -260,8 +278,14 @@ class _Strings {
   /// 'Until the end of the month'
   String get balanceMonthFirstBlock3 => _getString('balanceMonthFirstBlock3');
 
+  /// 'Category: '
+  String get categoryFullHistoryInfo => _getString('categoryFullHistoryInfo');
+
   /// 'Comment...'
   String get comment => _getString('comment');
+
+  /// 'Comments: '
+  String get commentFullHistoryInfo => _getString('commentFullHistoryInfo');
 
   /// 'No internet connection'
   String get conntectionState => _getString('conntectionState');
@@ -292,6 +316,9 @@ class _Strings {
 
   /// 'Free money'
   String get freeMoney => _getString('freeMoney');
+
+  /// 'Full information'
+  String get fullHistoryInfo => _getString('fullHistoryInfo');
 
   /// 'Get started'
   String get getStarted => _getString('getStarted');
@@ -335,6 +362,9 @@ class _Strings {
   /// 'N.Budget'
   String get nameApp => _getString('nameApp');
 
+  /// 'Name: '
+  String get nameFullHistoryInfo => _getString('nameFullHistoryInfo');
+
   /// 'History'
   String get navBarHistory => _getString('navBarHistory');
 
@@ -353,17 +383,20 @@ class _Strings {
   /// 'Save'
   String get saveData => _getString('saveData');
 
+  /// 'Selected: all history'
+  String get selectedFilterAll => _getString('selectedFilterAll');
+
   /// 'Selected: costs'
   String get selectedFilterCosts => _getString('selectedFilterCosts');
 
   /// 'Selected: income'
   String get selectedFilterIncome => _getString('selectedFilterIncome');
 
-  /// 'Selected: all history'
-  String get selectedFilterAll => _getString('selectedFilterAll');
-
   /// 'All history'
   String get showAllHistory => _getString('showAllHistory');
+
+  /// 'View'
+  String get showFullInfoHistory => _getString('showFullInfoHistory');
 
   /// 'Costs'
   String get showOnlyCosts => _getString('showOnlyCosts');
@@ -379,6 +412,9 @@ class _Strings {
 
   /// 'You have successfully registered'
   String get successfulSignUpAuth => _getString('successfulSignUpAuth');
+
+  /// 'Sum: '
+  String get sumFullHistoryInfo => _getString('sumFullHistoryInfo');
 
   /// '\$'
   String get symbolMoney => _getString('symbolMoney');

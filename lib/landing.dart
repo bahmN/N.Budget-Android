@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nbudget/auth/authScreen.dart';
 import 'package:nbudget/domains/myUser.dart';
-import 'package:nbudget/menu/navigationScreen.dart';
+import 'package:nbudget/menu/navigation.dart';
 import 'package:provider/provider.dart';
 
 class LandingPage extends StatelessWidget {

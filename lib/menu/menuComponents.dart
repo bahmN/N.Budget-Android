@@ -11,6 +11,7 @@ class HistoryComponents extends StatefulWidget {
   HistoryComponents({Key key}) : super(key: key);
   ServiceMenu _sMenu = ServiceMenu();
   MenuMethods _mMenu = MenuMethods();
+
   @override
   _HistoryComponentsState createState() => _HistoryComponentsState();
 }
@@ -40,8 +41,22 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                   child: Slidable(
                     actionPane: SlidableStrechActionPane(),
                     key: ObjectKey(snapshot.data[index]),
-                    actionExtentRatio: 0.20,
+                    actionExtentRatio: 0.2,
+                    actions: [
+                      //View full history information
+                      IconSlideAction(
+                        caption: R.stringsOf(context).showFullInfoHistory,
+                        color: Theme.of(context).indicatorColor,
+                        icon: Icons.insert_drive_file_rounded,
+                        onTap: () async {
+                          widget._mMenu.viewHistoryInfo(
+                              context, snapshot.data[index], index);
+                        },
+                      ),
+                    ],
+                    showAllActionsThreshold: 1,
                     secondaryActions: [
+                      //Delete history
                       IconSlideAction(
                         caption: R.stringsOf(context).deleteHistory,
                         color: Theme.of(context).errorColor,
@@ -100,7 +115,7 @@ class _HistoryComponentsState extends State<HistoryComponents> {
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        '- ${item.sum}₽',
+                        '- ${item.sum}' + R.stringsOf(context).symbolMoney,
                         style: sumCostsHistoryTxt,
                       ),
                     ),
@@ -173,12 +188,14 @@ class FinanceItem {
   final DateTime date;
   final String category;
   final String id;
+  final String comment;
   FinanceItem(
       {@required this.title,
       @required this.sum,
       @required this.type,
       @required this.date,
       @required this.id,
+      @required this.comment,
       this.category});
 }
 
