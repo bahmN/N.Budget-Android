@@ -34,88 +34,101 @@ class _HistoryInformationState extends State<HistoryInformation> {
       body: StreamBuilder<List<FinanceItem>>(
         stream: _sMenu.items(context),
         builder: (context, snapshot) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 13, vertical: 20),
-            child: Container(
-              padding: EdgeInsets.all(15),
-              width: double.infinity,
-              decoration: borderShadowsLight,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          R.stringsOf(context).nameFullHistoryInfo,
-                          style: txtHeader,
-                        ),
-                        Text(snapshot.data[widget.index].title,
-                            style: txtNormal),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          R.stringsOf(context).sumFullHistoryInfo,
-                          style: txtHeader,
-                        ),
-                        Text(
-                            snapshot.data[widget.index].sum.toString() +
-                                R.stringsOf(context).symbolMoney,
-                            style: txtNormal),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          R.stringsOf(context).sumFullHistoryInfo,
-                          style: txtHeader,
-                        ),
-                        Text(
-                            '${DateFormat('dd-MM-yyyy').format(snapshot.data[widget.index].date).toString()}',
-                            style: txtNormal),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          R.stringsOf(context).categoryFullHistoryInfo,
-                          style: txtHeader,
-                        ),
-                        Text(snapshot.data[widget.index].category,
-                            style: txtNormal),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          R.stringsOf(context).commentFullHistoryInfo,
-                          style: txtHeader,
-                        ),
-                        Text(snapshot.data[widget.index].comment,
-                            style: txtNormal),
-                      ],
-                    ),
-                  ),
-                ],
+          if (!snapshot.hasData) {
+            return Center(
+              child: Container(
+                padding: EdgeInsets.all(45),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width,
+                child: CircularProgressIndicator(
+                  backgroundColor: Theme.of(context).primaryColor,
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            return Container(
+              padding: EdgeInsets.symmetric(horizontal: 13, vertical: 20),
+              child: Container(
+                padding: EdgeInsets.all(15),
+                width: double.infinity,
+                decoration: borderShadowsLight,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: Row(
+                        children: [
+                          Text(
+                            R.stringsOf(context).nameFullHistoryInfo,
+                            style: txtHeader,
+                          ),
+                          Text(snapshot.data[widget.index].title,
+                              style: txtNormal),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: Row(
+                        children: [
+                          Text(
+                            R.stringsOf(context).sumFullHistoryInfo,
+                            style: txtHeader,
+                          ),
+                          Text(
+                              snapshot.data[widget.index].sum.toString() +
+                                  R.stringsOf(context).symbolMoney,
+                              style: txtNormal),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: Row(
+                        children: [
+                          Text(
+                            R.stringsOf(context).sumFullHistoryInfo,
+                            style: txtHeader,
+                          ),
+                          Text(
+                              '${DateFormat('dd-MM-yyyy').format(snapshot.data[widget.index].date).toString()}',
+                              style: txtNormal),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: Row(
+                        children: [
+                          Text(
+                            R.stringsOf(context).categoryFullHistoryInfo,
+                            style: txtHeader,
+                          ),
+                          Text(snapshot.data[widget.index].category,
+                              style: txtNormal),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: Row(
+                        children: [
+                          Text(
+                            R.stringsOf(context).commentFullHistoryInfo,
+                            style: txtHeader,
+                          ),
+                          Text(snapshot.data[widget.index].comment,
+                              style: txtNormal),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
         },
       ),
     );
