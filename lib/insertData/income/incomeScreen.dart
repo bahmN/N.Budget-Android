@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nbudget/domains/myUser.dart';
 import 'package:nbudget/insertData/income/incomeService.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/insertData/widgets.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class IncomeScreen extends StatelessWidget {
@@ -10,8 +12,11 @@ class IncomeScreen extends StatelessWidget {
   TextEditingController _sumController = TextEditingController();
   InsertWidgets _wInsert = InsertWidgets();
   IncomeService _sIncome = IncomeService();
+
   @override
   Widget build(BuildContext context) {
+    final MyUser user = Provider.of<MyUser>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -27,8 +32,9 @@ class IncomeScreen extends StatelessWidget {
           IconButton(
             onPressed: () async {
               await _sIncome.writeIncome(
-                  _nameController.text,
-                  _commentController.text,
+                  user.id,
+                  _nameController.text.trim(),
+                  _commentController.text.trim(),
                   double.parse(_sumController.text),
                   selectedDate);
               Navigator.pop(context);

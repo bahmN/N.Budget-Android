@@ -6,16 +6,15 @@ import 'package:nbudget/r.dart';
 
 class MenuScreen extends StatefulWidget {
   MenuScreen({Key key}) : super(key: key);
-
   @override
   _MenuScreenState createState() => _MenuScreenState();
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  ServiceMenu _sMenu = ServiceMenu();
   MenuWidgets _wMenu = MenuWidgets();
-  MenuBloc _bMenu = MenuBloc();
   MenuMethods _mMenu = MenuMethods();
+  ServiceMenu _sMenu = ServiceMenu();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,52 +37,41 @@ class _MenuScreenState extends State<MenuScreen> {
         color: Theme.of(context).backgroundColor,
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: StreamBuilder<bool>(
-          stream: _bMenu.outputStateStream,
-          builder: (context, snapshot) {
-            return snapshot.data ?? false
-                ? Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      HistoryWidget(bloc: _bMenu),
-                    ],
-                  )
-                : Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _wMenu.progressMenu(context),
-                      _wMenu.infoContainerMenu(context),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.only(right: 5, top: 20),
-                              child: _wMenu.button(
-                                context,
-                                R.stringsOf(context).incomeLabel,
-                                () => _mMenu.navIncomScreen(context),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.only(left: 5, top: 20),
-                              child: _wMenu.button(
-                                context,
-                                R.stringsOf(context).costsLabel,
-                                () => _mMenu.navCostsScreen(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      HistoryWidget(bloc: _bMenu),
-                    ],
-                  );
-          },
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _wMenu.progressMenu(context),
+            _wMenu.infoContainerMenu(context),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(right: 5, top: 20),
+                    child: _wMenu.button(
+                      context,
+                      R.stringsOf(context).incomeLabel,
+                      () => _mMenu.navIncomScreen(context),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5, top: 20),
+                    child: _wMenu.button(
+                      context,
+                      R.stringsOf(context).costsLabel,
+                      () => _mMenu.navCostsScreen(context),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Expanded(
+              child: HistoryWidget(),
+            )
+          ],
         ),
       ),
     );

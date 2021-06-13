@@ -13,25 +13,27 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
- 
+
+  adaptive_theme: ^1.1.0
+  animations: ^2.0.0
+  calendarro: ^1.2.0
+  cloud_firestore: ^1.0.1
+  connectivity: ^3.0.3
   cupertino_icons: ^1.0.0 
-  hexcolor: ^1.0.6
-  intl: ^0.17.0
   date_util: ^0.1.4
   firebase_auth: ^1.0.1
-  cloud_firestore: ^1.0.1
-  provider: ^4.3.3
-  fluttertoast: ^7.1.8
-  calendarro: ^1.2.0
-  rxdart: ^0.25.0
-  adaptive_theme: ^1.1.0
-  flutter_rounded_date_picker: ^2.0.0
-  connectivity: ^3.0.3
-  introduction_screen: ^2.1.0
-  flutter_slidable: ^0.6.0
   flutter_keyboard_visibility: ^5.0.2
-  get:
-  get_storage:
+  flutter_rounded_date_picker: ^2.0.0
+  flutter_slidable: ^0.6.0
+  fluttertoast: ^7.1.8
+  get_storage: ^2.0.2
+  hexcolor: ^1.0.6
+  intl: ^0.17.0
+  introduction_screen: ^2.1.0
+  provider: ^4.3.3 
+  rxdart: ^0.25.0
+  url_launcher: ^6.0.6
+
 
 dev_dependencies:
   flutter_launcher_icons: ^0.9.0

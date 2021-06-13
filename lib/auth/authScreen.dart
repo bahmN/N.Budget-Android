@@ -1,9 +1,9 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nbudget/auth/authBloc.dart';
 import 'package:nbudget/auth/authService.dart';
+import 'package:nbudget/auth/authWidgets.dart';
 import 'package:nbudget/domains/myUser.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
@@ -21,10 +21,9 @@ class _AuthScreenState extends State<AuthScreen> {
 
   String _email;
   String _password;
-  double _marginTopFormAuth;
   AuthService _authService = AuthService();
   AuthBloc _authBloc = AuthBloc();
-
+  AuthWidgets _aWidgets = AuthWidgets();
   void close() {
     _authBloc.close();
     super.dispose();
@@ -37,14 +36,17 @@ class _AuthScreenState extends State<AuthScreen> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
         children: [
-          _logo(),
+          _aWidgets.logo(context),
           (_authBloc.showLogin
               ? Column(
                   children: [
-                    _auth(
+                    _aWidgets.auth(
+                        context,
                         R.stringsOf(context).labelsignInAuth,
                         R.stringsOf(context).signInButtonAuth,
-                        _signInButtonAction),
+                        _signInButtonAction,
+                        _emailController,
+                        _passwordController),
                     Expanded(
                       child: Container(
                         alignment: Alignment.bottomCenter,
@@ -68,10 +70,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 )
               : Column(
                   children: [
-                    _auth(
+                    _aWidgets.auth(
+                        context,
                         R.stringsOf(context).labelsignUpAuth,
                         R.stringsOf(context).signUpButtonAuth,
-                        _signUpButtonAction),
+                        _signUpButtonAction,
+                        _emailController,
+                        _passwordController),
                     Expanded(
                       child: Container(
                         alignment: Alignment.bottomCenter,
@@ -95,96 +100,6 @@ class _AuthScreenState extends State<AuthScreen> {
                 )),
         ],
       ),
-    );
-  }
-
-  Widget _logo() {
-    return Container(
-      color: Theme.of(context).primaryColor,
-      padding: EdgeInsets.fromLTRB(65, 50, 65, 120),
-      child: Image.asset(R.images.logo),
-    );
-  }
-
-  Widget _auth(String label, String labelButton, void func()) {
-    return KeyboardVisibilityBuilder(
-      builder: (context, isKeyboardVisible) {
-        _marginTopFormAuth = isKeyboardVisible
-            ? MediaQuery.of(context).size.height / 5.5
-            : MediaQuery.of(context).size.height / 2.4;
-        return Center(
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 400),
-            curve: Curves.easeOutQuart,
-            margin: EdgeInsets.fromLTRB(13, _marginTopFormAuth, 13, 0),
-            padding: EdgeInsets.fromLTRB(10, 30, 10, 5),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColorLight,
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 3,
-                  color: Theme.of(context).shadowColor,
-                  offset: Offset(4, 4),
-                )
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: Text(
-                    label.toUpperCase(),
-                    style: labelAuth,
-                  ),
-                ),
-                _inputLoginOrPassword(
-                    Icon(Icons.account_box_rounded),
-                    R.stringsOf(context).loginHintAuth,
-                    _emailController,
-                    false),
-                _inputLoginOrPassword(
-                    Icon(Icons.lock_rounded),
-                    R.stringsOf(context).passwordHintAuth,
-                    _passwordController,
-                    true),
-                Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 40),
-                  child: _button(labelButton, func),
-                )
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _inputLoginOrPassword(
-      Icon icon, String hint, TextEditingController controller, bool obscure) {
-    return Container(
-      margin: EdgeInsets.only(top: 15),
-      child: TextField(
-        controller: controller,
-        obscureText: obscure,
-        style: txtInput,
-        cursorColor: Theme.of(context).primaryColor,
-        decoration: InputDecoration(
-          prefixIcon: icon,
-          hintStyle: txtHintInput,
-          hintText: hint,
-        ),
-      ),
-    );
-  }
-
-  Widget _button(String label, void func()) {
-    // ignore: deprecated_member_use
-    return FlatButton(
-      onPressed: func,
-      child: Text(label, style: bttnAuth),
-      color: Theme.of(context).primaryColor,
     );
   }
 
@@ -261,6 +176,7 @@ class _AuthScreenState extends State<AuthScreen> {
       } else {
         MyUser _ = await _authService.signUpWithEmainAndPassword(
             _email.trim(), _password.trim());
+
         Fluttertoast.showToast(
             msg: R.stringsOf(context).successfulSignUpAuth,
             toastLength: Toast.LENGTH_LONG,

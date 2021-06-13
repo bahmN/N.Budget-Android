@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nbudget/menu/menuBloc.dart';
 import 'package:nbudget/menu/menuComponents.dart';
 import 'package:nbudget/menu/menuService.dart';
 import 'package:nbudget/r.dart';
@@ -22,7 +21,7 @@ class MenuWidgets {
           LayoutBuilder(
             builder: (context, constrains) {
               return StreamBuilder<double>(
-                stream: _sMenu.widthPB(constrains.maxWidth),
+                stream: _sMenu.widthPB(context, constrains.maxWidth),
                 builder: (context, snapshot) {
                   return AnimatedContainer(
                     duration: Duration(seconds: 3),
@@ -51,12 +50,15 @@ class MenuWidgets {
           Row(
             children: [
               Text(
-                R.stringsOf(context).balanceMonthFirstBlock,
+                R.stringsOf(context).balanceMonthFirstBlock +
+                    _sMenu.nameMonth(context) +
+                    ' ' +
+                    R.stringsOf(context).balanceMonthFirstBlock2,
                 style: txtHeader,
               ),
               Expanded(
                 child: StreamBuilder<double>(
-                  stream: _sMenu.remainderMoney(),
+                  stream: _sMenu.remainderMoney(context),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Container(
@@ -103,7 +105,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.readIncomeSum(),
+                    stream: _sMenu.readIncomeSum(context),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
@@ -140,7 +142,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.readMandatoryCostsSum(),
+                    stream: _sMenu.readMandatoryCostsSum(context),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
@@ -177,7 +179,7 @@ class MenuWidgets {
                 ),
                 Expanded(
                   child: StreamBuilder<double>(
-                    stream: _sMenu.freeMoney(),
+                    stream: _sMenu.freeMoney(context),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Container(
@@ -212,7 +214,7 @@ class MenuWidgets {
               ),
               Expanded(
                 child: StreamBuilder<double>(
-                  stream: _sMenu.moneyPerDay(),
+                  stream: _sMenu.moneyPerDay(context),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Container(
@@ -227,7 +229,7 @@ class MenuWidgets {
                       return Container(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          '${snapshot.data.toStringAsFixed(2)}' +
+                          '${snapshot.data.toStringAsFixed(1)}' +
                               R.stringsOf(context).symbolMoney,
                           style: txtNormal,
                         ),
@@ -259,8 +261,7 @@ class MenuWidgets {
 }
 
 class HistoryWidget extends StatefulWidget {
-  HistoryWidget({Key key, @required this.bloc}) : super(key: key);
-  final MenuBloc bloc;
+  HistoryWidget({Key key}) : super(key: key);
   @override
   _HistoryWidgetState createState() => _HistoryWidgetState();
 }
@@ -272,17 +273,37 @@ class _HistoryWidgetState extends State<HistoryWidget> {
     setState(() {
       selectedChoices = choice;
     });
-    showSnackBar(choice);
+    showSnackBar();
   }
 
-  void showSnackBar(String selection) {
-    final snackBarContent = SnackBar(
-      content: Text(
-        R.stringsOf(context).selectedFilter + '$selectedChoices',
-        style: selectedFilterTxt(context),
-      ),
-      backgroundColor: Theme.of(context).primaryColor,
-    );
+  void showSnackBar() {
+    var snackBarContent;
+    if (selectedChoices == R.stringsOf(context).showOnlyCosts) {
+      snackBarContent = SnackBar(
+        content: Text(
+          R.stringsOf(context).selectedFilterCosts,
+          style: selectedFilterTxt(context),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+      );
+    } else if (selectedChoices == R.stringsOf(context).showOnlyIncome) {
+      snackBarContent = SnackBar(
+        content: Text(
+          R.stringsOf(context).selectedFilterIncome,
+          style: selectedFilterTxt(context),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+      );
+    } else if (selectedChoices == R.stringsOf(context).showAllHistory) {
+      snackBarContent = SnackBar(
+        content: Text(
+          R.stringsOf(context).selectedFilterAll,
+          style: selectedFilterTxt(context),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+      );
+    }
+
     ScaffoldMessenger.of(context).showSnackBar(snackBarContent);
   }
 
@@ -293,61 +314,53 @@ class _HistoryWidgetState extends State<HistoryWidget> {
       R.stringsOf(context).showOnlyIncome,
       R.stringsOf(context).showAllHistory
     ];
-    return Expanded(
-      child: Container(
-        decoration: borderShadowsLight,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 20,
-              decoration: borderDontShadowsLightCircularUp,
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 2.8),
-                    child: Text(
-                      R.stringsOf(context).historyContainer,
-                      style: txtHeader,
+    return Container(
+      decoration: borderShadowsLight,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height / 20,
+            decoration: borderDontShadowsLightCircularUp,
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width / 2.8),
+                  child: Text(
+                    R.stringsOf(context).historyContainer,
+                    style: txtHeader,
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: PopupMenuButton(
+                      onSelected: _select,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (BuildContext context) {
+                        return choices.map(
+                          (String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(
+                                choice,
+                                style: bttnInsertTxt(context),
+                              ),
+                            );
+                          },
+                        ).toList();
+                      },
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.centerRight,
-                      child: PopupMenuButton(
-                        onSelected: _select,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (BuildContext context) {
-                          return choices.map(
-                            (String choice) {
-                              return PopupMenuItem<String>(
-                                value: choice,
-                                child: Text(
-                                  choice,
-                                  style: bttnInsertTxt(context),
-                                ),
-                              );
-                            },
-                          ).toList();
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
-              child: HistoryComponents(),
-            ),
-            IconButton(
-              icon: Icon(Icons.fullscreen_rounded),
-              onPressed: () {
-                widget.bloc.inputEventSink.add(ButtonEventMenu.event_Click);
-              },
-            ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: HistoryComponents(),
+          ),
+        ],
       ),
     );
   }

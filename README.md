@@ -9,23 +9,25 @@ data storage. There is localization for 2 languages: English and Russian.
 Link to the [apk file](https://github.com/bahmN/N.Budget-Android/blob/main/build/app/outputs/flutter-apk/app.apk). 
 
 ##### Packages used:  
-1. cupertino_icons: ^1.0.0  
-2. hexcolor: ^1.0.6  
-3. intl: ^0.17.0  
-4. date_util: ^0.1.4  
-5. firebase_auth: ^1.0.1  
-6. cloud_firestore: ^1.0.1  
-7. provider: ^4.3.3  
-8. fluttertoast: ^7.1.8  
-9. calendarro: ^1.2.0  
-10. rxdart: ^0.25.0  
-11. adaptive_theme: ^1.1.0  
-12. flutter_rounded_date_picker: ^2.0.0  
-13. connectivity: ^3.0.3  
-14. introduction_screen: ^2.1.0  
-15. flutter_slidable: ^0.6.0  
-16. flutter_keyboard_visibility: ^5.0.2  
-17. flutter_native_splash: ^1.1.8+4  
+1. adaptive_theme: ^1.1.0  
+2. animations: ^2.0.0  
+3. calendarro: ^1.2.0
+4. cloud_firestore: ^1.0.1  
+5. connectivity: ^3.0.3  
+6. cupertino_icons: ^1.0.0  
+7. date_util: ^0.1.4  
+8. firebase_auth: ^1.0.1  
+9.  flutter_keyboard_visibility: ^5.0.2  
+10. flutter_rounded_date_picker: ^2.0.0  
+11. flutter_slidable: ^0.6.0  
+12. fluttertoast: ^7.1.8  
+13.  get_storage: ^2.0.2  
+14.  hexcolor: ^1.0.6  
+15.  intl: ^0.17.0  
+16.  introduction_screen: ^2.1.0  
+17.  provider: ^4.3.3  
+18. rxdart: ^0.25.0  
+19.  url_launcher: ^6.0.6  
 Full pubspec: [pubspec.yaml](https://github.com/bahmN/N.Budget-Android/blob/main/pubspec.yaml).
 
 ##### Verison 1.0 (22.03.2020)  
@@ -44,3 +46,13 @@ Updates to version 1.1:
 5. Implemented updating the numbers every new month
 6. Changed the formula for calculating "Today you can spend"
 7. Added splash screen
+
+##### Verison 1.1 (14.06.2020)  
+Updates to version 1.2:  
+1. Added bottom navigator bar   
+2. Added the name of the month in the Progress Menu    
+3. Fixed counting money for the day  
+4. Changed the endings of sentences in the history filter
+5. Added reset password
+6. Changed the formula for calculating "Today you can spend"
+7. Added the ability to view full information about costs/income

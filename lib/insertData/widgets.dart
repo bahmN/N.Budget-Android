@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:nbudget/r.dart';
 import 'package:nbudget/styles.dart';
@@ -29,12 +30,14 @@ class InsertWidgets {
 
   Widget textName(BuildContext context, TextEditingController controller) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       margin: EdgeInsets.only(top: 20),
       decoration: borderShadowsLight,
       child: TextField(
         controller: controller,
         style: txtInput,
+        maxLength: 50,
+        maxLengthEnforcement: MaxLengthEnforcement.enforced,
         cursorColor: Theme.of(context).primaryColor,
         cursorHeight: 20,
         textCapitalization: TextCapitalization.sentences,
@@ -49,17 +52,19 @@ class InsertWidgets {
 
   Widget textComment(BuildContext context, TextEditingController controller) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       height: MediaQuery.of(context).size.height / 5,
       margin: EdgeInsets.only(top: 20),
       decoration: borderShadowsLight,
       child: TextField(
         controller: controller,
         style: txtInput,
+        maxLength: 255,
+        maxLengthEnforcement: MaxLengthEnforcement.enforced,
         cursorColor: Theme.of(context).primaryColor,
         cursorHeight: 20,
         textCapitalization: TextCapitalization.sentences,
-        maxLines: null,
+        maxLines: 9,
         decoration: InputDecoration(
           hintText: R.stringsOf(context).comment,
           hintStyle: hintTxt,

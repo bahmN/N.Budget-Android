@@ -39,140 +39,227 @@ class _Strings {
 
   static const Map<String, Map<String, String>> _localizedValues = {
     'en_US': {
-      'signInButtonAuth': 'Sign in',
-      'signUpButtonAuth': 'Sign up',
-      'loginHintAuth': 'Login',
-      'passwordHintAuth': 'Password',
-      'labelsignInAuth': 'Sign in',
-      'labelsignUpAuth': 'Sign up',
-      'labelBottomSignUpAuth': 'Not registered? Sign up!',
-      'labelBottomSignInAuth': 'Already registered? Log in!',
+      'balanceMonthFirstBlock': 'Until the end',
+      'balanceMonthFirstBlock2': 'left',
+      'balanceMonthFirstBlock3': 'Until the end of the month',
+      'categoryFullHistoryInfo': 'Category: ',
+      'comment': 'Comment...',
+      'commentFullHistoryInfo': 'Comments: ',
+      'conntectionState': 'No internet connection',
+      'costsLabel': 'Add costs',
+      'dailyBudget': 'Today you can spend',
+      'datePickerActionButton': 'Today',
+      'deleteHistory': 'Delete',
       'emptyTextFieldAuth': 'Login or password fields cannot be empty',
       'emptyUserAuth': 'Wrong email or password entered',
+      'enterEmail': 'Enter email',
+      'forgotPassword': 'Forgot password',
+      'freeMoney': 'Free money',
+      'fullHistoryInfo': 'Full information',
+      'getStarted': 'Get started',
+      'historyContainer': 'History',
+      'incomeI': 'Income',
+      'incomeLabel': 'Add income',
       'incorrectEmailAuth': 'Incorrect email input',
       'incorrectPasswordAuth':
           'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
-      'successfulSignUpAuth': 'You have successfully registered',
-      'nameApp': 'N.Budget',
-      'balanceMonthFirstBlock': 'Until the end of the month',
-      'incomeI': 'Income',
+      'labelBottomSignInAuth': 'Already registered? Log in!',
+      'labelBottomSignUpAuth': 'Not registered? Sign up!',
+      'labelsignInAuth': 'Sign in',
+      'labelsignUpAuth': 'Sign up',
+      'loginHintAuth': 'Login',
       'mandatoryExpenses': 'Mandatory expenses',
-      'freeMoney': 'Free money',
-      'dailyBudget': 'Today you can spend',
-      'incomeLabel': 'Add income',
-      'costsLabel': 'Add costs',
-      'saveData': 'Save',
-      'symbolMoney': '\$',
-      'title': 'Title...',
-      'comment': 'Comment...',
-      'datePickerActionButton': 'Today',
-      'zeroMoney': '0.0',
-      'historyContainer': 'History',
-      'conntectionState': 'No internet connection',
-      'forgotPassword': 'Forgot password',
       'messageSentToEmail':
           'An email to reset your password was sent to your email address',
-      'welcome': 'Welcome',
-      'getStarted': 'Get started',
-      'welcomeText':
-          'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
-      'welcomeTextFoundError':
-          'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
-      'deleteHistory': 'Delete',
+      'nameApp': 'N.Budget',
+      'nameFullHistoryInfo': 'Name: ',
+      'navBarHistory': 'History',
+      'navBarHome': 'Home',
+      'navBarInfo': 'Info',
+      'passwordHintAuth': 'Password',
+      'resetPassword': 'Reset password',
+      'saveData': 'Save',
+      'selectedFilterAll': 'Selected: all history',
+      'selectedFilterCosts': 'Selected: costs',
+      'selectedFilterIncome': 'Selected: income',
+      'showAllHistory': 'All history',
+      'showFullInfoHistory': 'View',
       'showOnlyCosts': 'Costs',
       'showOnlyIncome': 'Income',
-      'showAllHistory': 'All history',
-      'selectedFilter': 'Selected: ',
+      'signInButtonAuth': 'Sign in',
+      'signUpButtonAuth': 'Sign up',
+      'successfulSignUpAuth': 'You have successfully registered',
+      'sumFullHistoryInfo': 'Sum: ',
+      'symbolMoney': '\$',
+      'title': 'Title...',
+      'versionApp': 'Verison 1.1',
+      'welcome': 'Welcome',
+      'welcomeText':
+          'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.',
+      'welcomeTextFoundError':
+          'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
+      'writeToTheMail': 'Write to the email',
+      'zeroMoney': '0.0',
+      'january': 'january',
+      'february': 'february',
+      'march': 'march',
+      'april': 'april',
+      'may': 'may',
+      'june': 'june',
+      'july': 'july',
+      'august': 'august',
+      'september': 'septemper',
+      'october': 'october',
+      'november': 'november',
+      'december': 'december',
     },
     'en_GB': {
-      'signInButtonAuth': 'Sign in',
-      'signUpButtonAuth': 'Sign up',
-      'loginHintAuth': 'Login',
-      'passwordHintAuth': 'Password',
-      'labelsignInAuth': 'Sign in',
-      'labelsignUpAuth': 'Sign up',
-      'labelBottomSignUpAuth': 'Not registered? Sign up!',
-      'labelBottomSignInAuth': 'Already registered? Log in!',
+      'balanceMonthFirstBlock': 'Until the end',
+      'balanceMonthFirstBlock2': 'left',
+      'balanceMonthFirstBlock3': 'Until the end of the month',
+      'categoryFullHistoryInfo': 'Category: ',
+      'comment': 'Comment...',
+      'commentFullHistoryInfo': 'Comments: ',
+      'conntectionState': 'No internet connection',
+      'costsLabel': 'Add costs',
+      'dailyBudget': 'Today you can spend',
+      'datePickerActionButton': 'Today',
+      'deleteHistory': 'Delete',
       'emptyTextFieldAuth': 'Login or password fields cannot be empty',
       'emptyUserAuth': 'Wrong email or password entered',
+      'enterEmail': 'Enter email',
+      'forgotPassword': 'Forgot password',
+      'freeMoney': 'Free money',
+      'fullHistoryInfo': 'Full information',
+      'getStarted': 'Get started',
+      'historyContainer': 'History',
+      'incomeI': 'Income',
+      'incomeLabel': 'Add income',
       'incorrectEmailAuth': 'Incorrect email input',
       'incorrectPasswordAuth':
           'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters',
-      'successfulSignUpAuth': 'You have successfully registered',
-      'nameApp': 'N.Budget',
-      'balanceMonthFirstBlock': 'Until the end of the month',
-      'incomeI': 'Income',
+      'labelBottomSignInAuth': 'Already registered? Log in!',
+      'labelBottomSignUpAuth': 'Not registered? Sign up!',
+      'labelsignInAuth': 'Sign in',
+      'labelsignUpAuth': 'Sign up',
+      'loginHintAuth': 'Login',
       'mandatoryExpenses': 'Mandatory expenses',
-      'freeMoney': 'Free money',
-      'dailyBudget': 'Today you can spend',
-      'incomeLabel': 'Add income',
-      'costsLabel': 'Add costs',
-      'saveData': 'Save',
-      'symbolMoney': '\$',
-      'title': 'Title...',
-      'comment': 'Comment...',
-      'datePickerActionButton': 'Today',
-      'zeroMoney': '0.0',
-      'historyContainer': 'History',
-      'conntectionState': 'No internet connection',
-      'forgotPassword': 'Forgot password',
       'messageSentToEmail':
           'An email to reset your password was sent to your email address',
-      'welcome': 'Welcome',
-      'getStarted': 'Get started',
-      'welcomeText':
-          'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month',
-      'welcomeTextFoundError':
-          'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
-      'deleteHistory': 'Delete',
+      'nameApp': 'N.Budget',
+      'nameFullHistoryInfo': 'Name: ',
+      'navBarHistory': 'History',
+      'navBarHome': 'Home',
+      'navBarInfo': 'Info',
+      'passwordHintAuth': 'Password',
+      'resetPassword': 'Reset password',
+      'saveData': 'Save',
+      'selectedFilterAll': 'Selected: all history',
+      'selectedFilterCosts': 'Selected: costs',
+      'selectedFilterIncome': 'Selected: income',
+      'showAllHistory': 'All history',
+      'showFullInfoHistory': 'View',
       'showOnlyCosts': 'Costs',
       'showOnlyIncome': 'Income',
-      'showAllHistory': 'All history',
-      'selectedFilter': 'Selected: ',
+      'signInButtonAuth': 'Sign in',
+      'signUpButtonAuth': 'Sign up',
+      'successfulSignUpAuth': 'You have successfully registered',
+      'sumFullHistoryInfo': 'Sum: ',
+      'symbolMoney': '\$',
+      'title': 'Title...',
+      'versionApp': 'Verison 1.1',
+      'welcome': 'Welcome',
+      'welcomeText':
+          'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.',
+      'welcomeTextFoundError':
+          'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.',
+      'writeToTheMail': 'Write to the email',
+      'zeroMoney': '0.0',
+      'january': 'january',
+      'february': 'february',
+      'march': 'march',
+      'april': 'april',
+      'may': 'may',
+      'june': 'june',
+      'july': 'july',
+      'august': 'august',
+      'september': 'septemper',
+      'october': 'october',
+      'november': 'november',
+      'december': 'december',
     },
     'ru': {
-      'signInButtonAuth': 'Войти',
-      'signUpButtonAuth': 'Зарегистрироваться',
-      'loginHintAuth': 'Логин',
-      'passwordHintAuth': 'Пароль',
-      'labelsignInAuth': 'Авторизация',
-      'labelsignUpAuth': 'Регистрация',
-      'labelBottomSignUpAuth': 'Не зарегистрирован? Зарегистрируйся!',
-      'labelBottomSignInAuth': 'Уже зарегистрирован? Авторизируйся!',
+      'balanceMonthFirstBlock': 'До конца ',
+      'balanceMonthFirstBlock2': 'осталось',
+      'balanceMonthFirstBlock3': 'До конца месяца осталось',
+      'categoryFullHistoryInfo': 'Категория: ',
+      'comment': 'Комментарий...',
+      'commentFullHistoryInfo': 'Комментарий: ',
+      'conntectionState': 'Нет подключения к интернету',
+      'costsLabel': 'Добавить расходы',
+      'dailyBudget': 'Сегодня можно потратить',
+      'datePickerActionButton': 'Сегодня',
+      'deleteHistory': 'Удалить',
       'emptyTextFieldAuth': 'Поля логина или пароля не могут быть пустыми',
       'emptyUserAuth': 'Неправильно введён логин или пароль',
+      'enterEmail': 'Введите почту',
+      'forgotPassword': 'Забыл пароль',
+      'freeMoney': 'Свободных денег',
+      'fullHistoryInfo': 'Полная информация',
+      'getStarted': 'Начать',
+      'historyContainer': 'История',
+      'incomeI': 'Доход',
+      'incomeLabel': 'Добавить доход',
       'incorrectEmailAuth': 'Некорректный ввод email',
       'incorrectPasswordAuth':
           'Некорректный ввод пароля. Строка должна содержать хотя бы одно число, один спецсимвол, латинскую букву в верхнем и нижнем регистре, строка состоит не менее, чем из 6 символов',
-      'successfulSignUpAuth': 'Вы успешно зарегистрированы',
-      'balanceMonthFirstBlock': 'До конца месяца осталось',
-      'incomeI': 'Доход',
-      'mandatoryExpenses': 'Обязательные траты',
-      'freeMoney': 'Свободных денег',
-      'dailyBudget': 'Сегодня можно потратить',
-      'incomeLabel': 'Добавить доход',
-      'costsLabel': 'Добавить расходы',
+      'labelBottomSignInAuth': 'Уже зарегистрирован? Авторизируйся!',
+      'labelBottomSignUpAuth': 'Не зарегистрирован? Зарегистрируйся!',
+      'labelsignInAuth': 'Авторизация',
+      'labelsignUpAuth': 'Регистрация',
+      'loginHintAuth': 'Логин',
+      'mandatoryExpenses': 'Обязательные расходы',
+      'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
+      'nameFullHistoryInfo': 'Наименование: ',
+      'navBarHistory': 'История',
+      'navBarHome': 'Домой',
+      'navBarInfo': 'Информация',
+      'passwordHintAuth': 'Пароль',
+      'resetPassword': 'Сбросить пароль',
       'saveData': 'Сохранить',
+      'selectedFilterAll': 'Выбрана: вся история',
+      'selectedFilterCosts': 'Выбраны: расходы',
+      'selectedFilterIncome': 'Выбран: доход',
+      'showAllHistory': 'Вся история',
+      'showFullInfoHistory': 'Посмотреть',
+      'showOnlyCosts': 'Расходы',
+      'showOnlyIncome': 'Доход',
+      'signInButtonAuth': 'Войти',
+      'signUpButtonAuth': 'Зарегистрироваться',
+      'successfulSignUpAuth': 'Вы успешно зарегистрированы',
+      'sumFullHistoryInfo': 'Сумма: ',
       'symbolMoney': '₽',
       'title': 'Название...',
-      'comment': 'Комментарий...',
-      'datePickerActionButton': 'Сегодня',
-      'zeroMoney': '0.0',
-      'historyContainer': 'История',
-      'conntectionState': 'Нет подключения к интернету',
-      'forgotPassword': 'Забыл пароль',
-      'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
+      'versionApp': 'Версия 1.1',
       'welcome': 'Добро пожаловать',
-      'getStarted': 'Начать',
       'welcomeText':
-          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним Вы сможете запросто следить за своими тратами и будете знать сколько осталось до конца месяца.',
+          'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним Вы сможете запросто следить за своими расходами и будете знать сколько осталось средств до конца месяца.',
       'welcomeTextFoundError':
           'Если Вы обнаружили какую-то ошибку или у Вас есть предложение как улучшить приложение, то пишите на нашу почту nbudget.help@gmail.com.',
-      'deleteHistory': 'Удалить',
-      'showOnlyCosts': 'Траты',
-      'showOnlyIncome': 'Доход',
-      'showAllHistory': 'Вся история',
-      'selectedFilter': 'Выбран: ',
+      'writeToTheMail': 'Написать на почту',
+      'zeroMoney': '0.0',
+      'january': 'января',
+      'february': 'февраля',
+      'march': 'марта',
+      'april': 'апреля',
+      'may': 'мая',
+      'june': 'июня',
+      'july': 'июля',
+      'august': 'авгуса',
+      'september': 'сентября',
+      'october': 'октября',
+      'november': 'ноября',
+      'december': 'декабря',
     },
   };
 
@@ -182,29 +269,38 @@ class _Strings {
         code;
   }
 
-  /// 'Sign in'
-  String get signInButtonAuth => _getString('signInButtonAuth');
+  /// 'Until the end'
+  String get balanceMonthFirstBlock => _getString('balanceMonthFirstBlock');
 
-  /// 'Sign up'
-  String get signUpButtonAuth => _getString('signUpButtonAuth');
+  /// 'left'
+  String get balanceMonthFirstBlock2 => _getString('balanceMonthFirstBlock2');
 
-  /// 'Login'
-  String get loginHintAuth => _getString('loginHintAuth');
+  /// 'Until the end of the month'
+  String get balanceMonthFirstBlock3 => _getString('balanceMonthFirstBlock3');
 
-  /// 'Password'
-  String get passwordHintAuth => _getString('passwordHintAuth');
+  /// 'Category: '
+  String get categoryFullHistoryInfo => _getString('categoryFullHistoryInfo');
 
-  /// 'Sign in'
-  String get labelsignInAuth => _getString('labelsignInAuth');
+  /// 'Comment...'
+  String get comment => _getString('comment');
 
-  /// 'Sign up'
-  String get labelsignUpAuth => _getString('labelsignUpAuth');
+  /// 'Comments: '
+  String get commentFullHistoryInfo => _getString('commentFullHistoryInfo');
 
-  /// 'Not registered? Sign up!'
-  String get labelBottomSignUpAuth => _getString('labelBottomSignUpAuth');
+  /// 'No internet connection'
+  String get conntectionState => _getString('conntectionState');
 
-  /// 'Already registered? Log in!'
-  String get labelBottomSignInAuth => _getString('labelBottomSignInAuth');
+  /// 'Add costs'
+  String get costsLabel => _getString('costsLabel');
+
+  /// 'Today you can spend'
+  String get dailyBudget => _getString('dailyBudget');
+
+  /// 'Today'
+  String get datePickerActionButton => _getString('datePickerActionButton');
+
+  /// 'Delete'
+  String get deleteHistory => _getString('deleteHistory');
 
   /// 'Login or password fields cannot be empty'
   String get emptyTextFieldAuth => _getString('emptyTextFieldAuth');
@@ -212,83 +308,95 @@ class _Strings {
   /// 'Wrong email or password entered'
   String get emptyUserAuth => _getString('emptyUserAuth');
 
+  /// 'Enter email'
+  String get enterEmail => _getString('enterEmail');
+
+  /// 'Forgot password'
+  String get forgotPassword => _getString('forgotPassword');
+
+  /// 'Free money'
+  String get freeMoney => _getString('freeMoney');
+
+  /// 'Full information'
+  String get fullHistoryInfo => _getString('fullHistoryInfo');
+
+  /// 'Get started'
+  String get getStarted => _getString('getStarted');
+
+  /// 'History'
+  String get historyContainer => _getString('historyContainer');
+
+  /// 'Income'
+  String get incomeI => _getString('incomeI');
+
+  /// 'Add income'
+  String get incomeLabel => _getString('incomeLabel');
+
   /// 'Incorrect email input'
   String get incorrectEmailAuth => _getString('incorrectEmailAuth');
 
   /// 'Incorrect password entry. The string must contain at least one number, one special character, a Latin letter in upper and lower case, the string consists of at least 6 characters'
   String get incorrectPasswordAuth => _getString('incorrectPasswordAuth');
 
-  /// 'You have successfully registered'
-  String get successfulSignUpAuth => _getString('successfulSignUpAuth');
+  /// 'Already registered? Log in!'
+  String get labelBottomSignInAuth => _getString('labelBottomSignInAuth');
 
-  /// 'N.Budget'
-  String get nameApp => _getString('nameApp');
+  /// 'Not registered? Sign up!'
+  String get labelBottomSignUpAuth => _getString('labelBottomSignUpAuth');
 
-  /// 'Until the end of the month'
-  String get balanceMonthFirstBlock => _getString('balanceMonthFirstBlock');
+  /// 'Sign in'
+  String get labelsignInAuth => _getString('labelsignInAuth');
 
-  /// 'Income'
-  String get incomeI => _getString('incomeI');
+  /// 'Sign up'
+  String get labelsignUpAuth => _getString('labelsignUpAuth');
+
+  /// 'Login'
+  String get loginHintAuth => _getString('loginHintAuth');
 
   /// 'Mandatory expenses'
   String get mandatoryExpenses => _getString('mandatoryExpenses');
 
-  /// 'Free money'
-  String get freeMoney => _getString('freeMoney');
+  /// 'An email to reset your password was sent to your email address'
+  String get messageSentToEmail => _getString('messageSentToEmail');
 
-  /// 'Today you can spend'
-  String get dailyBudget => _getString('dailyBudget');
+  /// 'N.Budget'
+  String get nameApp => _getString('nameApp');
 
-  /// 'Add income'
-  String get incomeLabel => _getString('incomeLabel');
+  /// 'Name: '
+  String get nameFullHistoryInfo => _getString('nameFullHistoryInfo');
 
-  /// 'Add costs'
-  String get costsLabel => _getString('costsLabel');
+  /// 'History'
+  String get navBarHistory => _getString('navBarHistory');
+
+  /// 'Home'
+  String get navBarHome => _getString('navBarHome');
+
+  /// 'Info'
+  String get navBarInfo => _getString('navBarInfo');
+
+  /// 'Password'
+  String get passwordHintAuth => _getString('passwordHintAuth');
+
+  /// 'Reset password'
+  String get resetPassword => _getString('resetPassword');
 
   /// 'Save'
   String get saveData => _getString('saveData');
 
-  /// '\$'
-  String get symbolMoney => _getString('symbolMoney');
+  /// 'Selected: all history'
+  String get selectedFilterAll => _getString('selectedFilterAll');
 
-  /// 'Title...'
-  String get title => _getString('title');
+  /// 'Selected: costs'
+  String get selectedFilterCosts => _getString('selectedFilterCosts');
 
-  /// 'Comment...'
-  String get comment => _getString('comment');
+  /// 'Selected: income'
+  String get selectedFilterIncome => _getString('selectedFilterIncome');
 
-  /// 'Today'
-  String get datePickerActionButton => _getString('datePickerActionButton');
+  /// 'All history'
+  String get showAllHistory => _getString('showAllHistory');
 
-  /// '0.0'
-  String get zeroMoney => _getString('zeroMoney');
-
-  /// 'History'
-  String get historyContainer => _getString('historyContainer');
-
-  /// 'No internet connection'
-  String get conntectionState => _getString('conntectionState');
-
-  /// 'Forgot password'
-  String get forgotPassword => _getString('forgotPassword');
-
-  /// 'An email to reset your password was sent to your email address'
-  String get messageSentToEmail => _getString('messageSentToEmail');
-
-  /// 'Welcome'
-  String get welcome => _getString('welcome');
-
-  /// 'Get started'
-  String get getStarted => _getString('getStarted');
-
-  /// 'Thank you for downloading our app. N. Budget is an app to keep a budget. With it, you can easily keep track of your spending and you will know how much is left until the end of the month'
-  String get welcomeText => _getString('welcomeText');
-
-  /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.'
-  String get welcomeTextFoundError => _getString('welcomeTextFoundError');
-
-  /// 'Delete'
-  String get deleteHistory => _getString('deleteHistory');
+  /// 'View'
+  String get showFullInfoHistory => _getString('showFullInfoHistory');
 
   /// 'Costs'
   String get showOnlyCosts => _getString('showOnlyCosts');
@@ -296,11 +404,77 @@ class _Strings {
   /// 'Income'
   String get showOnlyIncome => _getString('showOnlyIncome');
 
-  /// 'All history'
-  String get showAllHistory => _getString('showAllHistory');
+  /// 'Sign in'
+  String get signInButtonAuth => _getString('signInButtonAuth');
 
-  /// 'Selected: '
-  String get selectedFilter => _getString('selectedFilter');
+  /// 'Sign up'
+  String get signUpButtonAuth => _getString('signUpButtonAuth');
+
+  /// 'You have successfully registered'
+  String get successfulSignUpAuth => _getString('successfulSignUpAuth');
+
+  /// 'Sum: '
+  String get sumFullHistoryInfo => _getString('sumFullHistoryInfo');
+
+  /// '\$'
+  String get symbolMoney => _getString('symbolMoney');
+
+  /// 'Title...'
+  String get title => _getString('title');
+
+  /// 'Verison 1.1'
+  String get versionApp => _getString('versionApp');
+
+  /// 'Welcome'
+  String get welcome => _getString('welcome');
+
+  /// 'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.'
+  String get welcomeText => _getString('welcomeText');
+
+  /// 'If you find a bug or have a suggestion on how to improve the app, please write to our email nbudget.help@gmail.com.'
+  String get welcomeTextFoundError => _getString('welcomeTextFoundError');
+
+  /// 'Write to the email'
+  String get writeToTheMail => _getString('writeToTheMail');
+
+  /// '0.0'
+  String get zeroMoney => _getString('zeroMoney');
+
+  /// 'january'
+  String get january => _getString('january');
+
+  /// 'february'
+  String get february => _getString('february');
+
+  /// 'march'
+  String get march => _getString('march');
+
+  /// 'april'
+  String get april => _getString('april');
+
+  /// 'may'
+  String get may => _getString('may');
+
+  /// 'june'
+  String get june => _getString('june');
+
+  /// 'july'
+  String get july => _getString('july');
+
+  /// 'august'
+  String get august => _getString('august');
+
+  /// 'septemper'
+  String get september => _getString('september');
+
+  /// 'october'
+  String get october => _getString('october');
+
+  /// 'november'
+  String get november => _getString('november');
+
+  /// 'december'
+  String get december => _getString('december');
 }
 
 class RStringsDelegate extends LocalizationsDelegate<_Strings> {
