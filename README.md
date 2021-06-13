@@ -47,7 +47,7 @@ Updates to version 1.1:
 6. Changed the formula for calculating "Today you can spend"
 7. Added splash screen
 
-##### Verison 1.1 (14.06.2020)  
+##### Verison 1.2 (14.06.2020)  
 Updates to version 1.2:  
 1. Added bottom navigator bar   
 2. Added the name of the month in the Progress Menu    
