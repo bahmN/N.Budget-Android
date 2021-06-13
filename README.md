@@ -47,12 +47,12 @@ Updates to version 1.1:
 6. Changed the formula for calculating "Today you can spend"
 7. Added splash screen
 
-##### Verison 1.2 (14.06.2020)  
+##### Version 1.2 (14.06.2020)  
 Updates to version 1.2:  
-1. Added bottom navigator bar   
-2. Added the name of the month in the Progress Menu    
-3. Fixed counting money for the day  
-4. Changed the endings of sentences in the history filter
-5. Added reset password
-6. Changed the formula for calculating "Today you can spend"
-7. Added the ability to view full information about costs/income
+1. Added bottom navigation bar  
+2. Added the name of the current month to the Progress menu      
+3. Fixed the calculation of "money per day"  
+4. Changed the window appearance animation  
+5. Fixed sentence endings in the history filter  
+6. Now you can reset your password  
+7. Now you can view the full information about expenses/income
