@@ -55,7 +55,7 @@ class AuthWidgets {
                   ),
                 ),
                 _inputLoginOrPassword(context, Icon(Icons.account_box_rounded),
-                    R.stringsOf(context).loginHintAuth, emailController, false),
+                    R.stringsOf(context).emailHintAuth, emailController, false),
                 _inputLoginOrPassword(
                     context,
                     Icon(Icons.lock_rounded),

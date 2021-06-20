@@ -67,7 +67,7 @@ class _Strings {
       'labelBottomSignUpAuth': 'Not registered? Sign up!',
       'labelsignInAuth': 'Sign in',
       'labelsignUpAuth': 'Sign up',
-      'loginHintAuth': 'Login',
+      'emailHintAuth': 'Email',
       'mandatoryExpenses': 'Mandatory expenses',
       'messageSentToEmail':
           'An email to reset your password was sent to your email address',
@@ -92,7 +92,7 @@ class _Strings {
       'sumFullHistoryInfo': 'Sum: ',
       'symbolMoney': '\$',
       'title': 'Title...',
-      'versionApp': 'Verison 1.1',
+      'versionApp': 'Verison 1.2',
       'welcome': 'Welcome',
       'welcomeText':
           'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.',
@@ -142,7 +142,7 @@ class _Strings {
       'labelBottomSignUpAuth': 'Not registered? Sign up!',
       'labelsignInAuth': 'Sign in',
       'labelsignUpAuth': 'Sign up',
-      'loginHintAuth': 'Login',
+      'emailHintAuth': 'Email',
       'mandatoryExpenses': 'Mandatory expenses',
       'messageSentToEmail':
           'An email to reset your password was sent to your email address',
@@ -167,7 +167,7 @@ class _Strings {
       'sumFullHistoryInfo': 'Sum: ',
       'symbolMoney': '\$',
       'title': 'Title...',
-      'versionApp': 'Verison 1.1',
+      'versionApp': 'Verison 1.2',
       'welcome': 'Welcome',
       'welcomeText':
           'Thank you for downloading our app. N. Budget is an app to keep a budget. Together with it, you can easily monitor your spending and know how much money is left until the end of the month.',
@@ -217,7 +217,7 @@ class _Strings {
       'labelBottomSignUpAuth': 'Не зарегистрирован? Зарегистрируйся!',
       'labelsignInAuth': 'Авторизация',
       'labelsignUpAuth': 'Регистрация',
-      'loginHintAuth': 'Логин',
+      'emailHintAuth': 'Email',
       'mandatoryExpenses': 'Обязательные расходы',
       'messageSentToEmail': 'Письмо для сброса пароля было отправлено на почту',
       'nameFullHistoryInfo': 'Наименование: ',
@@ -240,7 +240,7 @@ class _Strings {
       'sumFullHistoryInfo': 'Сумма: ',
       'symbolMoney': '₽',
       'title': 'Название...',
-      'versionApp': 'Версия 1.1',
+      'versionApp': 'Версия 1.2',
       'welcome': 'Добро пожаловать',
       'welcomeText':
           'Спасибо, что скачали наше приложение. N.Budget - это приложение, чтобы вести бюджет. Вместе с ним Вы сможете запросто следить за своими расходами и будете знать сколько осталось средств до конца месяца.',
@@ -350,8 +350,8 @@ class _Strings {
   /// 'Sign up'
   String get labelsignUpAuth => _getString('labelsignUpAuth');
 
-  /// 'Login'
-  String get loginHintAuth => _getString('loginHintAuth');
+  /// 'Email'
+  String get emailHintAuth => _getString('emailHintAuth');
 
   /// 'Mandatory expenses'
   String get mandatoryExpenses => _getString('mandatoryExpenses');
@@ -422,7 +422,7 @@ class _Strings {
   /// 'Title...'
   String get title => _getString('title');
 
-  /// 'Verison 1.1'
+  /// 'Verison 1.2'
   String get versionApp => _getString('versionApp');
 
   /// 'Welcome'
